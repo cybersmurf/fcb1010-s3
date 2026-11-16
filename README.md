@@ -21,6 +21,7 @@ Přestavba nožního MIDI ovladače Behringer FCB1010 na ESP32-S3: původní hla
 | Koncepce a specifikace | hotová, verze 2 |
 | Pinout a bloky nosné desky | verze 0.2, konektory předních desek neověřené |
 | Firmware | verze 0.1: USB MIDI, 12 spínačů, 2 pedály, WS2812B. Sestaví se, **na hardwaru zatím neběžel** |
+| Automatické kontroly | u každého pull requestu se pustí testy logiky a sestaví firmware |
 | Měření vlastního kusu | čeká na otevření přístroje |
 | Schéma a deska (KiCad) | nezačato |
 

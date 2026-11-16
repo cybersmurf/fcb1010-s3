@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Testy logiky (native)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/cache@v4
+        with:
+          path: ~/.platformio
+          key: pio-native-${{ hashFiles('firmware/platformio.ini') }}
+      - name: Instalace PlatformIO
+        run: pip install platformio
+      - name: pio test -e native
+        working-directory: firmware
+        run: pio test -e native
+
+  build:
+    name: Sestavení firmwaru (ESP32-S3)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/cache@v4
+        with:
+          path: ~/.platformio
+          key: pio-esp32s3-${{ hashFiles('firmware/platformio.ini') }}
+      - name: Instalace PlatformIO
+        run: pip install platformio
+      - name: pio run -e fcb1010
+        working-directory: firmware
+        run: pio run -e fcb1010
+      - name: Uložení firmwaru
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware-fcb1010
+          path: |
+            firmware/.pio/build/fcb1010/firmware.bin
+            firmware/.pio/build/fcb1010/firmware.factory.bin
+          if-no-files-found: error
