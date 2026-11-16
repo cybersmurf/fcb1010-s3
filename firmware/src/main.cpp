@@ -15,6 +15,7 @@
 #include "USBMIDI.h"
 #include "tusb.h"
 #include "config.h"
+#include "txstate.h"
 
 #if ARDUINO_USB_MODE
 #error "USB musi bezet v rezimu OTG/TinyUSB (ARDUINO_USB_MODE=0), viz platformio.ini"
@@ -85,84 +86,58 @@ static void renderLeds() {
 
 // ---------------------------------------------------------------------------
 // Odchozi USB MIDI
-// Knihovni noteOn()/controlChange() zahazuji navratovou hodnotu zapisu. Kdyz je
-// vysilaci FIFO plne (hostitel prestal cist), zprava by se ztratila; ztracene
-// pusteni tlacitka by v DAW zustalo viset. Proto vlastni fronta s opakovanim.
+// Knihovni noteOn()/controlChange() zahazuji navratovou hodnotu zapisu, takze
+// pri plnem vysilacim FIFO by se zprava ztratila a pusteni tlacitka by v DAW
+// zustalo viset. Proto se drzi stav (lib/txstate): posilaji se rozdily mezi
+// tim, co ma hostitel vedet, a tim, co uz prijal. Na rozdil od fronty se
+// nemuze zaplnit.
 // ---------------------------------------------------------------------------
-static constexpr uint8_t TXQ_SIZE = 64;
-static midiEventPacket_t txq[TXQ_SIZE];
-static uint8_t txHead = 0, txTail = 0;
+static TxState tx;
 
-static inline uint8_t txNext(uint8_t i) { return (uint8_t)((i + 1) % TXQ_SIZE); }
-
-// coalesce = true pro spojite ovladace (pedaly): cekajici zprava se stejnym
-// stavovym bajtem a cislem ovladace se prepise novou hodnotou, misto aby
-// fronta rostla. Pro tlacitka vzdy false, jinak by stisk a pusteni splynuly.
-static void txPush(uint8_t type, uint8_t channel, uint8_t d1, uint8_t d2, bool coalesce, bool matchD1) {
-    const uint8_t status = (uint8_t)((type << 4) | ((channel - 1) & 0x0F));
-    if (coalesce) {
-        for (uint8_t i = txTail; i != txHead; i = txNext(i)) {
-            if (txq[i].byte1 == status && (!matchD1 || txq[i].byte2 == d1)) {
-                txq[i].byte2 = d1;
-                txq[i].byte3 = d2;
-                return;
-            }
+struct ProfileEncoder {
+    bool switchPacket(uint8_t i, bool pressed, MidiPacket &p) const {
+        if (i >= NUM_SWITCHES) return false;
+        const SwitchMap &m = SWITCH_MAP[i];
+        if (mode == MODE_CC) {
+            if (!pressed && !CC_SEND_RELEASE) return false;
+            p = ccPacket(MIDI_CHANNEL, m.cc, pressed ? 127 : 0);
+            return true;
         }
+        if (m.mcuNote == 0xFF) return false;
+        // MCU: tlacitko = Note On, stisk velocity 127, pusteni velocity 0 (kanal 1)
+        p = noteOnPacket(1, m.mcuNote, pressed ? 127 : 0);
+        return true;
     }
-    if (txNext(txHead) == txTail) {
-        Serial.println("MIDI TX fronta plna, zprava zahozena");
-        return;  // nova zprava se zahodi, cekajici pusteni tlacitek zustanou
+    bool pedalPacket(uint8_t i, uint8_t value, MidiPacket &p) const {
+        if (i >= NUM_PEDALS) return false;
+        if (mode == MODE_CC) {
+            p = ccPacket(MIDI_CHANNEL, PEDAL_CC[i], value);
+            return true;
+        }
+        if (i != 0) return false;
+        // MCU: pedal A = master fader (pitch bend na kanalu 9, 14 bitu). Experimentalni.
+        p = pitchBendPacket(9, (uint16_t)((uint32_t)value * 16383UL / 127UL));
+        return true;
     }
-    txq[txHead] = {type, status, (uint8_t)(d1 & 0x7F), (uint8_t)(d2 & 0x7F)};
-    txHead = txNext(txHead);
-}
+};
 
-static void sendCc(uint8_t cc, uint8_t value, uint8_t channel, bool coalesce = false) {
-    txPush(0x0B, channel, cc, value, coalesce, true);
-}
-static void sendNoteOn(uint8_t note, uint8_t velocity, uint8_t channel) {
-    txPush(0x09, channel, note, velocity, false, true);
-}
-static void sendPitchBend14(uint16_t value, uint8_t channel) {
-    txPush(0x0E, channel, value & 0x7F, (value >> 7) & 0x7F, true, false);
-}
-
-static void txFlush(bool mounted) {
-    if (!mounted) {  // nikdo neposloucha: nic neschovavat na pozdeji
-        txHead = txTail = 0;
-        return;
-    }
-    while (txTail != txHead) {
-        if (!MIDI.writePacket(&txq[txTail])) break;  // FIFO plne, zkusi se v dalsim pruchodu
-        txTail = txNext(txTail);
-    }
+static bool writeUsbPacket(const MidiPacket &p) {
+    midiEventPacket_t e = {p.header, p.b1, p.b2, p.b3};
+    return MIDI.writePacket(&e);  // false = FIFO plne, zkusi se v dalsim pruchodu
 }
 
 // ---------------------------------------------------------------------------
 // Udalosti
 // ---------------------------------------------------------------------------
 static void onSwitch(uint8_t i, bool pressed) {
-    const SwitchMap &m = SWITCH_MAP[i];
-    Serial.printf("SW %2u %-10s %s\n", i + 1, m.name, pressed ? "DOWN" : "up");
-
-    if (mode == MODE_CC) {
-        if (pressed) sendCc(m.cc, 127, MIDI_CHANNEL);
-        else if (CC_SEND_RELEASE) sendCc(m.cc, 0, MIDI_CHANNEL);
-    } else if (m.mcuNote != 0xFF) {
-        // MCU: tlacitko = Note On, stisk velocity 127, pusteni velocity 0 (kanal 1)
-        sendNoteOn(m.mcuNote, pressed ? 127 : 0, 1);
-    }
+    Serial.printf("SW %2u %-10s %s\n", i + 1, SWITCH_MAP[i].name, pressed ? "DOWN" : "up");
+    tx.setSwitch(i, pressed);
     ledsDirty = true;
 }
 
 static void onPedal(uint8_t i, uint8_t value) {
     Serial.printf("PEDAL %c = %u\n", 'A' + i, value);
-    if (mode == MODE_CC) {
-        sendCc(PEDAL_CC[i], value, MIDI_CHANNEL, true);
-    } else if (i == 0) {
-        // MCU: pedal A = master fader (pitch bend na kanalu 9, 14 bitu). Experimentalni.
-        sendPitchBend14((uint16_t)((uint32_t)value * 16383UL / 127UL), 9);
-    }
+    tx.setPedal(i, value);
 }
 
 // Zpetna vazba z DAW: MCU posila stav LED tlacitek jako Note On (velocity 0 = zhasnuto).
@@ -339,7 +314,9 @@ void loop() {
     pollMidiIn();
 
     const bool mounted = tud_mounted();
-    txFlush(mounted);
+    // Bez hostitele se stav jen srovna, aby se po pripojeni neposilaly stare udalosti.
+    if (mounted) tx.flush(ProfileEncoder{}, writeUsbPacket);
+    else tx.sync();
     if ((int8_t)mounted != lastMounted) {
         lastMounted = (int8_t)mounted;
         Serial.println(mounted ? "USB pripojeno" : "USB odpojeno");

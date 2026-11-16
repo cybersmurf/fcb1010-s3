@@ -12,6 +12,7 @@ Stav: **sestavení ověřeno** (PlatformIO, arduino-esp32 3.3.12, deska `esp32-s
 pio run                 # sestavit
 pio run -t upload       # nahrát (kabel v konektoru "UART")
 pio device monitor      # ladicí výpis, 115200 Bd
+pio test -e native      # testy logiky na počítači, bez hardwaru
 ```
 
 DevKitC-1 má dva USB konektory:
@@ -54,6 +55,7 @@ Spínače posílají noty Mackie Control a Logic vrací stav tlačítek, který 
 
 - `include/config.h`: piny, mapa CC/not, barvy LED, ladicí konstanty
 - `src/main.cpp`: logika
+- `lib/txstate/`: odchozí stav MIDI nezávislý na Arduinu, s testy v `test/test_txstate/`
 - `platformio.ini`: USB režim OTG (`ARDUINO_USB_MODE=0`), bez něj se MIDI neobjeví
 
 ## Známá omezení
