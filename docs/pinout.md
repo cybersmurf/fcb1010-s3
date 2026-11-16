@@ -1,6 +1,6 @@
 # FCB1010-S3: pinout a rozložení nosné desky (verze 0.2)
 
-Stav k 16. 11. 2026. Podklad pro schéma v KiCadu. **Tabulky konektorů J1 a J2 vycházejí z měření cizího kusu (Fractal fórum) a platí až po ověření multimetrem.** Typ a rozteč konektorů zatím neznáme.
+Stav k 16. 11. 2026. Podklad pro schéma v KiCadu. Zapojení vstupů (filtry, pull-upy, napájení senzorů) je podrobně v `obvody.md`; hodnoty odtud mají přednost před zkratkami v tabulkách níže. **Tabulky konektorů J1 a J2 vycházejí z měření cizího kusu (Fractal fórum) a platí až po ověření multimetrem.** Typ a rozteč konektorů zatím neznáme.
 
 Změny proti 0.1: 5pinové MIDI je povinné, 74AHCT125 je povinný, zadní jacky umí vstup AUX i plovoucí spínací výstup, UP/DOWN a spínač 10 jsou na jiných pinech (uvolnily se tím dva piny s ADC pro AUX), větší displej.
 
