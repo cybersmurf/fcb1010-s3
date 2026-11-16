@@ -31,7 +31,7 @@ static Mode mode = MODE_CC;
 // --- spinace ---------------------------------------------------------------
 struct SwitchState {
     bool pressed = false;
-    uint32_t lockUntil = 0;
+    uint32_t lastEdge = 0;  // millis() posledni prijate hrany
 };
 static SwitchState sw[NUM_SWITCHES];
 
@@ -84,6 +84,61 @@ static void renderLeds() {
 }
 
 // ---------------------------------------------------------------------------
+// Odchozi USB MIDI
+// Knihovni noteOn()/controlChange() zahazuji navratovou hodnotu zapisu. Kdyz je
+// vysilaci FIFO plne (hostitel prestal cist), zprava by se ztratila; ztracene
+// pusteni tlacitka by v DAW zustalo viset. Proto vlastni fronta s opakovanim.
+// ---------------------------------------------------------------------------
+static constexpr uint8_t TXQ_SIZE = 64;
+static midiEventPacket_t txq[TXQ_SIZE];
+static uint8_t txHead = 0, txTail = 0;
+
+static inline uint8_t txNext(uint8_t i) { return (uint8_t)((i + 1) % TXQ_SIZE); }
+
+// coalesce = true pro spojite ovladace (pedaly): cekajici zprava se stejnym
+// stavovym bajtem a cislem ovladace se prepise novou hodnotou, misto aby
+// fronta rostla. Pro tlacitka vzdy false, jinak by stisk a pusteni splynuly.
+static void txPush(uint8_t type, uint8_t channel, uint8_t d1, uint8_t d2, bool coalesce, bool matchD1) {
+    const uint8_t status = (uint8_t)((type << 4) | ((channel - 1) & 0x0F));
+    if (coalesce) {
+        for (uint8_t i = txTail; i != txHead; i = txNext(i)) {
+            if (txq[i].byte1 == status && (!matchD1 || txq[i].byte2 == d1)) {
+                txq[i].byte2 = d1;
+                txq[i].byte3 = d2;
+                return;
+            }
+        }
+    }
+    if (txNext(txHead) == txTail) {
+        Serial.println("MIDI TX fronta plna, zprava zahozena");
+        return;  // nova zprava se zahodi, cekajici pusteni tlacitek zustanou
+    }
+    txq[txHead] = {type, status, (uint8_t)(d1 & 0x7F), (uint8_t)(d2 & 0x7F)};
+    txHead = txNext(txHead);
+}
+
+static void sendCc(uint8_t cc, uint8_t value, uint8_t channel, bool coalesce = false) {
+    txPush(0x0B, channel, cc, value, coalesce, true);
+}
+static void sendNoteOn(uint8_t note, uint8_t velocity, uint8_t channel) {
+    txPush(0x09, channel, note, velocity, false, true);
+}
+static void sendPitchBend14(uint16_t value, uint8_t channel) {
+    txPush(0x0E, channel, value & 0x7F, (value >> 7) & 0x7F, true, false);
+}
+
+static void txFlush(bool mounted) {
+    if (!mounted) {  // nikdo neposloucha: nic neschovavat na pozdeji
+        txHead = txTail = 0;
+        return;
+    }
+    while (txTail != txHead) {
+        if (!MIDI.writePacket(&txq[txTail])) break;  // FIFO plne, zkusi se v dalsim pruchodu
+        txTail = txNext(txTail);
+    }
+}
+
+// ---------------------------------------------------------------------------
 // Udalosti
 // ---------------------------------------------------------------------------
 static void onSwitch(uint8_t i, bool pressed) {
@@ -91,11 +146,11 @@ static void onSwitch(uint8_t i, bool pressed) {
     Serial.printf("SW %2u %-10s %s\n", i + 1, m.name, pressed ? "DOWN" : "up");
 
     if (mode == MODE_CC) {
-        if (pressed) MIDI.controlChange(m.cc, 127, MIDI_CHANNEL);
-        else if (CC_SEND_RELEASE) MIDI.controlChange(m.cc, 0, MIDI_CHANNEL);
+        if (pressed) sendCc(m.cc, 127, MIDI_CHANNEL);
+        else if (CC_SEND_RELEASE) sendCc(m.cc, 0, MIDI_CHANNEL);
     } else if (m.mcuNote != 0xFF) {
         // MCU: tlacitko = Note On, stisk velocity 127, pusteni velocity 0 (kanal 1)
-        MIDI.noteOn(m.mcuNote, pressed ? 127 : 0, 1);
+        sendNoteOn(m.mcuNote, pressed ? 127 : 0, 1);
     }
     ledsDirty = true;
 }
@@ -103,10 +158,10 @@ static void onSwitch(uint8_t i, bool pressed) {
 static void onPedal(uint8_t i, uint8_t value) {
     Serial.printf("PEDAL %c = %u\n", 'A' + i, value);
     if (mode == MODE_CC) {
-        MIDI.controlChange(PEDAL_CC[i], value, MIDI_CHANNEL);
+        sendCc(PEDAL_CC[i], value, MIDI_CHANNEL, true);
     } else if (i == 0) {
         // MCU: pedal A = master fader (pitch bend na kanalu 9, 14 bitu). Experimentalni.
-        MIDI.pitchBend((uint16_t)((uint32_t)value * 16383UL / 127UL), 9);
+        sendPitchBend14((uint16_t)((uint32_t)value * 16383UL / 127UL), 9);
     }
 }
 
@@ -139,9 +194,10 @@ static void scanSwitches(uint32_t now) {
     for (uint8_t i = 0; i < NUM_SWITCHES; i++) {
         const bool raw = readSwitchRaw(i);
         // Hrana se hlasi okamzite (nulova latence), potom se spinac na DEBOUNCE_MS zamkne.
-        if (raw != sw[i].pressed && (int32_t)(now - sw[i].lockUntil) >= 0) {
+        // Rozdil bez znamenka je spravne i po preteceni millis() (49,7 dne).
+        if (raw != sw[i].pressed && (uint32_t)(now - sw[i].lastEdge) >= DEBOUNCE_MS) {
             sw[i].pressed = raw;
-            sw[i].lockUntil = now + DEBOUNCE_MS;
+            sw[i].lastEdge = now;
             onSwitch(i, raw);
         }
     }
@@ -253,7 +309,11 @@ void setup() {
     Serial.printf("FCB1010-S3 start, rezim %s\n", mode == MODE_CC ? "CC" : "MCU");
 
     // Spinace drzene pri startu nesmi po nabehu poslat MIDI udalost.
-    for (uint8_t i = 0; i < NUM_SWITCHES; i++) sw[i].pressed = readSwitchRaw(i);
+    const uint32_t bootTime = millis();
+    for (uint8_t i = 0; i < NUM_SWITCHES; i++) {
+        sw[i].pressed = readSwitchRaw(i);
+        sw[i].lastEdge = bootTime - DEBOUNCE_MS;  // prvni stisk projde hned
+    }
     for (uint8_t i = 0; i < NUM_PEDALS; i++) pedal[i].filtered = readPedalRaw(i);
 
     USB.manufacturerName("FCB1010-S3 project");
@@ -264,7 +324,7 @@ void setup() {
 
 void loop() {
     static uint32_t lastSwitchScan = 0, lastPedalScan = 0, lastLedRender = 0;
-    static bool wasMounted = false;
+    static int8_t lastMounted = -1;  // -1 = jeste nevyhodnoceno, at se stav ukaze i bez zmeny
     const uint32_t now = millis();
 
     if (now != lastSwitchScan) {  // 1 kHz
@@ -279,8 +339,9 @@ void loop() {
     pollMidiIn();
 
     const bool mounted = tud_mounted();
-    if (mounted != wasMounted) {
-        wasMounted = mounted;
+    txFlush(mounted);
+    if ((int8_t)mounted != lastMounted) {
+        lastMounted = (int8_t)mounted;
         Serial.println(mounted ? "USB pripojeno" : "USB odpojeno");
         // zelena = CC, modra = MCU, cervena = pocitac ho nevidi
         if (!mounted) statusLed(40, 0, 0);

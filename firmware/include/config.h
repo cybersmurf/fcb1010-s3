@@ -21,7 +21,8 @@ constexpr uint8_t SW_UP = 10;
 constexpr uint8_t SW_DOWN = 11;
 
 // Expression pedaly: ADC1 (GPIO1 = ADC1_CH0, GPIO2 = ADC1_CH1).
-// Signal senzoru 0-5 V jde pres delic 2k2 / 3k3 (max. 3,0 V na pinu, v linearnim rozsahu ADC).
+// Signal senzoru jde pres delic 10k / 15k a dvoustupnovy filtr (viz docs/obvody.md);
+// pri napajeni senzoru 4,0 V je na pinu nejvyse 2,4 V.
 constexpr uint8_t NUM_PEDALS = 2;
 constexpr uint8_t PEDAL_PINS[NUM_PEDALS] = {1, 2};
 constexpr bool PEDAL_INVERT[NUM_PEDALS] = {false, false};
