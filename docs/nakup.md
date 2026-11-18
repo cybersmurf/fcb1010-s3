@@ -8,7 +8,7 @@ Nezávisí na měření přístroje. Stačí na zkoušku na drátech i na finál
 
 | Položka | Ks | Kde | Cena za kus | Poznámka |
 |---|---|---|---|---|
-| OLED 2,42" 128×64, I2C, bílý (SSD1309) | 1 | LaskaKit, kód LA141115 | 17,16 € s DPH | při hledání skladem 5 ks; modul už je v provedení I2C |
+| OLED 2,42" 128×64, I2C, bílý (SSD1309) | 1 | LaskaKit, kód LA141115 | 17,16 € s DPH | **zatím neobjednávat**: stávající okénko displeje má jen asi 40 × 20 mm a červený filtr, 2,42" se za něj nevejde. Rozhodne se po změření okénka (menší OLED, nebo nový pás z plexi), viz `nalezy-z-fotek.md` |
 | MCP23017-E/SP (DIP-28) | 2 | TME (201 ks skladem); záloha ecom.cz, Lhotský elektro | 38,40 Kč s DPH (TME) | expandér pro původní LED |
 | SN74HCT125N (DIP-14) | 2 | GM electronic, kód 426-025 | 14 Kč | budič MIDI OUT a WS2812B; HCT stačí. Pozor, 74HCT125D (kód 952-167) je SMD |
 | LP2951 nastavitelný LDO | 2 | **otevřené**: TME má LP2951ACN/NOPB (DIP-8) na 0 ks; GM electronic LP2951CM/NOPB (SO8, kód 935-006) je potřeba ověřit | – | napájení senzorů pedálů; verze od onsemi (LP2951ACN, LP2951CN) se už nevyrábí, hledat TI s příponou /NOPB. Náhradní typ zatím není ověřený, nekupovat naslepo |
