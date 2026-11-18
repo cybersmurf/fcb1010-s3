@@ -40,10 +40,19 @@ Musí to být deska s čipem **ESP32-S3** a rozložením pinů jako ESP32-S3-Dev
 |---|---|---|---|
 | Espressif ESP32-S3-DevKitC-1 v1.1 (modul WROOM-1U) | RPishop, kód EBV003 | 929 Kč, skladem 2 ks | ano; modul 1U má jen konektor na anténu, pro USB a DIN MIDI nevadí |
 | Waveshare ESP32-S3-DevKit-1-N16R8 | RPishop, kód WAV735 | 249 Kč, na objednávku asi 25 dnů | ano, pinově kompatibilní s DevKitC-1; rozteč řad ověřit |
+| ESP32-S3 N16R8, vývojový modul (nespájený, lišty 2×22 v balení) | Drátek, kód 1745823675 | 279 Kč, skladem 205 ks | ano; 64 × 28 mm, převodník CH343, RGB LED na GPIO48; rozložení 2×22 odpovídá DevKitC-1, ale prodejce kompatibilitu ani rozteč řad neuvádí (podle šířky 28 mm nejspíš 25,4 mm), změřit |
+| ESP32-S3 N16R8 s konektorem pro kameru OV5640 a slotem microSD | Drátek, kód 1785994570 | 287 Kč, skladem 29 ks | jen na zkoušku firmwaru, na desku ne (viz níže) |
 | Espressif ESP32-C6-DevKitM-1 | LaskaKit | 498 Kč | **ne** |
 | LaskaKit ESP32-S3-DEVKit | LaskaKit | – | ne, vlastní rozložení pinů a napájení z baterie |
 
 Proč ne ESP32-C6: je to jiný čip (RISC-V) bez USB-OTG. Jeho „nativní“ USB umí jen sériovou linku a JTAG, takže se počítači neumí ohlásit jako zařízení USB MIDI. Deska má navíc jen 2×15 pinů, což na 12 spínačů, 2 pedály, I2C, MIDI a LED nestačí. Totéž platí pro C3 a H2. USB MIDI umí jen S2, S3 a P4.
+
+Proč ne deska s konektorem pro kameru (Drátek 1785994570): čip je správný (ESP32-S3 N16R8, USB-C OTG i USB-C UART přes CH343), takže USB MIDI na ní poběží. Prodejce ale neuvádí pinout ani schéma. Podle rozměru 57 × 28 mm, CH343, kamery a slotu SD jde nejspíš o klon desky Freenove ESP32-S3-WROOM CAM (neověřeno). U té platí:
+
+- kamera má na desce natvrdo vedené GPIO 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, tedy přesně piny, kde máme spínače, AUX, data LED a MIDI OUT; bez zasunuté kamery jsou použitelné, ale na GPIO 4 a 5 (sběrnice kamery) bývají pull-upy,
+- slot SD používá GPIO 38, 39, 40 (u nás OUT1 a OUT2 na 39 a 40),
+- na GPIO 2 je LED, a tam máme analogový vstup pedálu B,
+- lišty jsou 2×20, ne 2×22, takže nesedí do stejné patice jako DevKitC-1.
 
 ## C. Počkat na měření
 
@@ -71,6 +80,10 @@ Proč ne ESP32-C6: je to jiný čip (RISC-V) bez USB-OTG. Jeho „nativní“ US
 - [DigiKey: LP2951CN](https://www.digikey.com/en/products/detail/texas-instruments/LP2951CN/5056017)
 - [RPishop: Espressif ESP32-S3-DevKitC-1 v1.1](https://rpishop.cz/esp32-a-esp8266/6143-espressif-vyvojova-deska-esp32-s3-devkitc-1-v11.html)
 - [RPishop: Waveshare ESP32-S3-DevKit-1-N16R8](https://rpishop.cz/645315/waveshare-vyvojova-deska-esp32-s3-dev-kit-n16r8/)
+- [Drátek: ESP32-S3 N16R8, vývojový modul (nespájený)](https://dratek.cz/arduino-platforma/180247-esp32-s3-n16r8-vyvojovy-modul-s-wifi-a-ble-5.0-nespajeny-s-pinovou-listou-v-baleni.html)
+- [Drátek: ESP32-S3 s konektorem pro kameru OV5640](https://dratek.cz/arduino-platforma/232701-vyvojova-deska-esp32-s3-s-konektorem-pro-kameru-ov5640-wifi-bluetooth.html)
+- [Freenove: piny kamery, SD a WS2812 na desce ESP32-S3-WROOM](https://docs.freenove.com/projects/fnk0102/en/latest/fnk0102/codes/Main/Preface.html)
+- [GitHub profharris: přehled klonů ESP32-S3 CAM, 40 vs. 44 pinů](https://github.com/profharris/GOOUUU-Tech-ESP32-S3-CAM-Expansion-Board)
 - [LaskaKit: Espressif ESP32-C6-DevKitM-1 (nevhodná)](https://www.laskakit.cz/espressif-esp32-c6-devkitm-1-wifi-6--bluetooth-5--zigbee/)
 - [HledejSoučástky.cz: AQY212](http://www.hledejsoucastky.cz/LastSearches/Show?lastsearch=aqy212)
 - [Octopart: TLP222A(F), stav Obsolete](https://octopart.com/part/toshiba/TLP222A(F))
