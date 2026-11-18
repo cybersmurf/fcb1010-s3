@@ -27,11 +27,9 @@ Závěr: nejde o ranou revizi. Je to pozdní provedení s modrými deskami, SMD 
   - sedmisegmentový displej: znak ±1 a dvoumístný modul E1-2056AUR1 (výška číslic 0,56"),
   - 2 červené a 9 zelených obdélníkových LED ve dvou černých držácích.
 - Všechno to zmizí spolu s deskou, jak předpokládal návrh.
-- Rozměr desky **asi 220 × 41 mm, nejistota zhruba ±5 mm na délce a ±1 mm na šířce** (fotky vyndané desky na čtverečkovaném papíře, IMG_9259 a IMG_9266). Dřívější odhad 23 až 23,5 cm z metru přes lupu byl nadsazený.
-  - Postup: měřítko je odečtené na desce samotné, ne z papíru. Na straně spojů z pájecích bodů patice EPROM (13 roztečí po 2,54 mm = 33,02 mm, vychází 8,56 px/mm), na straně součástek z roztečí vývodů SO-20 a vodičů 14pinového svazku.
-  - Proč to nejde přesněji: deska leží na součástkách asi 13 až 16 mm nad papírem a fotky jsou pořízené zblízka širokoúhlým objektivem. Čtverečky papíru (5 mm) proto vycházejí o 19 % menší než stejná míra na desce a měřítko se po délce desky mění.
+- Rozměr desky **229 × 41 mm, změřeno majitelem**. Odhad z fotek na čtverečkovaném papíře (IMG_9259, IMG_9266) vyšel na 220 × 41 mm, tedy o 4 % kratší: deska leží na součástkách asi 1,5 cm nad papírem, fotky jsou pořízené zblízka širokoúhlým objektivem a měřítko se po délce desky mění. Polohy odečtené z těchto fotek jsou proto jen orientační.
 - Upevnění (strana součástek, IMG_9259):
-  - tři připájené plechové úhelníky se závitem podél horní dlouhé hrany (protilehlé ke svazkům), zhruba 4, 111 a 206 mm od konce s X13; šrouby jsou zajištěné červeným lakem,
+  - tři připájené plechové úhelníky se závitem podél horní dlouhé hrany (protilehlé ke svazkům), zhruba 4, 116 a 215 mm od konce s X13 (přepočteno na délku 229 mm, orientačně); šrouby jsou zajištěné červeným lakem,
   - stabilizátor 7805 trčí přes krátkou hranu u usměrňovače a je přišroubovaný ke kostře jako k chladiči,
   - na konci u displeje jsou dva otvory pro středicí čepy: kulatý asi 12 mm od krátké hrany a 3 mm od horní hrany, a výřez na krátké hraně asi 32 mm od horní hrany.
 - Rozmístění podél desky podle metru (hrubé, stejná výhrada jako u délky): červené LED 1,5 až 3 cm, první držák zelených LED 4 až 10,5 cm, druhý 11,7 až 17 cm, displej 18,3 až 22 cm.
@@ -119,7 +117,7 @@ Spoje jsou navíc zajištěné tavným lepidlem (jde dolů po kapce isopropylalk
    - Před odpájením si každý svazek označit (který konektor na desce, kde je červený vodič) a vyfotit.
    - Zkouška na drátech: po sundání bílého držáku jsou kontakty volné, každý na svém vodiči. Dají se připájet na obyčejnou kolíkovou lištu 2,54 mm (nebo proužek univerzální desky s lištou) a ta se zasune do nepájivého pole. Rozteč 2,0 mm tedy pro zkoušku nevadí a žádné protikusy se kupovat nemusí.
    - Nová deska, dvě možnosti: (a) otvory s roztečí 2,0 mm a svazky zapájené přímo, stejně jako v originále, bez nových součástek, ale deska nepůjde odpojit; (b) nové rozpojitelné konektory, což znamená nalisovat nové kontakty na zhruba 40 vodičů. Výchozí volba je (a), případně s konektory jen tam, kde to dává smysl.
-2. **Nová deska na místě původní.** Hlavní deska je přišroubovaná pod horním panelem. Nosná deska může převzít její obrys (asi 220 × 41 mm) a upevňovací otvory. Chybí přesné rozměry a poloha otvorů.
+2. **Nová deska na místě původní.** Hlavní deska je přišroubovaná pod horním panelem. Nosná deska může převzít její obrys (229 × 41 mm) a upevňovací otvory. Chybí přesné rozměry a poloha otvorů.
 3. **Displej.** OLED 2,42" byl objednaný 18. 11. 2026 v poledne, dřív než se ukázalo, jak malé je původní okénko. **Platí tedy cesta (b)**; cesta (a) zůstává jako záloha, kdyby úprava panelu nevyšla:
    - (a) panel beze změny: menší OLED, který se vejde za červený filtr. Kandidát je 1,54" 128×64 SSD1309 I2C (aktivní plocha asi 35 × 17,5 mm, deska modulu 42,4 × 38 mm, stejný řadič jako 2,42", takže firmware se nemění). Proti okénku 36 × 18,5 mm zbývá jen asi 0,5 mm na každé straně, což je v rámci chyby odečtu, proto přeměřit posuvkou. Displej musí sedět těsně za filtrem (modul na dutinkové liště vychází zhruba na potřebných 10 až 12 mm), jinak při pohledu šikmo okraj okénka zakryje krajní řádky. Záložní volba je 1,3" (obraz asi 29,5 × 14,7 mm, řadič SH1106). Nejistota: jak čitelný bude bílý OLED přes červený filtr. Bílý nebo žlutý OLED bude přes filtr svítit červeně, modrý by vidět nebyl. Stávající okénka LED s popisky jdou využít pro stavové LED na nové desce.
    - (b) nový pás z kouřového plexi místo původního potištěného a za něj OLED 2,42". Zmizí původní popisky. Obraz displeje je 55 × 27,5 mm, pás je vysoký asi 25 mm: buď se otvor v plechu o pár milimetrů zvětší, nebo firmware nechá nahoře a dole 3 řádky pixelů nevyužité (krok pixelu 0,43 mm). K tomu chybí: jestli jde pás vyndat, výška otvoru v plechu pod ním a hloubka místa za ním.
@@ -132,7 +130,7 @@ Spoje jsou navíc zajištěné tavným lepidlem (jde dolů po kapce isopropylalk
 1. Jestli jsou svazky zapájené i na straně předních desek a senzorů. (Rozteč 14pinových svazků je potvrzená, 2,0 mm.)
    Změřit rozteč u 2pinových (X13, X14), 3pinových (X21, X22) a u lišty X18. U 3pinových vychází z fotky stejná jako u 14pinových.
 2. Průchodnost pinů předních desek podle `mereni.md`, část 3.
-3. Přesné rozměry hlavní desky a polohu tří úhelníků a dvou středicích otvorů. Z fotek na čtverečkovaném papíře vyšlo jen přibližně 220 × 41 mm. Přesně to dá posuvka, nebo fotka s pravítkem položeným přímo na desce, pořízená z dálky aspoň půl metru se zoomem. Červené okénko displeje posuvkou (zatím 36 × 18,5 mm z fotky) a jestli jde pás z panelu vyndat.
+3. Polohu tří úhelníků a dvou středicích otvorů na hlavní desce (rozměr desky je změřený, 229 × 41 mm). Stačí fotka s pravítkem položeným přímo na desce, pořízená z dálky aspoň půl metru se zoomem. Červené okénko displeje posuvkou (zatím 36 × 18,5 mm z fotky) a jestli jde pás z panelu vyndat.
 4. Přiřazení 4 vodičů MIDI průchodností: který pin X18 vede na pin 6 (napájení), 5 (GND) a 4 (výstup) optočlenu H11L1 a který přes R7/R8 k zásuvce OUT. Přiřazení 4 vodičů X17 k jackům a kam vede vodič „TO RELAIS-I/O PCB“ (jestli spojuje objímky jacků se zemí).
 5. Průměr LED a rozteč spínačů.
 
