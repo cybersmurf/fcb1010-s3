@@ -114,7 +114,15 @@ Spoje jsou navíc zajištěné tavným lepidlem (jde dolů po kapce isopropylalk
 
 - Deska BYJ 0918, DE005757 (IMG_9257, IMG_9258). Dva jacky, konektor se 4 vodiči k X17 na hlavní desce, kondenzátory C5 a C6 po 100 pF.
 - Uprostřed je pájecí bod „TO MIDI PCB“ s černým vodičem k bodu „TO RELAIS-I/O PCB“ na destičce MIDI. Na tento bod jsou připojené C5 a C6, je to tedy vztažná zem pro odrušovací kondenzátory.
-- **Změřeno majitelem (18. 11. 2026):** objímky obou jacků jsou spojené dohromady a vedou jedním vodičem do konektoru k hlavní desce (X17). Relé tedy spínají hrot proti společné objímce.
+- **Změřeno majitelem (18. 11. 2026):** objímky obou jacků jsou spojené dohromady a vedou do konektoru k hlavní desce (X17). Relé tedy spínají hrot proti společné objímce.
+- Zapojení zástrčky X17, pin 1 = červený vodič:
+
+  | Pin | Signál |
+  |---|---|
+  | 1 (červený) | hrot jednoho jacku (který, zatím neurčeno) |
+  | 2 | objímka |
+  | 3 | hrot druhého jacku (odvozeno, neměřeno) |
+  | 4 | objímka |
 - Jestli je společná objímka na hlavní desce spojená se zemí, zatím změřeno není. Pokus o měření proti stabilizátoru 7805 nic neukázal, ale ten je nejspíš v celoplastovém izolovaném pouzdře (na fotkách není vidět kovová ploška), takže jako zemní bod neposlouží. Zemní bod pro měření je prostřední vývod 7805 nebo záporný vývod velkého elektrolytu.
 - Dopad na návrh: dva výstupy mají společný vratný vodič. PhotoMOS spíná hrot každého jacku proti společné objímce; objímka se na nové desce nespojuje se zemí, takže dvojice výstupů zůstane plovoucí vůči přístroji.
 
