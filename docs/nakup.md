@@ -32,6 +32,19 @@ Nezávisí na měření přístroje. Stačí na zkoušku na drátech i na finál
 
 Místo dříve uvažovaného TLP222A je AQY212EH: Toshiba TLP222A je vedená jako ukončená výroba.
 
+### Jaký DevKit ano a jaký ne
+
+Musí to být deska s čipem **ESP32-S3** a rozložením pinů jako ESP32-S3-DevKitC-1 (2×22 pinů). Stav k 18. 11. 2026:
+
+| Deska | Kde | Cena | Hodí se? |
+|---|---|---|---|
+| Espressif ESP32-S3-DevKitC-1 v1.1 (modul WROOM-1U) | RPishop, kód EBV003 | 929 Kč, skladem 2 ks | ano; modul 1U má jen konektor na anténu, pro USB a DIN MIDI nevadí |
+| Waveshare ESP32-S3-DevKit-1-N16R8 | RPishop, kód WAV735 | 249 Kč, na objednávku asi 25 dnů | ano, pinově kompatibilní s DevKitC-1; rozteč řad ověřit |
+| Espressif ESP32-C6-DevKitM-1 | LaskaKit | 498 Kč | **ne** |
+| LaskaKit ESP32-S3-DEVKit | LaskaKit | – | ne, vlastní rozložení pinů a napájení z baterie |
+
+Proč ne ESP32-C6: je to jiný čip (RISC-V) bez USB-OTG. Jeho „nativní“ USB umí jen sériovou linku a JTAG, takže se počítači neumí ohlásit jako zařízení USB MIDI. Deska má navíc jen 2×15 pinů, což na 12 spínačů, 2 pedály, I2C, MIDI a LED nestačí. Totéž platí pro C3 a H2. USB MIDI umí jen S2, S3 a P4.
+
 ## C. Počkat na měření
 
 | Položka | Na čem závisí |
@@ -56,5 +69,8 @@ Místo dříve uvažovaného TLP222A je AQY212EH: Toshiba TLP222A je vedená jak
 - [ecom.cz: MCP23017-E/SP](https://ecom.cz/eshop/detail/9360-MCP23017-E-SP)
 - [GM electronic: lineární regulátory nastavitelné (LP2951CM/NOPB)](https://www.gme.cz/c/15204/linearni-regulatory-napeti-nastavitelne)
 - [DigiKey: LP2951CN](https://www.digikey.com/en/products/detail/texas-instruments/LP2951CN/5056017)
+- [RPishop: Espressif ESP32-S3-DevKitC-1 v1.1](https://rpishop.cz/esp32-a-esp8266/6143-espressif-vyvojova-deska-esp32-s3-devkitc-1-v11.html)
+- [RPishop: Waveshare ESP32-S3-DevKit-1-N16R8](https://rpishop.cz/645315/waveshare-vyvojova-deska-esp32-s3-dev-kit-n16r8/)
+- [LaskaKit: Espressif ESP32-C6-DevKitM-1 (nevhodná)](https://www.laskakit.cz/espressif-esp32-c6-devkitm-1-wifi-6--bluetooth-5--zigbee/)
 - [HledejSoučástky.cz: AQY212](http://www.hledejsoucastky.cz/LastSearches/Show?lastsearch=aqy212)
 - [Octopart: TLP222A(F), stav Obsolete](https://octopart.com/part/toshiba/TLP222A(F))
