@@ -28,7 +28,9 @@ Nezávisí na měření přístroje. Stačí na zkoušku na drátech i na finál
 |---|---|---|---|---|
 | PhotoMOS AQY212EH (DIP-4) | 2 | Conrad a další | 60 Kč | plovoucí spínací výstupy na zadní jacky (NUX místo NMP-2, kanály zesilovače) |
 | Druhý ESP32-S3 DevKit, stejný typ jako ten, co máš | 1 | LaskaKit, Botland, TME | – | záloha; musí mít stejnou rozteč řad, jinak nesedí do patice |
-| Pásek WS2812B, 60 LED/m, 5 V, 0,5 m | 1 | LaskaKit | – | jen pro variantu s barevnými LED |
+| Lišta 8× WS2812B (5050, 5 V, 57 × 10 mm) | 2 | LaskaKit, kód LA145006B (černá) / LA145006W (bílá) | 1,39 € s DPH | jen na zkoušku barevných LED na nepájivém poli; skladem 102 a 64 ks |
+
+K WS2812B (stav 18. 11. 2026): LaskaKit má pásky 60 LED/m jen v 5m rolích (IP65 černý 36,86 €, IP65 bílý 36,71 €, IP30 černý vyprodaný). Do přístroje se pásek nehodí: LED má po 16,6 mm, kdežto LED nad spínači jsou od sebe mnohem dál, takže by se musel rozstříhat na jednotlivé LED a propojit vodiči. Finální provedení barevných LED (jednotlivé destičky, nebo adresovatelné LED 5 mm THT typu WS2812D-F5 / PL9823 do původních otvorů) se rozhodne až podle měření: průměr otvorů pro LED a rozteč spínačů.
 
 Místo dříve uvažovaného TLP222A je AQY212EH: Toshiba TLP222A je vedená jako ukončená výroba.
 
@@ -84,6 +86,8 @@ Proč ne deska s konektorem pro kameru (Drátek 1785994570): čip je správný (
 - [Drátek: ESP32-S3 s konektorem pro kameru OV5640](https://dratek.cz/arduino-platforma/232701-vyvojova-deska-esp32-s3-s-konektorem-pro-kameru-ov5640-wifi-bluetooth.html)
 - [Freenove: piny kamery, SD a WS2812 na desce ESP32-S3-WROOM](https://docs.freenove.com/projects/fnk0102/en/latest/fnk0102/codes/Main/Preface.html)
 - [GitHub profharris: přehled klonů ESP32-S3 CAM, 40 vs. 44 pinů](https://github.com/profharris/GOOUUU-Tech-ESP32-S3-CAM-Expansion-Board)
+- [LaskaKit: lišta 8× WS2812B](https://www.laskakit.cz/en/8x-inteligentni-rgb-led-neopixel-pasek--ws2812b--5050--5v/)
+- [LaskaKit: pásek WS2812B 60 LED/m IP65 5 m černý](https://www.laskakit.cz/en/led-pasek-neopixel-ws2812b-60led-m-ip65-5m-cerny/)
 - [LaskaKit: Espressif ESP32-C6-DevKitM-1 (nevhodná)](https://www.laskakit.cz/espressif-esp32-c6-devkitm-1-wifi-6--bluetooth-5--zigbee/)
 - [HledejSoučástky.cz: AQY212](http://www.hledejsoucastky.cz/LastSearches/Show?lastsearch=aqy212)
 - [Octopart: TLP222A(F), stav Obsolete](https://octopart.com/part/toshiba/TLP222A(F))
