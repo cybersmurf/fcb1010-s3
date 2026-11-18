@@ -46,11 +46,11 @@ Závěr: nejde o ranou revizi. Je to pozdní provedení s modrými deskami, SMD 
 | X19, X20 (potisk „14P“) | 14 | přední desky spínačů, svazky přes zaklapávací ferit | vidět (IMG_9211, IMG_9201) |
 | X21, X22 (potisk „3P“) | 3 | senzory pedálů X10, X11; vodiče červený + 2 černé | vidět (IMG_9211) |
 | X13, X14 (potisk „2P“) | 2 | dvě součástky u pedálů zalité tavným lepidlem, vodiče červený + černý | vidět; téměř jistě LED nad pedály (zvenku je u nápisů EXPRESSION PEDAL A a B po jednom okénku) |
-| X18 (potisk „4P“) | 4 | **skutečná kolíková lišta v plastovém límci, rozpojitelná**; na IMG_9211 a IMG_9203 je prázdná, kam vedla zástrčka, je potřeba potvrdit | vidět |
-| X17, u EPROM a usměrňovače | 3 až 4 | bílý konektor s vodiči k zadním destičkám (MIDI X7 nebo jacky), přes toroid | odhad |
+| X18 (potisk „4P“) | 4 | destička MIDI (její konektor X7), vodiče červený + 3 černé. **Skutečná kolíková lišta v plastovém límci, rozpojitelná** | potvrzeno majitelem |
+| X17, u EPROM a usměrňovače | 3 až 4 | destička zadních jacků (spínací výstupy relé K1, K2), přes toroid | potvrzeno majitelem; počet vodičů a jestli je rozpojitelný, ověřit |
 | pájecí body u D16 až D19 | 2 | sekundár transformátoru, žlutá kroucená dvojlinka | vidět |
 
-**Na hlavní desce to nejsou rozpojitelné konektory.** Ověřeno nadzvednutím jednoho 3pinového (IMG_9199): vodiče mají nalisované kontakty, jejichž konce jsou zapájené přímo do desky, a bílý plastový díl je jen držák nasunutý na kontakty (provedení „board-in“). Svazek se od hlavní desky dá oddělit jen odpájením, nebo odstřižením. Na přední desce (X8, potisk „14P“, IMG_9183) je bílý díl stejného typu, takže svazek je nejspíš zapájený i tam. U destiček senzorů, MIDI a jacků to ověřeno není.
+**Na hlavní desce to nejsou rozpojitelné konektory.** Ověřeno nadzvednutím jednoho 3pinového (IMG_9199): vodiče mají nalisované kontakty, jejichž konce jsou zapájené přímo do desky, a bílý plastový díl je jen držák nasunutý na kontakty (provedení „board-in“). Svazek se od hlavní desky dá oddělit jen odpájením, nebo odstřižením. Výjimka je X18 (MIDI), kde je normální lišta se zástrčkou. Na přední desce (X8, potisk „14P“, IMG_9183) je bílý díl stejného typu, takže svazek je nejspíš zapájený i tam. U destiček senzorů, MIDI a jacků to ověřeno není.
 
 Spoje jsou navíc zajištěné tavným lepidlem (jde dolů po kapce isopropylalkoholu).
 
@@ -110,7 +110,7 @@ Spoje jsou navíc zajištěné tavným lepidlem (jde dolů po kapce isopropylalk
    Změřit rozteč u 2pinových (X13, X14), 3pinových (X21, X22) a u lišty X18. U 3pinových vychází z fotky stejná jako u 14pinových.
 2. Průchodnost pinů předních desek podle `mereni.md`, část 3.
 3. Přesné rozměry hlavní desky a polohu upevňovacích otvorů (vyndaná deska na čtverečkovaném papíře, focená kolmo shora). Výšku červeného okénka displeje (pravítkem zvenku) a jestli jde pás z panelu vyndat.
-4. Kam vede zástrčka z X18 a kam svazek z X17; přiřazení 4 vodičů destičky MIDI (X7).
+4. Přiřazení 4 vodičů MIDI (X18 ↔ X7) a vodičů X17 k jackům; jestli je X17 rozpojitelný.
 5. Průměr LED a rozteč spínačů.
 
 ## Zdroje k displeji 1,54"
