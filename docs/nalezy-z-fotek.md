@@ -42,7 +42,18 @@ Závěr: nejde o ranou revizi. Je to pozdní provedení s modrými deskami, SMD 
   - Stabilizátor 7805 (IC2) sedí v rohu u úhelníku 3, je ohnutý přes okraj desky a přišroubovaný ke kostře jako k chladiči.
   - Kontrola: metr na těchto fotkách ukazuje konce desky na 37,4 a 59,7 cm, tedy jen 223 mm. Na konci u relé ale metr leží asi 1 cm nad deskou (na EPROM a kondenzátoru) a fotka je zblízka, takže čtení je tam zkreslené paralaxou. Podle rozteče vývodů 7805 (2,54 mm) vychází měřítko desky v tom místě 0,80 měřítka metru; po opravě je délka 227 až 228 mm, což sedí s naměřenými 229 mm. Úhelník 3 je proto počítaný v měřítku desky, ne přímo z metru.
   - Před objednáním desky přeměřit posuvkou polohy úhelníků a rozteč jejich nožek. Do té doby počítat s oválnými otvory s vůlí ±2 mm.
-- Rozmístění podél desky podle metru (hrubé, stejná výhrada jako u délky): červené LED 1,5 až 3 cm, první držák zelených LED 4 až 10,5 cm, druhý 11,7 až 17 cm, displej 18,3 až 22 cm.
+- Rozmístění na straně spojů, odečteno z fotek s metrem zaháknutým za krátkou hranu u stabilizátoru (IMG_9289 až IMG_9296). Držáky LED a displej jsou asi 1 cm nad deskou a fotky jsou šikmé, nejistota je zhruba ±2 mm:
+
+  | Prvek | Od hrany u stabilizátoru | Od hrany u displeje |
+  |---|---|---|
+  | držák se 2 červenými LED | 6,5 až 30 mm | 199 až 222,5 mm |
+  | držák s 5 zelenými LED | 33 až 113,5 mm | 115,5 až 196 mm |
+  | držák se 4 zelenými LED | 118 až 172,5 mm | 56,5 až 111 mm |
+  | displej (modul ±1 a dvoumístný modul) | 182 až 221 mm | 8 až 47 mm |
+
+  - Displej je široký asi 39 mm (moduly asi 13 a 26 mm) a vysoký 19 mm. Jeho střed je asi 27 mm od krátké hrany u displeje a asi 12,5 mm od dlouhé hrany s úhelníky. Tam je tedy i střed červeného okénka v panelu.
+  - LED jsou v držácích ob jednu buňku, rozteč LED vychází na 12,5 až 14 mm (nejspíš 12,7 mm).
+  - Stejné fotky potvrzují délku desky: s metrem zaháknutým za hranu končí deska na 22,9 cm.
 - Vedle LED a displeje je na desce řada tranzistorů T1 až T18 s odpory (spínání číslic, segmentů a LED).
 
 ### Okénko v horním panelu
@@ -130,7 +141,7 @@ Spoje jsou navíc zajištěné tavným lepidlem (jde dolů po kapce isopropylalk
 2. **Nová deska na místě původní.** Hlavní deska je přišroubovaná pod horním panelem. Nosná deska může převzít její obrys (229 × 41 mm) a upevňovací otvory. Chybí přesné rozměry a poloha otvorů.
 3. **Displej.** OLED 2,42" byl objednaný 18. 11. 2026 v poledne, dřív než se ukázalo, jak malé je původní okénko. **Platí tedy cesta (b)**; cesta (a) zůstává jako záloha, kdyby úprava panelu nevyšla:
    - (a) panel beze změny: menší OLED, který se vejde za červený filtr. Kandidát je 1,54" 128×64 SSD1309 I2C (aktivní plocha asi 35 × 17,5 mm, deska modulu 42,4 × 38 mm, stejný řadič jako 2,42", takže firmware se nemění). Proti okénku 36 × 18,5 mm zbývá jen asi 0,5 mm na každé straně, což je v rámci chyby odečtu, proto přeměřit posuvkou. Displej musí sedět těsně za filtrem (modul na dutinkové liště vychází zhruba na potřebných 10 až 12 mm), jinak při pohledu šikmo okraj okénka zakryje krajní řádky. Záložní volba je 1,3" (obraz asi 29,5 × 14,7 mm, řadič SH1106). Nejistota: jak čitelný bude bílý OLED přes červený filtr. Bílý nebo žlutý OLED bude přes filtr svítit červeně, modrý by vidět nebyl. Stávající okénka LED s popisky jdou využít pro stavové LED na nové desce.
-   - (b) nový pás z kouřového plexi místo původního potištěného a za něj OLED 2,42". Zmizí původní popisky. Obraz displeje je 55 × 27,5 mm, pás je vysoký asi 25 mm: buď se otvor v plechu o pár milimetrů zvětší, nebo firmware nechá nahoře a dole 3 řádky pixelů nevyužité (krok pixelu 0,43 mm). K tomu chybí: jestli jde pás vyndat, výška otvoru v plechu pod ním a hloubka místa za ním.
+   - (b) nový pás z kouřového plexi místo původního potištěného a za něj OLED 2,42". Zmizí původní popisky. Obraz displeje je 55 × 27,5 mm, pás je vysoký asi 25 mm: buď se otvor v plechu o pár milimetrů zvětší, nebo firmware nechá nahoře a dole 3 řádky pixelů nevyužité (krok pixelu 0,43 mm). K tomu chybí: jestli jde pás vyndat, výška otvoru v plechu pod ním a hloubka místa za ním. Pozor na umístění: střed původního okénka je jen 27 mm od konce desky a 12,5 mm od hrany s úhelníky, kdežto obraz OLED 2,42" je 55 × 27,5 mm a jeho modul je větší než šířka desky (41 mm). Vystředěný na původní okénko by modul přesahoval přes dlouhou hranu desky a seděl nad úhelníkem 1. Displej se proto buď posune směrem ke středu desky (pokud je otvor v plechu pod pásem souvislý), nebo se přichytí k panelu a s deskou spojí kablíkem.
 4. **LED nad pedály** (X13, X14): dva další výstupy na MCP23017 (celkem 12 ze 16).
 5. **Relé K1, K2.** Potvrzují, že spínací výstupy na zadních jackách jsou galvanicky oddělené kontakty. PhotoMOS AQY212EH je nahradí.
 6. **Síťová část** (zásuvka, vypínač, transformátor) se při napájení z USB-C odpojí.
