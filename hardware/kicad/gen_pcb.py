@@ -153,10 +153,11 @@ horiz("AUX1_RAW", "AUX1", 144.0, 154.16, 21.0)
 horiz("AUX2_RAW", "AUX2", 157.0, 167.16, 21.0)
 
 # spínací výstupy
-put("K1", 205.0, 22.0, 0)
-put("K2", 217.0, 22.0, 0)
-horiz("OUT1", "K1_A", 215.16, 205.0, 17.5)
-horiz("OUT2", "K2_A", 227.16, 217.0, 28.5)
+# výstupy (piny 3, 4) míří doleva ke konektoru J11, vstupy doprava
+put("K1", 212.62, 24.54, 180)
+put("K2", 224.62, 24.54, 180)
+vert("OUT1", "K1_A", 215.0, 11.5, 21.66)
+vert("OUT2", "K2_A", 227.0, 11.5, 21.66)
 put("J11", 201.75, 37.0, 0)
 
 # úhelníky

@@ -1,0 +1,5 @@
+*.dsn
+*.ses
+*.net
+fp-info-cache
+*-backups/
