@@ -103,6 +103,7 @@ Spoje jsou navíc zajištěné tavným lepidlem (jde dolů po kapce isopropylalk
 ## Co ještě změřit
 
 1. Vzdálenost středů první a poslední plošky 14pinového konektoru (potvrzení rozteče) a jestli jsou svazky zapájené i na straně předních desek a senzorů.
+   Stejně změřit rozteč otvorů u 2pinových (X13, X14), 3pinových (X20, X21) a 4pinového svazku na hlavní desce. U 3pinových vychází z fotky stejná jako u 14pinového, u 2pinových a 4pinového změřená není a nová deska ji potřebuje pro pájecí otvory.
 2. Průchodnost pinů předních desek podle `mereni.md`, část 3.
 3. Přesné rozměry hlavní desky a polohu upevňovacích otvorů (deska na čtverečkovaném papíře, focená kolmo shora). Rozměr červeného okénka displeje a celého černého pásu, a jestli jde pás z panelu vyndat.
 4. Přiřazení 4 vodičů destičky MIDI (X7).
