@@ -106,7 +106,7 @@ Spoje jsou navíc zajištěné tavným lepidlem (jde dolů po kapce isopropylalk
   - C1 až C4 po 100 pF u zásuvek.
 - Co z toho plyne (zapojení cest je odhad podle součástek a počtu vodičů, **potvrdit průchodností**):
   - Čtyři vodiče jsou nejspíš +5 V, GND, výstup optočlenu (MIDI IN) a vstup pro MIDI OUT.
-  - Čtení cest ze zvětšené fotky spojů (IMG_9249), **nízká jistota**: červený vodič (kraj X7 u optočlenu) vede na pin 6 optočlenu (napájení) a na R6, tedy +5 V; vodič hned vedle červeného vede na pin 4 optočlenu (výstup, MIDI IN) a na druhý konec R6. Zbylé dva jsou GND a MIDI OUT, jejich pořadí z fotky určit nejde. Majitel odhaduje (neměřeno), že GND je krajní černý vodič na opačném konci než červený; pořadí by pak bylo +5 V, MIDI IN, MIDI OUT, GND. Ověření bez hledání pinů optočlenu: na hlavní desce má GND spojení s kovovou ploškou stabilizátoru 7805, takže pin X18, který na ni pípne, je zem. Potvrzuje to, že pull-up R6 visí na stejném napájení jako odpory MIDI OUT.
+  - Čtení cest ze zvětšené fotky spojů (IMG_9249), **nízká jistota**: červený vodič (kraj X7 u optočlenu) vede na pin 6 optočlenu (napájení) a na R6, tedy +5 V; vodič hned vedle červeného vede na pin 4 optočlenu (výstup, MIDI IN) a na druhý konec R6. Zbylé dva jsou GND a MIDI OUT, jejich pořadí z fotky určit nejde. Majitel odhaduje (neměřeno), že GND je krajní černý vodič na opačném konci než červený; pořadí by pak bylo +5 V, MIDI IN, MIDI OUT, GND. Ověření bez hledání pinů optočlenu: na hlavní desce je GND na prostředním vývodu stabilizátoru 7805 (jeho pouzdro je nejspíš celoplastové, na něm se měřit nedá), takže pin X18, který na prostřední vývod pípne, je zem. Potvrzuje to, že pull-up R6 visí na stejném napájení jako odpory MIDI OUT.
   - Na nové desce **nebudou další odpory 220 Ω** pro MIDI OUT, jen budič na 5 V (74HCT125).
   - Destička se napájí 5 V, protože odpory MIDI OUT jsou počítané na 5 V. Pull-up R6 pak táhne výstup optočlenu k 5 V a ten **nesmí jít přímo na GPIO**. Na nové desce bude dělič: 10 kΩ v sérii a 22 kΩ z pinu na GND. S pull-upem 4,7 kΩ dá 3,0 V v klidu a pod 0,3 V při sepnutém optočlenu.
 
@@ -114,7 +114,9 @@ Spoje jsou navíc zajištěné tavným lepidlem (jde dolů po kapce isopropylalk
 
 - Deska BYJ 0918, DE005757 (IMG_9257, IMG_9258). Dva jacky, konektor se 4 vodiči k X17 na hlavní desce, kondenzátory C5 a C6 po 100 pF.
 - Uprostřed je pájecí bod „TO MIDI PCB“ s černým vodičem k bodu „TO RELAIS-I/O PCB“ na destičce MIDI. Na tento bod jsou připojené C5 a C6, je to tedy vztažná zem pro odrušovací kondenzátory.
-- **Z fotky nejde rozhodnout**, jestli je tento bod spojený i přímo s objímkami jacků. Od toho závisí, jestli jsou spínací kontakty plovoucí. Rozhodne měření průchodnosti: objímka každého jacku proti černému vodiči a proti kostře.
+- **Změřeno majitelem (18. 11. 2026):** objímky obou jacků jsou spojené dohromady a vedou jedním vodičem do konektoru k hlavní desce (X17). Relé tedy spínají hrot proti společné objímce.
+- Jestli je společná objímka na hlavní desce spojená se zemí, zatím změřeno není. Pokus o měření proti stabilizátoru 7805 nic neukázal, ale ten je nejspíš v celoplastovém izolovaném pouzdře (na fotkách není vidět kovová ploška), takže jako zemní bod neposlouží. Zemní bod pro měření je prostřední vývod 7805 nebo záporný vývod velkého elektrolytu.
+- Dopad na návrh: dva výstupy mají společný vratný vodič. PhotoMOS spíná hrot každého jacku proti společné objímce; objímka se na nové desce nespojuje se zemí, takže dvojice výstupů zůstane plovoucí vůči přístroji.
 
 ## Přední desky spínačů
 

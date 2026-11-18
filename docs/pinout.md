@@ -140,7 +140,7 @@ Výstup H11L1 má na destičce pull-up R6 4,7 kΩ k 5 V, proto dělič: 3,0 V v 
 | J5 | displej I2C | 3V3, GND, SDA, SCL |
 | J6 | WS2812B (volitelné) | 5 V, DATA, GND |
 | J8 | zadní jacky, varianta vstup | AUX1, AUX2, 3V3, GND |
-| J11 | zadní jacky, varianta výstup | OUT1 a, OUT1 b, OUT2 a, OUT2 b (plovoucí kontakty, bez GND) |
+| J11 | zadní jacky, varianta výstup (protikus původní zástrčky z X17, 4 piny) | hrot jacku 1, hrot jacku 2, společná objímka obou jacků, čtvrtý vodič zatím neurčený. Objímka se nespojuje s GND desky |
 | J9 | volné | GPA5–7, GPB5–7, 3V3, 5 V, GND |
 | J10 | USB-C na panel | kabelem do konektoru USB na DevKitu |
 | – | kostra | GND v jednom bodě |
