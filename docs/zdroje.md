@@ -157,9 +157,3 @@ Co z nich neplatí nebo není doložené:
 - dělič 10 kΩ + 20 kΩ dá při 5 V 3,33 V, což je nad rozsahem ADC.
 
 Co se potvrdilo: dvě přední desky a jejich rozdělení, 14 pinů, přímé zapojení bez matice, H11L1, EPROM v IC13, 7805, existence všech čtyř jmenovaných zdrojů, tip se skenem desky 1:1 jako podkladem do KiCadu.
-
-## Displej 1,54" (doplněno 18. 11. 2026)
-
-- [universal-solder: 1.54 inch OLED 128x64 I2C (white) SSD1309](https://www.universal-solder.ca/product/1-54-inch-oled-128x64-i2c-white-ssd1309/): deska 42,4 × 38 mm, plocha obrazu asi 35 × 17,5 mm, adresa 0x3C/0x3D.
-- [GM electronic: OLED displej 1,54" 128x64, I2C, bílý, kód 775-214](https://www.gme.cz/v/1508852/oled-displej-154128x64-i2c-biely): 259 Kč, 18. 11. 2026 není skladem.
-- [Drátek: SPI OLED 1,54" 128x64 bílý](https://dratek.cz/ukonceno/3203-spi-oled-lcd-1-54-displej-128x64-bily-3-3-5v.html): prodej ukončen (349 Kč), verze SPI.

@@ -112,3 +112,9 @@ Spoje jsou navíc zajištěné tavným lepidlem (jde dolů po kapce isopropylalk
 3. Přesné rozměry hlavní desky a polohu upevňovacích otvorů (vyndaná deska na čtverečkovaném papíře, focená kolmo shora). Výšku červeného okénka displeje (pravítkem zvenku) a jestli jde pás z panelu vyndat.
 4. Kam vede zástrčka z X18 a kam svazek z X17; přiřazení 4 vodičů destičky MIDI (X7).
 5. Průměr LED a rozteč spínačů.
+
+## Zdroje k displeji 1,54"
+
+- [universal-solder: 1.54 inch OLED 128x64 I2C (white) SSD1309](https://www.universal-solder.ca/product/1-54-inch-oled-128x64-i2c-white-ssd1309/): deska 42,4 × 38 mm, plocha obrazu asi 35 × 17,5 mm, adresa 0x3C/0x3D.
+- [GM electronic: OLED displej 1,54" 128x64, I2C, bílý, kód 775-214](https://www.gme.cz/v/1508852/oled-displej-154128x64-i2c-biely): 259 Kč, 18. 11. 2026 není skladem.
+- [Drátek: SPI OLED 1,54" 128x64 bílý](https://dratek.cz/ukonceno/3203-spi-oled-lcd-1-54-displej-128x64-bily-3-3-5v.html): prodej ukončen, verze SPI.
