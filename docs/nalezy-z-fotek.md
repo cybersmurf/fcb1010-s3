@@ -106,7 +106,14 @@ Spoje jsou navíc zajištěné tavným lepidlem (jde dolů po kapce isopropylalk
   - C1 až C4 po 100 pF u zásuvek.
 - Co z toho plyne (zapojení cest je odhad podle součástek a počtu vodičů, **potvrdit průchodností**):
   - Čtyři vodiče jsou nejspíš +5 V, GND, výstup optočlenu (MIDI IN) a vstup pro MIDI OUT.
-  - Čtení cest ze zvětšené fotky spojů (IMG_9249), **nízká jistota**: červený vodič (kraj X7 u optočlenu) vede na pin 6 optočlenu (napájení) a na R6, tedy +5 V; vodič hned vedle červeného vede na pin 4 optočlenu (výstup, MIDI IN) a na druhý konec R6. Zbylé dva jsou GND a MIDI OUT, jejich pořadí z fotky určit nejde. Majitel odhaduje (neměřeno), že GND je krajní černý vodič na opačném konci než červený; pořadí by pak bylo +5 V, MIDI IN, MIDI OUT, GND. Ověření bez hledání pinů optočlenu: na hlavní desce je GND na prostředním vývodu stabilizátoru 7805 (jeho pouzdro je nejspíš celoplastové, na něm se měřit nedá), takže pin X18, který na prostřední vývod pípne, je zem. Potvrzuje to, že pull-up R6 visí na stejném napájení jako odpory MIDI OUT.
+  - Čtení cest ze zvětšené fotky spojů (IMG_9249), **nízká jistota**: červený vodič (kraj X7 u optočlenu) vede na pin 6 optočlenu (napájení) a na R6, tedy +5 V; vodič hned vedle červeného vede na pin 4 optočlenu (výstup, MIDI IN) a na druhý konec R6. Zbylé dva jsou GND a MIDI OUT, jejich pořadí z fotky určit nejde. **Změřeno majitelem (18. 11. 2026): zem je na pinu 4** (pin 1 = červený vodič). Zapojení zástrčky X18 je tedy:
+
+    | Pin | Signál | Jistota |
+    |---|---|---|
+    | 1 (červený) | +5 V | čtení z fotky spojů |
+    | 2 | MIDI IN, výstup H11L1 | čtení z fotky spojů, nízká jistota |
+    | 3 | MIDI OUT | odvozeno jako zbývající vodič |
+    | 4 | GND | změřeno |
   - Na nové desce **nebudou další odpory 220 Ω** pro MIDI OUT, jen budič na 5 V (74HCT125).
   - Destička se napájí 5 V, protože odpory MIDI OUT jsou počítané na 5 V. Pull-up R6 pak táhne výstup optočlenu k 5 V a ten **nesmí jít přímo na GPIO**. Na nové desce bude dělič: 10 kΩ v sérii a 22 kΩ z pinu na GND. S pull-upem 4,7 kΩ dá 3,0 V v klidu a pod 0,3 V při sepnutém optočlenu.
 
@@ -165,7 +172,7 @@ Spoje jsou navíc zajištěné tavným lepidlem (jde dolů po kapce isopropylalk
    Změřit rozteč u 2pinových (X13, X14), 3pinových (X21, X22) a u lišty X18. U 3pinových vychází z fotky stejná jako u 14pinových.
 2. Průchodnost pinů předních desek podle `mereni.md`, část 3.
 3. Rozteč nožek úhelníku a průměr jeho vývodů (polohy středů úhelníků jsou z otisku na papíře, viz tabulka u hlavní desky). Červené okénko displeje posuvkou (zatím 36 × 18,5 mm z fotky) a jestli jde pás z panelu vyndat.
-4. Přiřazení 4 vodičů MIDI průchodností: který pin X18 vede na pin 6 (napájení), 5 (GND) a 4 (výstup) optočlenu H11L1 a který přes R7/R8 k zásuvce OUT. Přiřazení 4 vodičů X17 k jackům a kam vede vodič „TO RELAIS-I/O PCB“ (jestli spojuje objímky jacků se zemí).
+4. Při zkoušce na drátech ověřit piny 2 a 3 zástrčky X18 (MIDI IN a MIDI OUT; zem na pinu 4 je změřená) a který hrot X17 patří kterému jacku.
 5. Průměr LED a rozteč spínačů.
 
 ## Zdroje k displeji 1,54"

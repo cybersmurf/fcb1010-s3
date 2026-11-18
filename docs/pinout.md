@@ -122,14 +122,14 @@ U spínačů je v sérii dioda 1N4148. Musí být orientovaná tak, aby proud te
 
 ## J7: původní destička MIDI (lišta 1×4, protikus původní zástrčky z X18)
 
-Stav podle fotek z 18. 11. 2026, viz `nalezy-z-fotek.md`. Pořadí pinů a zapojení cest na destičce je potřeba potvrdit průchodností.
+Stav k 18. 11. 2026, viz `nalezy-z-fotek.md`. Pin 1 je červený vodič. Zem na pinu 4 je změřená, pin 1 a 2 jsou přečtené z fotky spojů, pin 3 je odvozený. Piny 2 a 3 ověřit při zkoušce na drátech.
 
-| Signál | Kam |
-|---|---|
-| +5 V | 5 V; napájí H11L1, pull-up R6 a odpor MIDI OUT k pinu 4 zásuvky |
-| GND | GND |
-| MIDI OUT | výstup U3 hradlo 1 (5 V); odpory R7, R8 jsou na destičce |
-| MIDI IN (výstup H11L1) | přes 10 kΩ na GPIO14, z GPIO14 22 kΩ na GND |
+| Pin | Signál | Kam |
+|---|---|---|
+| 1 | +5 V | 5 V; napájí H11L1, pull-up R6 a odpor MIDI OUT k pinu 4 zásuvky |
+| 2 | MIDI IN (výstup H11L1) | přes 10 kΩ na GPIO14, z GPIO14 22 kΩ na GND |
+| 3 | MIDI OUT | výstup U3 hradlo 1 (5 V); odpory R7, R8 jsou na destičce |
+| 4 | GND | GND |
 
 Výstup H11L1 má na destičce pull-up R6 4,7 kΩ k 5 V, proto dělič: 3,0 V v klidu, pod 0,3 V při sepnutém optočlenu. Bez děliče by na GPIO14 bylo 5 V.
 
