@@ -21,7 +21,7 @@ Závěr: nejde o ranou revizi. Je to pozdní provedení s modrými deskami, SMD 
 - CPU Philips P80C32SBAA (PLCC-44), krystal Q1 12 MHz.
 - 3× 74HC273D (jeden z nich IC3), 74HC373, SRAM GoldStar GM76C256, EPROM v pouzdře DIP-28.
 - 2× relé Bestar BT-5S, cívka 5 V (K1, K2). To jsou původní spínací výstupy na zadní jacky.
-- Stabilizátor v pouzdře TO-220 (potisk KIA …05A, tedy 7805), usměrňovací diody D16 až D19, dva elektrolyty.
+- Stabilizátor v pouzdře TO-220 (KIA 7805A), usměrňovací diody D16 až D19, dva elektrolyty.
 - Displej a stavové LED jsou na straně spojů a koukají tónovaným okénkem v horním panelu:
   - sedmisegmentový displej: znak ±1 a dvoumístný modul E1-2056AUR1 (výška číslic 0,56"),
   - 2 červené a 9 zelených obdélníkových LED ve dvou černých držácích.
@@ -77,8 +77,15 @@ Spoje jsou navíc zajištěné tavným lepidlem (jde dolů po kapce isopropylalk
   - C1 až C4 po 100 pF u zásuvek.
 - Co z toho plyne (zapojení cest je odhad podle součástek a počtu vodičů, **potvrdit průchodností**):
   - Čtyři vodiče jsou nejspíš +5 V, GND, výstup optočlenu (MIDI IN) a vstup pro MIDI OUT.
+  - Čtení cest ze zvětšené fotky spojů (IMG_9249), **nízká jistota**: červený vodič (kraj X7 u optočlenu) vede na pin 6 optočlenu (napájení) a na R6, tedy +5 V; vodič hned vedle červeného vede na pin 4 optočlenu (výstup, MIDI IN) a na druhý konec R6. Zbylé dva jsou GND a MIDI OUT, jejich pořadí z fotky určit nejde. Potvrzuje to, že pull-up R6 visí na stejném napájení jako odpory MIDI OUT.
   - Na nové desce **nebudou další odpory 220 Ω** pro MIDI OUT, jen budič na 5 V (74HCT125).
   - Destička se napájí 5 V, protože odpory MIDI OUT jsou počítané na 5 V. Pull-up R6 pak táhne výstup optočlenu k 5 V a ten **nesmí jít přímo na GPIO**. Na nové desce bude dělič: 10 kΩ v sérii a 22 kΩ z pinu na GND. S pull-upem 4,7 kΩ dá 3,0 V v klidu a pod 0,3 V při sepnutém optočlenu.
+
+## Destička zadních jacků (RELAIS-I/O)
+
+- Deska BYJ 0918, DE005757 (IMG_9257, IMG_9258). Dva jacky, konektor se 4 vodiči k X17 na hlavní desce, kondenzátory C5 a C6 po 100 pF.
+- Uprostřed je pájecí bod „TO MIDI PCB“ s černým vodičem k bodu „TO RELAIS-I/O PCB“ na destičce MIDI. Na tento bod jsou připojené C5 a C6, je to tedy vztažná zem pro odrušovací kondenzátory.
+- **Z fotky nejde rozhodnout**, jestli je tento bod spojený i přímo s objímkami jacků. Od toho závisí, jestli jsou spínací kontakty plovoucí. Rozhodne měření průchodnosti: objímka každého jacku proti černému vodiči a proti kostře.
 
 ## Přední desky spínačů
 
