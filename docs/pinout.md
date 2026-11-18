@@ -39,7 +39,7 @@ Změny proti 0.1: 5pinové MIDI je povinné, 74AHCT125 je povinný, zadní jacky
 | 10 | AUX 2 | ADC1_CH9, zadní jack 2 |
 | 12 | WS2812B data | přes U3, volitelné |
 | 13 | MIDI OUT (UART1 TX) | přes U3 na 5 V |
-| 14 | MIDI IN (UART1 RX) | z H11L1, pull-up na 3V3 |
+| 14 | MIDI IN (UART1 RX) | z H11L1 přes dělič 10 kΩ / 22 kΩ |
 | 21 | I2C SDA | MCP23017 (0x20), OLED (0x3C), pull-up 4k7 na 3V3 |
 | 47 | I2C SCL | pull-up 4k7 na 3V3 |
 | 39, 40 | spínací výstupy OUT 1, OUT 2 | přes PhotoMOS, plovoucí kontakty na zadní jacky (MG-30 místo NMP-2, kanály zesilovače) |
@@ -66,11 +66,11 @@ Původních 10 LED má společnou anodu. Anody na 3,3 V, katody přes odpor na e
 
 | Hradlo | Vstup | Výstup |
 |---|---|---|
-| 1 | GPIO13 | MIDI OUT, pin 5 zásuvky přes 220 Ω |
+| 1 | GPIO13 | MIDI OUT; odpory 220 Ω jsou na původní destičce MIDI |
 | 2 | GPIO12 | WS2812B data přes 330 Ω |
 | 3, 4 | volné | vstupy na GND |
 
-MIDI OUT: pin 4 zásuvky přes 220 Ω na 5 V, pin 2 na GND. Pokud odpory už jsou na původní destičce MIDI, na nosné desce se nahradí propojkou.
+MIDI OUT: oba odpory 220 Ω (R7, R8) jsou podle fotek na původní destičce MIDI, na nosné desce se neosazují.
 
 ## J1: spodní přední deska (14 pinů, neověřeno)
 
@@ -120,17 +120,18 @@ U spínačů je v sérii dioda 1N4148. Musí být orientovaná tak, aby proud te
 | ? | GND |
 | ? | signál → 10 kΩ → GPIO1 (A) / GPIO2 (B); z pinu 15 kΩ a 100 nF na GND |
 
-## J7: původní destička MIDI (zapojení neověřeno)
+## J7: původní destička MIDI (lišta 1×4, protikus původní zástrčky z X18)
+
+Stav podle fotek z 18. 11. 2026, viz `nalezy-z-fotek.md`. Pořadí pinů a zapojení cest na destičce je potřeba potvrdit průchodností.
 
 | Signál | Kam |
 |---|---|
-| MIDI OUT pin 5 | výstup U3 hradlo 1 (přes 220 Ω, pokud nejsou na destičce) |
-| MIDI OUT pin 4 | 5 V (přes 220 Ω, pokud nejsou na destičce) |
-| výstup H11L1 | GPIO14, pull-up 4k7 na 3V3 |
-| napájení H11L1 | 3V3; optočlen má otevřený kolektor a pracuje od 3 V |
+| +5 V | 5 V; napájí H11L1, pull-up R6 a odpor MIDI OUT k pinu 4 zásuvky |
 | GND | GND |
+| MIDI OUT | výstup U3 hradlo 1 (5 V); odpory R7, R8 jsou na destičce |
+| MIDI IN (výstup H11L1) | přes 10 kΩ na GPIO14, z GPIO14 22 kΩ na GND |
 
-Pozor: pokud je na destičce pull-up výstupu H11L1 spojený s napájením zásuvky OUT, nesmí se na GPIO14 dostat 5 V. Rozhodne se podle fotek destičky.
+Výstup H11L1 má na destičce pull-up R6 4,7 kΩ k 5 V, proto dělič: 3,0 V v klidu, pod 0,3 V při sepnutém optočlenu. Bez děliče by na GPIO14 bylo 5 V.
 
 ## Ostatní konektory
 

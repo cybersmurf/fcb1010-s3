@@ -33,7 +33,7 @@ Závěr: nejde o ranou revizi. Je to pozdní provedení s modrými deskami, SMD 
 ### Okénko v horním panelu
 
 - Zvenku je to černý potištěný pás dlouhý asi 23 cm s popisky (SWITCH 1, SWITCH 2, SELECT, NUMBER, VALUE 1, VALUE 2, DIRECT SELECT, MIDI FUNCTION, MIDI CHAN., CONFIG). Pro každou LED je v něm jen malé průhledné okénko.
-- Pro displej je v pásu **červený filtr široký asi 38 mm** (z metru přiloženého zevnitř, IMG_9215). Výšku ze šikmých fotek určit nejde, podle původního displeje (číslice 0,56") bude kolem 15 až 20 mm, **nutno změřit pravítkem zvenku**.
+- Pro displej je v pásu **červený filtr asi 36 × 18,5 mm** (odečteno z metru přiloženého zvenku na IMG_9237 a IMG_9238, přesnost zhruba ±1 mm; zevnitř vycházela šířka 38 mm). Černý pás je vysoký asi 25 mm. Před objednáním displeje přeměřit posuvkou.
 - Okének pro LED je 11 (zevnitř od displeje 4 + 5 + 2), rozteč asi 12 mm, každé zhruba 4 × 1,5 mm.
 - Pás je plastový díl vsazený do panelu; v rohu je vidět průhledný plastový čep, takže nejspíš není lepený. Jestli jde vyndat, není ověřeno.
 - Držáky LED a displej jsou vysoké asi 10 až 12 mm, tolik je tedy od desky k pásu. Modul OLED musí na nové desce sedět ve stejné výšce.
@@ -47,7 +47,7 @@ Závěr: nejde o ranou revizi. Je to pozdní provedení s modrými deskami, SMD 
 | X21, X22 (potisk „3P“) | 3 | senzory pedálů X10, X11; vodiče červený + 2 černé | vidět (IMG_9211) |
 | X13, X14 (potisk „2P“) | 2 | dvě součástky u pedálů zalité tavným lepidlem, vodiče červený + černý | vidět; téměř jistě LED nad pedály (zvenku je u nápisů EXPRESSION PEDAL A a B po jednom okénku) |
 | X18 (potisk „4P“) | 4 | destička MIDI (její konektor X7), vodiče červený + 3 černé. **Skutečná kolíková lišta v plastovém límci, rozpojitelná** | potvrzeno majitelem |
-| X17, u EPROM a usměrňovače | 3 až 4 | destička zadních jacků (spínací výstupy relé K1, K2), přes toroid | potvrzeno majitelem; počet vodičů a jestli je rozpojitelný, ověřit |
+| X17 (potisk „4P“), u usměrňovače | 4 | destička zadních jacků (spínací výstupy relé K1, K2). Kolíková lišta v límci jako X18, rozpojitelná (IMG_9222) | potvrzeno majitelem, lišta vidět |
 | pájecí body u D16 až D19 | 2 | sekundár transformátoru, žlutá kroucená dvojlinka | vidět |
 
 **Na hlavní desce to nejsou rozpojitelné konektory.** Ověřeno nadzvednutím jednoho 3pinového (IMG_9199): vodiče mají nalisované kontakty, jejichž konce jsou zapájené přímo do desky, a bílý plastový díl je jen držák nasunutý na kontakty (provedení „board-in“). Svazek se od hlavní desky dá oddělit jen odpájením, nebo odstřižením. Výjimka je X18 (MIDI), kde je normální lišta se zástrčkou. Na přední desce (X8, potisk „14P“, IMG_9183) je bílý díl stejného typu, takže svazek je nejspíš zapájený i tam. U destiček senzorů, MIDI a jacků to ověřeno není.
@@ -69,7 +69,16 @@ Spoje jsou navíc zajištěné tavným lepidlem (jde dolů po kapce isopropylalk
 
 - Dvě zásuvky DIN (X1, X2), optočlen H11L1 v pouzdře DIP-6 (IC1), konektor X7 se 4 vodiči k hlavní desce.
 - Pájecí bod „TO RELAIS-I/O PCB“ s jedním černým vodičem přes toroid k destičce zadních jacků.
-- Odpovídá to návrhu: H11L1 zůstane na původní destičce, k nové desce půjdou 4 vodiče (nejspíš napájení, zem, výstup optočlenu a MIDI OUT; přiřazení je potřeba změřit).
+- Na destičce jsou vodiče X7 zapájené; rozpojitelný je až konec na hlavní desce (X18).
+- Ze strany spojů (IMG_9222 až IMG_9224, deska BYJ 0918, DE005756) jsou osazené všechny pasivní součástky obou směrů:
+  - R5 220 Ω a D13 (1N4148) u vstupu optočlenu, tedy obvod MIDI IN,
+  - R6 4,7 kΩ, nejspíš pull-up výstupu H11L1,
+  - R7 a R8 po 220 Ω, nejspíš oba odpory MIDI OUT,
+  - C1 až C4 po 100 pF u zásuvek.
+- Co z toho plyne (zapojení cest je odhad podle součástek a počtu vodičů, **potvrdit průchodností**):
+  - Čtyři vodiče jsou nejspíš +5 V, GND, výstup optočlenu (MIDI IN) a vstup pro MIDI OUT.
+  - Na nové desce **nebudou další odpory 220 Ω** pro MIDI OUT, jen budič na 5 V (74HCT125).
+  - Destička se napájí 5 V, protože odpory MIDI OUT jsou počítané na 5 V. Pull-up R6 pak táhne výstup optočlenu k 5 V a ten **nesmí jít přímo na GPIO**. Na nové desce bude dělič: 10 kΩ v sérii a 22 kΩ z pinu na GND. S pull-upem 4,7 kΩ dá 3,0 V v klidu a pod 0,3 V při sepnutém optočlenu.
 
 ## Přední desky spínačů
 
@@ -98,7 +107,7 @@ Spoje jsou navíc zajištěné tavným lepidlem (jde dolů po kapce isopropylalk
    - Nová deska, dvě možnosti: (a) otvory s roztečí 2,0 mm a svazky zapájené přímo, stejně jako v originále, bez nových součástek, ale deska nepůjde odpojit; (b) nové rozpojitelné konektory, což znamená nalisovat nové kontakty na zhruba 40 vodičů. Výchozí volba je (a), případně s konektory jen tam, kde to dává smysl.
 2. **Nová deska na místě původní.** Hlavní deska je přišroubovaná pod horním panelem. Nosná deska může převzít její obrys (asi 23 × 4 cm) a upevňovací otvory. Chybí přesné rozměry a poloha otvorů.
 3. **Displej, dvě cesty.** Rozhodnutí až po změření okénka, **do té doby OLED neobjednávat**:
-   - (a) panel beze změny: menší OLED, který se vejde za červený filtr. Kandidát je 1,54" 128×64 SSD1309 I2C (aktivní plocha asi 35 × 17,5 mm, deska modulu 42,4 × 38 mm, stejný řadič jako 2,42", takže firmware se nemění). Šířkou se do 38 mm vejde, výška závisí na změření okénka. Nejistota: jak čitelný bude přes červený filtr. Bílý nebo žlutý OLED bude přes filtr svítit červeně, modrý by vidět nebyl. Stávající okénka LED s popisky jdou využít pro stavové LED na nové desce.
+   - (a) panel beze změny: menší OLED, který se vejde za červený filtr. Kandidát je 1,54" 128×64 SSD1309 I2C (aktivní plocha asi 35 × 17,5 mm, deska modulu 42,4 × 38 mm, stejný řadič jako 2,42", takže firmware se nemění). Proti okénku 36 × 18,5 mm zbývá jen asi 0,5 mm na každé straně, což je v rámci chyby odečtu, proto přeměřit posuvkou. Displej musí sedět těsně za filtrem (modul na dutinkové liště vychází zhruba na potřebných 10 až 12 mm), jinak při pohledu šikmo okraj okénka zakryje krajní řádky. Záložní volba je 1,3" (obraz asi 29,5 × 14,7 mm, řadič SH1106). Nejistota: jak čitelný bude bílý OLED přes červený filtr. Bílý nebo žlutý OLED bude přes filtr svítit červeně, modrý by vidět nebyl. Stávající okénka LED s popisky jdou využít pro stavové LED na nové desce.
    - (b) nový pás z kouřového plexi místo původního potištěného a za něj OLED 2,42". Zmizí původní popisky.
 4. **LED nad pedály** (X13, X14): dva další výstupy na MCP23017 (celkem 12 ze 16).
 5. **Relé K1, K2.** Potvrzují, že spínací výstupy na zadních jackách jsou galvanicky oddělené kontakty. PhotoMOS AQY212EH je nahradí.
@@ -109,8 +118,8 @@ Spoje jsou navíc zajištěné tavným lepidlem (jde dolů po kapce isopropylalk
 1. Jestli jsou svazky zapájené i na straně předních desek a senzorů. (Rozteč 14pinových svazků je potvrzená, 2,0 mm.)
    Změřit rozteč u 2pinových (X13, X14), 3pinových (X21, X22) a u lišty X18. U 3pinových vychází z fotky stejná jako u 14pinových.
 2. Průchodnost pinů předních desek podle `mereni.md`, část 3.
-3. Přesné rozměry hlavní desky a polohu upevňovacích otvorů (vyndaná deska na čtverečkovaném papíře, focená kolmo shora). Výšku červeného okénka displeje (pravítkem zvenku) a jestli jde pás z panelu vyndat.
-4. Přiřazení 4 vodičů MIDI (X18 ↔ X7) a vodičů X17 k jackům; jestli je X17 rozpojitelný.
+3. Přesné rozměry hlavní desky a polohu upevňovacích otvorů (vyndaná deska na čtverečkovaném papíře, focená kolmo shora). Červené okénko displeje posuvkou (zatím 36 × 18,5 mm z fotky) a jestli jde pás z panelu vyndat.
+4. Přiřazení 4 vodičů MIDI průchodností: který pin X18 vede na pin 6 (napájení), 5 (GND) a 4 (výstup) optočlenu H11L1 a který přes R7/R8 k zásuvce OUT. Přiřazení 4 vodičů X17 k jackům a kam vede vodič „TO RELAIS-I/O PCB“ (jestli spojuje objímky jacků se zemí).
 5. Průměr LED a rozteč spínačů.
 
 ## Zdroje k displeji 1,54"

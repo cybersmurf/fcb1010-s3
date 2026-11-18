@@ -15,7 +15,7 @@ Nezávisí na měření přístroje. Stačí na zkoušku na drátech i na finál
 | Patice DIP-28 úzká (300 mil), DIP-14 | po 2 | GM electronic | jednotky Kč | MCP23017-E/SP je úzké pouzdro; precizní patice GME 824-009 je široká a nehodí se, u kódu 823-007 šířku ověřit na prodejně |
 | Dutinkové lišty 1×40, 2,54 mm | 4 | GM electronic | – | patice pro DevKit |
 | Kolíkové lišty 1×40, 2,54 mm | 2 | GM electronic | – | |
-| Odpory 0,25 W: 150 Ω (12), 220 Ω (4), 330 Ω (2), 470 Ω (14), 1 kΩ (4), 4,7 kΩ (4), 10 kΩ (4), 12 kΩ (2), 15 kΩ (4), 47 kΩ (14) | – | GM electronic | – | v závorce minimum pro jednu desku |
+| Odpory 0,25 W: 150 Ω (12), 220 Ω (4), 330 Ω (2), 470 Ω (14), 1 kΩ (4), 4,7 kΩ (4), 10 kΩ (4), 12 kΩ (2), 15 kΩ (4), 22 kΩ (2), 47 kΩ (14) | – | GM electronic | – | v závorce minimum pro jednu desku |
 | Keramické kondenzátory: 100 nF (30), 470 nF (4), 10 µF (4) | – | GM electronic | – | |
 | Odpory pro LP2951 (dělič výstupního napětí): 100 kΩ (2), 220 kΩ (2), trimr 100 kΩ (1) | – | GM electronic | – | přesné hodnoty až podle měření senzorů |
 | Nepájivé pole (830 bodů) | 2 | Drátek, kód 1458404272 | 37 Kč | DevKit z Drátku má řady asi 25 mm od sebe a na jednom poli nechá jen jednu volnou řadu na každé straně, proto dvě pole vedle sebe |
@@ -64,7 +64,7 @@ Proč ne deska s konektorem pro kameru (Drátek 1785994570): čip je správný (
 | Konektory pro pedály (2×) a LED pedálů (2×) | 3 a 2 vodiče, taky zapájené; nové konektory jen pokud se rozhodneme pro rozpojitelné provedení |
 | Kolíkové lišty 2,54 mm a proužek univerzální desky | redukce pro zkoušku na drátech (jsou už v části A) |
 | Konektory pro destičku MIDI a jacků | část 5 |
-| Odpory 220 Ω pro MIDI OUT | podle toho, jestli už jsou na destičce MIDI |
+| OLED displej | velikost podle okénka (36 × 18,5 mm z fotky): 1,54" SSD1309 I2C, nebo 1,3"; až po přeměření posuvkou |
 | Kouřové nebo čiré plexi před displej | rozměr výřezu |
 | Distanční sloupky a šrouby | výška původních sloupků |
 | Samotná deska (JLCPCB) | až po zkoušce na drátech |
@@ -76,7 +76,7 @@ Stav k 18. 11. 2026 podle průzkumu obchodů. Položky označené „neověřeno
 | Obchod | Co | Doprava |
 |---|---|---|
 | Drátek | ESP32-S3 N16R8 (2 ks po 265,05 Kč), 2× nepájivé pole, dupont M–M a M–F | výdejní místo GLS 74 Kč, na adresu 114 Kč |
-| LaskaKit | OLED 2,42" I2C LA141115 (ne LA141062, to je verze SPI), 2× lišta 8× WS2812B | Zásilkovna 68 Kč, Balíkovna 70 Kč, zdarma od 1 000 Kč |
+| LaskaKit | 2× lišta 8× WS2812B; displej až po přeměření okénka (2,42" se za něj nevejde) | Zásilkovna 68 Kč, Balíkovna 70 Kč, zdarma od 1 000 Kč |
 | TME | 2× MCP23017-E/SP, 2× AQY212EH | cena dopravy neověřena; prodává i nepodnikatelům, nutná registrace |
 | GM electronic, Brno, Přízova 283/16 (Po–Pá 9–18) | 2× SN74HCT125N, patice, lišty, odpory, kondenzátory | osobně; dostupnost na brněnské prodejně ověřit na webu |
 
