@@ -19,7 +19,7 @@ Závěr: nejde o ranou revizi. Je to pozdní provedení s modrými deskami, SMD 
 ## Hlavní deska
 
 - CPU Philips P80C32SBAA (PLCC-44), krystal Q1 12 MHz.
-- 3× 74HC273D (IC3, IC10, IC11), 74HC373 (IC9), SRAM GoldStar GM76C256 (IC14), EPROM v patici DIP-28 (IC13), dále IC4 až IC7 a IC12 v pouzdrech SO (typy z fotek nečitelné).
+- 3× 74HC273D (IC3, IC10, IC11), 74HC373 (IC9), SRAM GoldStar GM76C256ALFW70 (IC14), EPROM v patici DIP-28 (IC13), IC4 MM74HC04M, IC5 74HC138, dále IC6, IC7 (SO-8) a IC12 (typy z fotek nečitelné). Usměrňovač tvoří čtyři diody řady 1N400x.
 - Tranzistory T5 až T18 v pouzdře SOT-23 s potiskem A06 a A56 (spínání číslic, segmentů a LED), odpory R28 až R35 po 33 Ω.
 - 2× relé Bestar BT-5S, cívka 5 V (K1, K2). To jsou původní spínací výstupy na zadní jacky.
 - Stabilizátor v pouzdře TO-220 (KIA 7805A), usměrňovací diody D16 až D19, dva elektrolyty.
@@ -35,13 +35,15 @@ Závěr: nejde o ranou revizi. Je to pozdní provedení s modrými deskami, SMD 
   | úhelník 1 (střed) | 4,3 mm | nožky zapájené v 1,6 a 7,1 mm | ±0,5 mm |
   | kulatý otvor A, ⌀ asi 2,2 mm | 9,6 mm | 2,6 mm od dlouhé hrany s úhelníky | ±0,5 mm |
   | kulatý otvor B, ⌀ asi 2,2 mm | asi 2 mm | asi 5,5 mm od dlouhé hrany se svazky | ±1 mm |
-  | úhelník 2 (střed) | 112 mm | na metru 48,6 cm, hrana desky na 37,4 cm | ±1,5 mm |
-  | úhelník 3 (střed) | 210,5 mm | 18,5 mm od opačné krátké hrany; vývody 7805 jsou o 10 mm dál | ±1,5 mm |
+  | úhelník 2 (střed) | 116,5 mm | z fotek s metrem přiloženým od hrany u displeje (IMG_9311 až IMG_9325) vychází 115 až 118,5 mm | ±2,5 mm |
+  | úhelník 3 (střed) | 211,5 mm | 17 až 18 mm od opačné krátké hrany; vývody 7805 jsou o 10 mm dál | ±1,5 mm |
 
   - Všechny tři úhelníky jsou u dlouhé hrany protilehlé ke svazkům, šrouby zajištěné červeným lakem. Rozteč nožek úhelníku je asi 5,5 až 6 mm.
   - Stabilizátor 7805 (IC2) sedí v rohu u úhelníku 3, je ohnutý přes okraj desky a přišroubovaný ke kostře jako k chladiči.
   - Kontrola: metr na těchto fotkách ukazuje konce desky na 37,4 a 59,7 cm, tedy jen 223 mm. Na konci u relé ale metr leží asi 1 cm nad deskou (na EPROM a kondenzátoru) a fotka je zblízka, takže čtení je tam zkreslené paralaxou. Podle rozteče vývodů 7805 (2,54 mm) vychází měřítko desky v tom místě 0,80 měřítka metru; po opravě je délka 227 až 228 mm, což sedí s naměřenými 229 mm. Úhelník 3 je proto počítaný v měřítku desky, ne přímo z metru.
-  - Před objednáním desky přeměřit posuvkou polohy úhelníků a rozteč jejich nožek. Do té doby počítat s oválnými otvory s vůlí ±2 mm.
+  - Oprava: dříve uvedených 112 mm u úhelníku 2 bylo špatně, vzniklo odečtením dvou čtení metru ze dvou různých fotek.
+  - Přesněji to z fotek nejde: metr leží na součástkách asi 1 cm nad deskou a každá fotka je z jiného úhlu, takže stejný úhelník vychází na různých fotkách o 2 až 3 mm jinde. Rozteč nožek úhelníku vychází na 5 až 6 mm.
+  - Rozhodující míra pro novou desku jsou rozteče tří otvorů pro šrouby v horním panelu (plech, dá se změřit přesně) a poloha prvního otvoru vůči oknu displeje. Do té doby počítat s oválnými otvory s vůlí ±3 mm.
 - Rozmístění na straně spojů, odečteno z fotek s metrem zaháknutým za krátkou hranu u stabilizátoru (IMG_9289 až IMG_9296). Držáky LED a displej jsou asi 1 cm nad deskou a fotky jsou šikmé, nejistota je zhruba ±2 mm:
 
   | Prvek | Od hrany u stabilizátoru | Od hrany u displeje |
@@ -151,7 +153,7 @@ Spoje jsou navíc zajištěné tavným lepidlem (jde dolů po kapce isopropylalk
 1. Jestli jsou svazky zapájené i na straně předních desek a senzorů. (Rozteč 14pinových svazků je potvrzená, 2,0 mm.)
    Změřit rozteč u 2pinových (X13, X14), 3pinových (X21, X22) a u lišty X18. U 3pinových vychází z fotky stejná jako u 14pinových.
 2. Průchodnost pinů předních desek podle `mereni.md`, část 3.
-3. Posuvkou: polohy tří úhelníků a rozteč jejich nožek, polohu a průměr obou kulatých otvorů u displeje (z fotek s metrem jsou odečtené s nejistotou 0,5 až 1,5 mm, viz tabulka u hlavní desky). Červené okénko displeje posuvkou (zatím 36 × 18,5 mm z fotky) a jestli jde pás z panelu vyndat.
+3. Rozteče tří otvorů pro šrouby hlavní desky v horním panelu a rozteč nožek úhelníku (z fotek jsou polohy úhelníků jen s nejistotou 0,5 až 2,5 mm, viz tabulka u hlavní desky). Červené okénko displeje posuvkou (zatím 36 × 18,5 mm z fotky) a jestli jde pás z panelu vyndat.
 4. Přiřazení 4 vodičů MIDI průchodností: který pin X18 vede na pin 6 (napájení), 5 (GND) a 4 (výstup) optočlenu H11L1 a který přes R7/R8 k zásuvce OUT. Přiřazení 4 vodičů X17 k jackům a kam vede vodič „TO RELAIS-I/O PCB“ (jestli spojuje objímky jacků se zemí).
 5. Průměr LED a rozteč spínačů.
 
