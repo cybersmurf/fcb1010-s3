@@ -28,10 +28,20 @@ Závěr: nejde o ranou revizi. Je to pozdní provedení s modrými deskami, SMD 
   - 2 červené a 9 zelených obdélníkových LED ve dvou černých držácích.
 - Všechno to zmizí spolu s deskou, jak předpokládal návrh.
 - Rozměr desky **229 × 41 mm, změřeno majitelem**. Odhad z fotek na čtverečkovaném papíře (IMG_9259, IMG_9266) vyšel na 220 × 41 mm, tedy o 4 % kratší: deska leží na součástkách asi 1,5 cm nad papírem, fotky jsou pořízené zblízka širokoúhlým objektivem a měřítko se po délce desky mění. Polohy odečtené z těchto fotek jsou proto jen orientační.
-- Upevnění (strana součástek, IMG_9259):
-  - tři připájené plechové úhelníky se závitem podél horní dlouhé hrany (protilehlé ke svazkům), zhruba 4, 116 a 215 mm od konce s X13 (přepočteno na délku 229 mm, orientačně); šrouby jsou zajištěné červeným lakem,
-  - stabilizátor 7805 trčí přes krátkou hranu u usměrňovače a je přišroubovaný ke kostře jako k chladiči,
-  - na konci u displeje jsou dva otvory pro středicí čepy: kulatý asi 12 mm od krátké hrany a 3 mm od horní hrany, a výřez na krátké hraně asi 32 mm od horní hrany.
+- Upevnění a otvory, odečteno z fotek s metrem položeným na desce (IMG_9276 až IMG_9287). Polohy jsou od krátké hrany na konci u displeje (konec s X13 a X14), měřeno na straně součástek:
+
+  | Prvek | Od krátké hrany | Poznámka | Nejistota |
+  |---|---|---|---|
+  | úhelník 1 (střed) | 4,3 mm | nožky zapájené v 1,6 a 7,1 mm | ±0,5 mm |
+  | kulatý otvor A, ⌀ asi 2,2 mm | 9,6 mm | 2,6 mm od dlouhé hrany s úhelníky | ±0,5 mm |
+  | kulatý otvor B, ⌀ asi 2,2 mm | asi 2 mm | asi 5,5 mm od dlouhé hrany se svazky | ±1 mm |
+  | úhelník 2 (střed) | 112 mm | na metru 48,6 cm, hrana desky na 37,4 cm | ±1,5 mm |
+  | úhelník 3 (střed) | 210,5 mm | 18,5 mm od opačné krátké hrany; vývody 7805 jsou o 10 mm dál | ±1,5 mm |
+
+  - Všechny tři úhelníky jsou u dlouhé hrany protilehlé ke svazkům, šrouby zajištěné červeným lakem. Rozteč nožek úhelníku je asi 5,5 až 6 mm.
+  - Stabilizátor 7805 (IC2) sedí v rohu u úhelníku 3, je ohnutý přes okraj desky a přišroubovaný ke kostře jako k chladiči.
+  - Kontrola: metr na těchto fotkách ukazuje konce desky na 37,4 a 59,7 cm, tedy jen 223 mm. Na konci u relé ale metr leží asi 1 cm nad deskou (na EPROM a kondenzátoru) a fotka je zblízka, takže čtení je tam zkreslené paralaxou. Podle rozteče vývodů 7805 (2,54 mm) vychází měřítko desky v tom místě 0,80 měřítka metru; po opravě je délka 227 až 228 mm, což sedí s naměřenými 229 mm. Úhelník 3 je proto počítaný v měřítku desky, ne přímo z metru.
+  - Před objednáním desky přeměřit posuvkou polohy úhelníků a rozteč jejich nožek. Do té doby počítat s oválnými otvory s vůlí ±2 mm.
 - Rozmístění podél desky podle metru (hrubé, stejná výhrada jako u délky): červené LED 1,5 až 3 cm, první držák zelených LED 4 až 10,5 cm, druhý 11,7 až 17 cm, displej 18,3 až 22 cm.
 - Vedle LED a displeje je na desce řada tranzistorů T1 až T18 s odpory (spínání číslic, segmentů a LED).
 
@@ -130,7 +140,7 @@ Spoje jsou navíc zajištěné tavným lepidlem (jde dolů po kapce isopropylalk
 1. Jestli jsou svazky zapájené i na straně předních desek a senzorů. (Rozteč 14pinových svazků je potvrzená, 2,0 mm.)
    Změřit rozteč u 2pinových (X13, X14), 3pinových (X21, X22) a u lišty X18. U 3pinových vychází z fotky stejná jako u 14pinových.
 2. Průchodnost pinů předních desek podle `mereni.md`, část 3.
-3. Polohu tří úhelníků a dvou středicích otvorů na hlavní desce (rozměr desky je změřený, 229 × 41 mm). Stačí fotka s pravítkem položeným přímo na desce, pořízená z dálky aspoň půl metru se zoomem. Červené okénko displeje posuvkou (zatím 36 × 18,5 mm z fotky) a jestli jde pás z panelu vyndat.
+3. Posuvkou: polohy tří úhelníků a rozteč jejich nožek, polohu a průměr obou kulatých otvorů u displeje (z fotek s metrem jsou odečtené s nejistotou 0,5 až 1,5 mm, viz tabulka u hlavní desky). Červené okénko displeje posuvkou (zatím 36 × 18,5 mm z fotky) a jestli jde pás z panelu vyndat.
 4. Přiřazení 4 vodičů MIDI průchodností: který pin X18 vede na pin 6 (napájení), 5 (GND) a 4 (výstup) optočlenu H11L1 a který přes R7/R8 k zásuvce OUT. Přiřazení 4 vodičů X17 k jackům a kam vede vodič „TO RELAIS-I/O PCB“ (jestli spojuje objímky jacků se zemí).
 5. Průměr LED a rozteč spínačů.
 
