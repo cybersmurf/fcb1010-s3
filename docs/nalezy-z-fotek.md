@@ -106,7 +106,7 @@ Spoje jsou navíc zajištěné tavným lepidlem (jde dolů po kapce isopropylalk
   - C1 až C4 po 100 pF u zásuvek.
 - Co z toho plyne (zapojení cest je odhad podle součástek a počtu vodičů, **potvrdit průchodností**):
   - Čtyři vodiče jsou nejspíš +5 V, GND, výstup optočlenu (MIDI IN) a vstup pro MIDI OUT.
-  - Čtení cest ze zvětšené fotky spojů (IMG_9249), **nízká jistota**: červený vodič (kraj X7 u optočlenu) vede na pin 6 optočlenu (napájení) a na R6, tedy +5 V; vodič hned vedle červeného vede na pin 4 optočlenu (výstup, MIDI IN) a na druhý konec R6. Zbylé dva jsou GND a MIDI OUT, jejich pořadí z fotky určit nejde. Potvrzuje to, že pull-up R6 visí na stejném napájení jako odpory MIDI OUT.
+  - Čtení cest ze zvětšené fotky spojů (IMG_9249), **nízká jistota**: červený vodič (kraj X7 u optočlenu) vede na pin 6 optočlenu (napájení) a na R6, tedy +5 V; vodič hned vedle červeného vede na pin 4 optočlenu (výstup, MIDI IN) a na druhý konec R6. Zbylé dva jsou GND a MIDI OUT, jejich pořadí z fotky určit nejde. Majitel odhaduje (neměřeno), že GND je krajní černý vodič na opačném konci než červený; pořadí by pak bylo +5 V, MIDI IN, MIDI OUT, GND. Ověření bez hledání pinů optočlenu: na hlavní desce má GND spojení s kovovou ploškou stabilizátoru 7805, takže pin X18, který na ni pípne, je zem. Potvrzuje to, že pull-up R6 visí na stejném napájení jako odpory MIDI OUT.
   - Na nové desce **nebudou další odpory 220 Ω** pro MIDI OUT, jen budič na 5 V (74HCT125).
   - Destička se napájí 5 V, protože odpory MIDI OUT jsou počítané na 5 V. Pull-up R6 pak táhne výstup optočlenu k 5 V a ten **nesmí jít přímo na GPIO**. Na nové desce bude dělič: 10 kΩ v sérii a 22 kΩ z pinu na GND. S pull-upem 4,7 kΩ dá 3,0 V v klidu a pod 0,3 V při sepnutém optočlenu.
 
