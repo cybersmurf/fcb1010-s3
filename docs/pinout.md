@@ -146,7 +146,7 @@ Pozor: pokud je na destičce pull-up výstupu H11L1 spojený s napájením zásu
 
 ## Zadní jacky: vstup, nebo výstup
 
-Každý jack se kabelem zapojí buď do J8 (vstup AUX), nebo do J11 (spínací výstup). U varianty výstup jsou kontakty galvanicky oddělené (PhotoMOS, např. TLP222A nebo AQY212) a objímka jacku nesmí být spojená se zemí desky ani s kostrou, jinak přes MG-30 vznikne zemní smyčka. Původní jacky jsou na samostatné destičce; jestli mají objímku izolovanou od panelu, se uvidí ve středu.
+Každý jack se kabelem zapojí buď do J8 (vstup AUX), nebo do J11 (spínací výstup). U varianty výstup jsou kontakty galvanicky oddělené (PhotoMOS AQY212EH v pouzdru DIP-4; dříve uvažovaný TLP222A se už nevyrábí) a objímka jacku nesmí být spojená se zemí desky ani s kostrou, jinak přes MG-30 vznikne zemní smyčka. Původní jacky jsou na samostatné destičce; jestli mají objímku izolovanou od panelu, se uvidí ve středu.
 
 Pro MG-30 (náhrada NMP-2): OUT1 mezi hrot a objímku, OUT2 mezi kroužek a objímku jednoho stereo jacku.
 
