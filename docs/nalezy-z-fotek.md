@@ -26,25 +26,28 @@ Závěr: nejde o ranou revizi. Je to pozdní provedení s modrými deskami, SMD 
   - sedmisegmentový displej: znak ±1 a dvoumístný modul E1-2056AUR1 (výška číslic 0,56"),
   - 2 červené a 9 zelených obdélníkových LED ve dvou černých držácích.
 - Všechno to zmizí spolu s deskou, jak předpokládal návrh.
-- Rozměr desky asi 22,5 × 4 cm (odečteno z přiloženého metru na IMG_9172, přesnost zhruba ±3 mm).
+- Rozměr desky asi 23 až 23,5 × 4 cm (odečteno z přiloženého metru na IMG_9172, IMG_9206 a IMG_9208; část přes lupu, takže přesnost zhruba ±5 mm). Přesně až posuvkou na vyndané desce.
 - Rozmístění podél desky podle metru: červené LED 1,5 až 3 cm, první držák zelených LED 4 až 10,5 cm, druhý 11,7 až 17 cm, displej 18,3 až 22 cm.
 - Vedle LED a displeje je na desce řada tranzistorů T1 až T18 s odpory (spínání číslic, segmentů a LED).
 
 ### Okénko v horním panelu
 
 - Zvenku je to černý potištěný pás dlouhý asi 23 cm s popisky (SWITCH 1, SWITCH 2, SELECT, NUMBER, VALUE 1, VALUE 2, DIRECT SELECT, MIDI FUNCTION, MIDI CHAN., CONFIG). Pro každou LED je v něm jen malé průhledné okénko.
-- Pro displej je v pásu **červený filtr asi 40 × 20 mm** (odhad ze šikmé fotky IMG_9138, **nutno změřit**).
+- Pro displej je v pásu **červený filtr široký asi 38 mm** (z metru přiloženého zevnitř, IMG_9215). Výšku ze šikmých fotek určit nejde, podle původního displeje (číslice 0,56") bude kolem 15 až 20 mm, **nutno změřit pravítkem zvenku**.
+- Okének pro LED je 11 (zevnitř od displeje 4 + 5 + 2), rozteč asi 12 mm, každé zhruba 4 × 1,5 mm.
+- Pás je plastový díl vsazený do panelu; v rohu je vidět průhledný plastový čep, takže nejspíš není lepený. Jestli jde vyndat, není ověřeno.
+- Držáky LED a displej jsou vysoké asi 10 až 12 mm, tolik je tedy od desky k pásu. Modul OLED musí na nové desce sedět ve stejné výšce.
 - OLED 2,42" má aktivní plochu asi 55 × 27,5 mm a za stávající červené okénko se nevejde. Viz dopady na návrh.
 
 ### Konektory na hlavní desce (potisk)
 
 | Označení | Pinů | Kam vede | Jistota |
 |---|---|---|---|
-| bez čitelného označení, 2 ks | 14 | přední desky spínačů, svazky přes zaklapávací ferit | vidět |
-| X20, X21 (potisk „3P“) | 3 | senzory pedálů X10, X11; vodiče červený + 2 černé | vidět (čísla X20/X21 částečně čitelná) |
+| X19, X20 (potisk „14P“) | 14 | přední desky spínačů, svazky přes zaklapávací ferit | vidět (IMG_9211, IMG_9201) |
+| X21, X22 (potisk „3P“) | 3 | senzory pedálů X10, X11; vodiče červený + 2 černé | vidět (IMG_9211) |
 | X13, X14 (potisk „2P“) | 2 | dvě součástky u pedálů zalité tavným lepidlem, vodiče červený + černý | vidět; téměř jistě LED nad pedály (zvenku je u nápisů EXPRESSION PEDAL A a B po jednom okénku) |
-| „4P“ | 4 | destička MIDI, konektor X7 (4P), vodiče červený + 3 černé, přes ferit | vidět |
-| další bílý konektor u EPROM | 3 až 4 | destička zadních jacků, přes toroid | odhad |
+| X18 (potisk „4P“) | 4 | **skutečná kolíková lišta v plastovém límci, rozpojitelná**; na IMG_9211 a IMG_9203 je prázdná, kam vedla zástrčka, je potřeba potvrdit | vidět |
+| X17, u EPROM a usměrňovače | 3 až 4 | bílý konektor s vodiči k zadním destičkám (MIDI X7 nebo jacky), přes toroid | odhad |
 | pájecí body u D16 až D19 | 2 | sekundár transformátoru, žlutá kroucená dvojlinka | vidět |
 
 **Na hlavní desce to nejsou rozpojitelné konektory.** Ověřeno nadzvednutím jednoho 3pinového (IMG_9199): vodiče mají nalisované kontakty, jejichž konce jsou zapájené přímo do desky, a bílý plastový díl je jen držák nasunutý na kontakty (provedení „board-in“). Svazek se od hlavní desky dá oddělit jen odpájením, nebo odstřižením. Na přední desce (X8, potisk „14P“, IMG_9183) je bílý díl stejného typu, takže svazek je nejspíš zapájený i tam. U destiček senzorů, MIDI a jacků to ověřeno není.
@@ -54,7 +57,8 @@ Spoje jsou navíc zajištěné tavným lepidlem (jde dolů po kapce isopropylalk
 ## Typ a rozteč konektorů
 
 - Přední desky: **14 pinů v jedné řadě** (14 pájecích plošek, 14 vodičů, z toho jeden červený). Vidět na IMG_9177.
-- Rozteč: **2,0 mm** (odhad z fotky, ne 2,5 ani 2,54 mm). Postup: na IMG_9177 jsou ve stejné rovině dvě známé míry, vývody mikrospínače 6,5 × 4,5 mm a dioda s roztečí 7,62 mm. Obě dávají měřítko 23 px/mm. Třináct roztečí konektoru měří 582 px, tedy 25,3 mm, což je 1,95 mm na rozteč.
+- Rozteč: **2,0 mm, potvrzeno metrem** (IMG_9202): plastový držák 14pinového svazku je dlouhý 29,6 mm a 13 roztečí kontaktů měří asi 25,5 mm. Při rozteči 2,5 mm by držák měl přes 37 mm. Oba 14pinové svazky jsou stejné.
+- První odhad z fotky plošek (IMG_9177) dával 1,95 mm: měřítko 23 px/mm podle vývodů mikrospínače a diody, 13 roztečí = 582 px.
 - Rozteč 2,0 mm je rozteč otvorů v desce a plastového držáku. Výrobce a řadu z fotek určit nejde.
 - 3pinové konektory senzorů mají stejnou rozteč jako 14pinové (porovnání pájecích bodů vedle sebe na IMG_9196).
 - Vodiče mají potisk AWM 1007 (UL1007).
@@ -92,9 +96,9 @@ Spoje jsou navíc zajištěné tavným lepidlem (jde dolů po kapce isopropylalk
    - Před odpájením si každý svazek označit (který konektor na desce, kde je červený vodič) a vyfotit.
    - Zkouška na drátech: po sundání bílého držáku jsou kontakty volné, každý na svém vodiči. Dají se připájet na obyčejnou kolíkovou lištu 2,54 mm (nebo proužek univerzální desky s lištou) a ta se zasune do nepájivého pole. Rozteč 2,0 mm tedy pro zkoušku nevadí a žádné protikusy se kupovat nemusí.
    - Nová deska, dvě možnosti: (a) otvory s roztečí 2,0 mm a svazky zapájené přímo, stejně jako v originále, bez nových součástek, ale deska nepůjde odpojit; (b) nové rozpojitelné konektory, což znamená nalisovat nové kontakty na zhruba 40 vodičů. Výchozí volba je (a), případně s konektory jen tam, kde to dává smysl.
-2. **Nová deska na místě původní.** Hlavní deska je přišroubovaná pod horním panelem. Nosná deska může převzít její obrys (asi 22,5 × 4 cm) a upevňovací otvory. Chybí přesné rozměry a poloha otvorů.
+2. **Nová deska na místě původní.** Hlavní deska je přišroubovaná pod horním panelem. Nosná deska může převzít její obrys (asi 23 × 4 cm) a upevňovací otvory. Chybí přesné rozměry a poloha otvorů.
 3. **Displej, dvě cesty.** Rozhodnutí až po změření okénka, **do té doby OLED neobjednávat**:
-   - (a) panel beze změny: menší OLED, který se vejde za červený filtr (128×64 s úhlopříčkou 1,3" nebo 1,54"). Bílý nebo žlutý OLED bude přes filtr svítit červeně, modrý by vidět nebyl. Stávající okénka LED s popisky jdou využít pro stavové LED na nové desce.
+   - (a) panel beze změny: menší OLED, který se vejde za červený filtr. Kandidát je 1,54" 128×64 SSD1309 I2C (aktivní plocha asi 35 × 17,5 mm, deska modulu 42,4 × 38 mm, stejný řadič jako 2,42", takže firmware se nemění). Šířkou se do 38 mm vejde, výška závisí na změření okénka. Nejistota: jak čitelný bude přes červený filtr. Bílý nebo žlutý OLED bude přes filtr svítit červeně, modrý by vidět nebyl. Stávající okénka LED s popisky jdou využít pro stavové LED na nové desce.
    - (b) nový pás z kouřového plexi místo původního potištěného a za něj OLED 2,42". Zmizí původní popisky.
 4. **LED nad pedály** (X13, X14): dva další výstupy na MCP23017 (celkem 12 ze 16).
 5. **Relé K1, K2.** Potvrzují, že spínací výstupy na zadních jackách jsou galvanicky oddělené kontakty. PhotoMOS AQY212EH je nahradí.
@@ -102,9 +106,9 @@ Spoje jsou navíc zajištěné tavným lepidlem (jde dolů po kapce isopropylalk
 
 ## Co ještě změřit
 
-1. Vzdálenost středů první a poslední plošky 14pinového konektoru (potvrzení rozteče) a jestli jsou svazky zapájené i na straně předních desek a senzorů.
-   Stejně změřit rozteč otvorů u 2pinových (X13, X14), 3pinových (X20, X21) a 4pinového svazku na hlavní desce. U 3pinových vychází z fotky stejná jako u 14pinového, u 2pinových a 4pinového změřená není a nová deska ji potřebuje pro pájecí otvory.
+1. Jestli jsou svazky zapájené i na straně předních desek a senzorů. (Rozteč 14pinových svazků je potvrzená, 2,0 mm.)
+   Změřit rozteč u 2pinových (X13, X14), 3pinových (X21, X22) a u lišty X18. U 3pinových vychází z fotky stejná jako u 14pinových.
 2. Průchodnost pinů předních desek podle `mereni.md`, část 3.
-3. Přesné rozměry hlavní desky a polohu upevňovacích otvorů (deska na čtverečkovaném papíře, focená kolmo shora). Rozměr červeného okénka displeje a celého černého pásu, a jestli jde pás z panelu vyndat.
-4. Přiřazení 4 vodičů destičky MIDI (X7).
+3. Přesné rozměry hlavní desky a polohu upevňovacích otvorů (vyndaná deska na čtverečkovaném papíře, focená kolmo shora). Výšku červeného okénka displeje (pravítkem zvenku) a jestli jde pás z panelu vyndat.
+4. Kam vede zástrčka z X18 a kam svazek z X17; přiřazení 4 vodičů destičky MIDI (X7).
 5. Průměr LED a rozteč spínačů.
