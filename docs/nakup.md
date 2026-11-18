@@ -60,8 +60,9 @@ Proč ne deska s konektorem pro kameru (Drátek 1785994570): čip je správný (
 
 | Položka | Na čem závisí |
 |---|---|
-| Konektory pro přední desky (2×) | 14 pinů, rozteč podle fotek 2,0 mm (řada JST PH nebo kompatibilní), viz `nalezy-z-fotek.md`; čeká na potvrzení měřením a na rozhodnutí, jestli se použijí vypájené původní |
-| Konektory pro pedály (2×) a LED pedálů (2×) | 3 piny a 2 piny, stejná rozteč jako u předních desek; čeká na potvrzení |
+| Konektory pro přední desky (2×) | nejspíš žádné: svazky jsou do původní desky zapájené (14 vodičů, rozteč 2,0 mm) a do nové se zapájejí stejně, viz `nalezy-z-fotek.md` |
+| Konektory pro pedály (2×) a LED pedálů (2×) | 3 a 2 vodiče, taky zapájené; nové konektory jen pokud se rozhodneme pro rozpojitelné provedení |
+| Kolíkové lišty 2,54 mm a proužek univerzální desky | redukce pro zkoušku na drátech (jsou už v části A) |
 | Konektory pro destičku MIDI a jacků | část 5 |
 | Odpory 220 Ω pro MIDI OUT | podle toho, jestli už jsou na destičce MIDI |
 | Kouřové nebo čiré plexi před displej | rozměr výřezu |
@@ -79,7 +80,7 @@ Stav k 18. 11. 2026 podle průzkumu obchodů. Položky označené „neověřeno
 | TME | 2× MCP23017-E/SP, 2× AQY212EH | cena dopravy neověřena; prodává i nepodnikatelům, nutná registrace |
 | GM electronic, Brno, Přízova 283/16 (Po–Pá 9–18) | 2× SN74HCT125N, patice, lišty, odpory, kondenzátory | osobně; dostupnost na brněnské prodejně ověřit na webu |
 
-Otevřené: LDO pro senzory pedálů (LP2951 v DIP-8 není skladem), panelový kabel USB-C, konektory s roztečí 2,0 mm.
+Otevřené: LDO pro senzory pedálů (LP2951 v DIP-8 není skladem), panelový kabel USB-C.
 
 Varianta „TME + RPishop“ nevychází: Waveshare ESP32-S3-DevKit-1-N16R8 je u RPishopu na objednávku asi 25 dnů a Waveshare OLED 2,42" je z výroby v režimu SPI (na I2C se přepíná přepájením dvou odporů).
 

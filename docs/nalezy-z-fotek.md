@@ -37,13 +37,15 @@ Závěr: nejde o ranou revizi. Je to pozdní provedení s modrými deskami, SMD 
 | další bílý konektor u EPROM | 3 až 4 | destička zadních jacků, přes toroid | odhad |
 | pájecí body u D16 až D19 | 2 | sekundár transformátoru, žlutá kroucená dvojlinka | vidět |
 
-Konektory jsou zajištěné tavným lepidlem. Před rozpojením ho je potřeba odstranit (jde to po kapce isopropylalkoholu).
+**Na hlavní desce to nejsou rozpojitelné konektory.** Ověřeno nadzvednutím jednoho 3pinového (IMG_9199): vodiče mají nalisované kontakty, jejichž konce jsou zapájené přímo do desky, a bílý plastový díl je jen držák nasunutý na kontakty (provedení „board-in“). Svazek se od hlavní desky dá oddělit jen odpájením, nebo odstřižením. Jestli je stejné provedení i na předních deskách, destičkách senzorů, destičce MIDI a jacků, není ověřeno.
+
+Spoje jsou navíc zajištěné tavným lepidlem (jde dolů po kapce isopropylalkoholu).
 
 ## Typ a rozteč konektorů
 
 - Přední desky: **14 pinů v jedné řadě** (14 pájecích plošek, 14 vodičů, z toho jeden červený). Vidět na IMG_9177.
 - Rozteč: **2,0 mm** (odhad z fotky, ne 2,5 ani 2,54 mm). Postup: na IMG_9177 jsou ve stejné rovině dvě známé míry, vývody mikrospínače 6,5 × 4,5 mm a dioda s roztečí 7,62 mm. Obě dávají měřítko 23 px/mm. Třináct roztečí konektoru měří 582 px, tedy 25,3 mm, což je 1,95 mm na rozteč.
-- Odpovídá to řadě JST PH nebo kompatibilní (délka pouzdra vychází na necelých 15 roztečí, PH má u 14 pinů 29,9 mm). Výrobce konektoru z fotek určit nejde.
+- Rozteč 2,0 mm je rozteč otvorů v desce a plastového držáku. Výrobce a řadu z fotek určit nejde.
 - 3pinové konektory senzorů mají stejnou rozteč jako 14pinové (porovnání pájecích bodů vedle sebe na IMG_9196).
 - Vodiče mají potisk AWM 1007 (UL1007).
 
@@ -69,7 +71,11 @@ Konektory jsou zajištěné tavným lepidlem. Před rozpojením ho je potřeba o
 
 ## Dopady na návrh
 
-1. **Konektory 2,0 mm.** Nepasují do nepájivého pole ani na lišty 2,54 mm. Na nové desce bude footprint 1×14 s roztečí 2,0 mm. Pro zkoušku na drátech je potřeba redukce: buď koupit protikusy řady PH a ověřit, že do sebe zapadnou, nebo vypájet původní konektory z hlavní desky (ta se stejně nahrazuje) a použít je na redukci i na nové desce.
+1. **Svazky jsou do hlavní desky zapájené.** Postup:
+   - Svazky od původní hlavní desky **odpájet, ne stříhat**. Zůstanou na nich nalisované kontakty s pájecími konci a dají se znovu použít.
+   - Před odpájením si každý svazek označit (který konektor na desce, kde je červený vodič) a vyfotit.
+   - Zkouška na drátech: po sundání bílého držáku jsou kontakty volné, každý na svém vodiči. Dají se připájet na obyčejnou kolíkovou lištu 2,54 mm (nebo proužek univerzální desky s lištou) a ta se zasune do nepájivého pole. Rozteč 2,0 mm tedy pro zkoušku nevadí a žádné protikusy se kupovat nemusí.
+   - Nová deska, dvě možnosti: (a) otvory s roztečí 2,0 mm a svazky zapájené přímo, stejně jako v originále, bez nových součástek, ale deska nepůjde odpojit; (b) nové rozpojitelné konektory, což znamená nalisovat nové kontakty na zhruba 40 vodičů. Výchozí volba je (a), případně s konektory jen tam, kde to dává smysl.
 2. **Nová deska na místě původní.** Hlavní deska je přišroubovaná pod horním panelem a displej je za okénkem. Nosná deska může převzít obrys a upevňovací otvory původní desky a OLED umístit do okénka. K tomu chybí rozměry: obrys desky, poloha otvorů, poloha a velikost okénka.
 3. **LED u pedálů.** Pokud X13 a X14 opravdu vedou k LED, přibudou dva výstupy na MCP23017 (celkem 12 ze 16).
 4. **Relé K1, K2.** Potvrzují, že spínací výstupy na zadních jackách jsou galvanicky oddělené kontakty. PhotoMOS AQY212EH je nahradí.
@@ -77,7 +83,7 @@ Konektory jsou zajištěné tavným lepidlem. Před rozpojením ho je potřeba o
 
 ## Co ještě změřit
 
-1. Vzdálenost středů první a poslední plošky 14pinového konektoru (potvrzení rozteče).
+1. Vzdálenost středů první a poslední plošky 14pinového konektoru (potvrzení rozteče) a jestli jsou svazky zapájené i na straně předních desek a senzorů.
 2. Průchodnost pinů předních desek podle `mereni.md`, část 3.
 3. Rozměry hlavní desky, polohu upevňovacích otvorů a okénka. Nejlíp deska položená na čtverečkovaném papíře, focená kolmo shora.
 4. Co je připojené na X13 a X14.
