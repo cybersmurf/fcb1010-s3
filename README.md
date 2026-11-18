@@ -33,6 +33,7 @@ Přestavba nožního MIDI ovladače Behringer FCB1010 na ESP32-S3: původní hla
 | [`docs/pinout.md`](docs/pinout.md) | přiřazení GPIO, konektory, bloky desky, displej |
 | [`docs/obvody.md`](docs/obvody.md) | zapojení vstupů pedálů a spínačů, filtry, napájení, zem |
 | [`docs/mereni.md`](docs/mereni.md) | měřicí protokol pro otevření přístroje |
+| [`docs/nalezy-z-fotek.md`](docs/nalezy-z-fotek.md) | co je vidět na fotkách otevřeného přístroje (18. 11. 2026) |
 | [`docs/nakup.md`](docs/nakup.md) | nákupní seznam |
 | [`docs/navrh.md`](docs/navrh.md) | první verze návrhu, co víme o vnitřku FCB, checklist měření |
 | [`docs/pruzkum-vnitrni-zapojeni.md`](docs/pruzkum-vnitrni-zapojeni.md) | průzkum vnitřního zapojení FCB1010 s citacemi a mírou jistoty |

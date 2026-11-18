@@ -9,24 +9,24 @@ Nezávisí na měření přístroje. Stačí na zkoušku na drátech i na finál
 | Položka | Ks | Kde | Cena za kus | Poznámka |
 |---|---|---|---|---|
 | OLED 2,42" 128×64, I2C, bílý (SSD1309) | 1 | LaskaKit, kód LA141115 | 17,16 € s DPH | při hledání skladem 5 ks; modul už je v provedení I2C |
-| MCP23017-E/SP (DIP-28) | 2 | Lhotský elektro, ecom.cz, Farnell | 68 Kč (Lhotský) | expandér pro původní LED |
-| 74AHCT125N nebo 74HCT125N (DIP-14) | 2 | GM electronic, TME; AHCT v DIP spíš AliExpress | – | budič MIDI OUT a WS2812B; HCT stačí |
-| LP2951 nastavitelný LDO | 2 | GM electronic (LP2951CM/NOPB, SO8, kód 935-006); v DIP-8 DigiKey (LP2951CN/NOPB) | jednotky až desítky Kč | napájení senzorů pedálů; SO8 se dá ručně zapájet, na nepájivé pole je potřeba redukce SO8 → DIP |
-| Patice DIP-28 úzká, DIP-14 | po 2 | GM electronic | – | |
+| MCP23017-E/SP (DIP-28) | 2 | TME (201 ks skladem); záloha ecom.cz, Lhotský elektro | 38,40 Kč s DPH (TME) | expandér pro původní LED |
+| SN74HCT125N (DIP-14) | 2 | GM electronic, kód 426-025 | 14 Kč | budič MIDI OUT a WS2812B; HCT stačí. Pozor, 74HCT125D (kód 952-167) je SMD |
+| LP2951 nastavitelný LDO | 2 | **otevřené**: TME má LP2951ACN/NOPB (DIP-8) na 0 ks; GM electronic LP2951CM/NOPB (SO8, kód 935-006) je potřeba ověřit | – | napájení senzorů pedálů; verze od onsemi (LP2951ACN, LP2951CN) se už nevyrábí, hledat TI s příponou /NOPB. Náhradní typ zatím není ověřený, nekupovat naslepo |
+| Patice DIP-28 úzká (300 mil), DIP-14 | po 2 | GM electronic | jednotky Kč | MCP23017-E/SP je úzké pouzdro; precizní patice GME 824-009 je široká a nehodí se, u kódu 823-007 šířku ověřit na prodejně |
 | Dutinkové lišty 1×40, 2,54 mm | 4 | GM electronic | – | patice pro DevKit |
 | Kolíkové lišty 1×40, 2,54 mm | 2 | GM electronic | – | |
 | Odpory 0,25 W: 150 Ω (12), 220 Ω (4), 330 Ω (2), 470 Ω (14), 1 kΩ (4), 4,7 kΩ (4), 10 kΩ (4), 12 kΩ (2), 15 kΩ (4), 47 kΩ (14) | – | GM electronic | – | v závorce minimum pro jednu desku |
 | Keramické kondenzátory: 100 nF (30), 470 nF (4), 10 µF (4) | – | GM electronic | – | |
 | Odpory pro LP2951 (dělič výstupního napětí): 100 kΩ (2), 220 kΩ (2), trimr 100 kΩ (1) | – | GM electronic | – | přesné hodnoty až podle měření senzorů |
-| Nepájivé pole (830 bodů) | 1 | LaskaKit, GM electronic | – | pokud nemáš |
-| Propojky dupont M–M a M–F, sada 40 ks | po 1 | LaskaKit, GM electronic | – | zkouška na drátech |
+| Nepájivé pole (830 bodů) | 2 | Drátek, kód 1458404272 | 37 Kč | DevKit z Drátku má řady asi 25 mm od sebe a na jednom poli nechá jen jednu volnou řadu na každé straně, proto dvě pole vedle sebe |
+| Propojky dupont M–M a M–F, sada 40 ks, 20 cm | po 1 | Drátek | 35 Kč a 33 Kč | zkouška na drátech |
 | Panelový prodlužovací kabel USB-C (zásuvka s přírubou → vidlice), 20 až 30 cm | 1 | LaskaKit, Alza, AliExpress | – | na zadní panel |
 
 ## B. Objednat hned, pokud tu funkci chceš
 
 | Položka | Ks | Kde | Cena za kus | K čemu |
 |---|---|---|---|---|
-| PhotoMOS AQY212EH (DIP-4) | 2 | Conrad a další | 60 Kč | plovoucí spínací výstupy na zadní jacky (NUX místo NMP-2, kanály zesilovače) |
+| PhotoMOS AQY212EH (DIP-4) | 2 | TME (1 462 ks skladem) | asi 2,05 USD bez DPH | plovoucí spínací výstupy na zadní jacky místo původních relé K1, K2 (NUX místo NMP-2, kanály zesilovače) |
 | Druhý ESP32-S3 DevKit, stejný typ jako ten, co máš | 1 | LaskaKit, Botland, TME | – | záloha; musí mít stejnou rozteč řad, jinak nesedí do patice |
 | Lišta 8× WS2812B (5050, 5 V, 57 × 10 mm) | 2 | LaskaKit, kód LA145006B (černá) / LA145006W (bílá) | 1,39 € s DPH | jen na zkoušku barevných LED na nepájivém poli; skladem 102 a 64 ks |
 
@@ -60,13 +60,28 @@ Proč ne deska s konektorem pro kameru (Drátek 1785994570): čip je správný (
 
 | Položka | Na čem závisí |
 |---|---|
-| Konektory pro přední desky (2×) | typ a rozteč z protokolu, část 2 |
-| Konektory pro pedály (2×) | rozteč a počet pinů, část 4 |
+| Konektory pro přední desky (2×) | 14 pinů, rozteč podle fotek 2,0 mm (řada JST PH nebo kompatibilní), viz `nalezy-z-fotek.md`; čeká na potvrzení měřením a na rozhodnutí, jestli se použijí vypájené původní |
+| Konektory pro pedály (2×) a LED pedálů (2×) | 3 piny a 2 piny, stejná rozteč jako u předních desek; čeká na potvrzení |
 | Konektory pro destičku MIDI a jacků | část 5 |
 | Odpory 220 Ω pro MIDI OUT | podle toho, jestli už jsou na destičce MIDI |
 | Kouřové nebo čiré plexi před displej | rozměr výřezu |
 | Distanční sloupky a šrouby | výška původních sloupků |
 | Samotná deska (JLCPCB) | až po zkoušce na drátech |
+
+## Kde co objednat
+
+Stav k 18. 11. 2026 podle průzkumu obchodů. Položky označené „neověřeno“ se nepodařilo dohledat na stránkách obchodu.
+
+| Obchod | Co | Doprava |
+|---|---|---|
+| Drátek | ESP32-S3 N16R8 (2 ks po 265,05 Kč), 2× nepájivé pole, dupont M–M a M–F | výdejní místo GLS 74 Kč, na adresu 114 Kč |
+| LaskaKit | OLED 2,42" I2C LA141115 (ne LA141062, to je verze SPI), 2× lišta 8× WS2812B | Zásilkovna 68 Kč, Balíkovna 70 Kč, zdarma od 1 000 Kč |
+| TME | 2× MCP23017-E/SP, 2× AQY212EH | cena dopravy neověřena; prodává i nepodnikatelům, nutná registrace |
+| GM electronic, Brno, Přízova 283/16 (Po–Pá 9–18) | 2× SN74HCT125N, patice, lišty, odpory, kondenzátory | osobně; dostupnost na brněnské prodejně ověřit na webu |
+
+Otevřené: LDO pro senzory pedálů (LP2951 v DIP-8 není skladem), panelový kabel USB-C, konektory s roztečí 2,0 mm.
+
+Varianta „TME + RPishop“ nevychází: Waveshare ESP32-S3-DevKit-1-N16R8 je u RPishopu na objednávku asi 25 dnů a Waveshare OLED 2,42" je z výroby v režimu SPI (na I2C se přepíná přepájením dvou odporů).
 
 ## Co už máš
 
@@ -89,5 +104,16 @@ Proč ne deska s konektorem pro kameru (Drátek 1785994570): čip je správný (
 - [LaskaKit: lišta 8× WS2812B](https://www.laskakit.cz/en/8x-inteligentni-rgb-led-neopixel-pasek--ws2812b--5050--5v/)
 - [LaskaKit: pásek WS2812B 60 LED/m IP65 5 m černý](https://www.laskakit.cz/en/led-pasek-neopixel-ws2812b-60led-m-ip65-5m-cerny/)
 - [LaskaKit: Espressif ESP32-C6-DevKitM-1 (nevhodná)](https://www.laskakit.cz/espressif-esp32-c6-devkitm-1-wifi-6--bluetooth-5--zigbee/)
+- [TME: MCP23017-E/SP](https://www.tme.eu/cz/details/mcp23017-e_sp/integrovane-obvody-interface-ostatni/microchip-technology/?brutto=1)
+- [TME: LP2951ACN/NOPB](https://www.tme.eu/en/details/lp2951acn_nopb/ldo-adjustable-voltage-regulators/texas-instruments/)
+- [TME: AQY212EH](https://www.tme.eu/en/details/aqy212eh/one-phase-solid-state-relays/panasonic/)
+- [GM electronic: SN74HCT125N](https://www.gme.cz/v/1490661/texas-instruments-sn74hct125n-cmos-4x-budic-sbernice-s-3stavovymi-vystupy-negativni-aktivace)
+- [GM electronic: patice 28 DIP](https://www.gme.cz/v/1498419/sokl-28-dip-patice)
+- [GM electronic: prodejna Brno](https://www.gme.cz/prodejny/33)
+- [Drátek: nepájivé pole 830 bodů](https://dratek.cz/arduino/1225-eses-nepajive-pole-830-pinu.html)
+- [Drátek: kabely s konektory dupont](https://dratek.cz/308-kabely-oboustranne-osazene-konektory/)
+- [Drátek: terminálový shield pro ESP32-S3 (rozteč řad 25 mm)](https://dratek.cz/arduino-platforma/232705-terminal-shield-s-napajecim-zdrojem-pro-esp32-s3-vyvojovy-modul.html)
+- [Waveshare wiki: 2.42inch OLED Module](https://www.waveshare.com/wiki/2.42inch_OLED_Module)
+- [RPishop: Waveshare ESP32-S3-DevKit-N16R8-M s piny](https://rpishop.cz/645319/waveshare-vyvojovy-modul-esp32-s3-devkit-n16r8-m-s-piny/)
 - [HledejSoučástky.cz: AQY212](http://www.hledejsoucastky.cz/LastSearches/Show?lastsearch=aqy212)
 - [Octopart: TLP222A(F), stav Obsolete](https://octopart.com/part/toshiba/TLP222A(F))
