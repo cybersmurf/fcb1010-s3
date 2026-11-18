@@ -115,6 +115,7 @@ def box(name, ref, left, right, width):
 # ------------------------------------------------------------------ schéma
 items = []
 expected = {}     # "REF.pin" -> síť
+parts = {}        # REF -> hodnota a pouzdro
 refcount = {}
 pwr_n = [0]
 
@@ -140,6 +141,8 @@ def place(libname, x, y, ref, value, footprint="", nets=None, ref_at=(0, -3.0), 
         f'{pin_s}'
         f'(instances (project "{PROJECT}" (path "/{ROOT_UUID}" (reference "{ref}") (unit 1)))))')
     out = {n: (x + px, y - py) for n, (px, py) in pins.items()}
+    if not is_pwr:
+        parts[ref] = {"value": value, "footprint": footprint}
     if nets:
         for n, net in nets.items():
             if net is not None:
@@ -447,4 +450,5 @@ out.append('(sheet_instances (path "/" (page "1")))')
 out.append(')')
 open("fcb1010-s3.kicad_sch", "w", encoding="utf-8").write("\n".join(out) + "\n")
 json.dump(expected, open("expected-nets.json", "w", encoding="utf-8"), indent=1, ensure_ascii=False, sort_keys=True)
+json.dump(parts, open("parts.json", "w", encoding="utf-8"), indent=1, ensure_ascii=False, sort_keys=True)
 print("symbolů:", sum(1 for i in items if i.startswith("(symbol")), "pinů s danou sítí:", len(expected))
