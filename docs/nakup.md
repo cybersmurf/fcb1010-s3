@@ -11,13 +11,12 @@ Nezávisí na měření přístroje. Stačí na zkoušku na drátech i na finál
 | OLED 2,42" 128×64, I2C, bílý (SSD1309) | 1 | LaskaKit, kód LA141115 | 17,16 € s DPH | **objednáno 18. 11. 2026 v poledne** (předpoklad: tento typ podle seznamu). Za původní červené okénko se nevejde, počítá se s novým pásem z kouřového plexi, viz `nalezy-z-fotek.md` |
 | MCP23017-E/SP (DIP-28) | 2 | TME (201 ks skladem); záloha ecom.cz, Lhotský elektro | 38,40 Kč s DPH (TME) | expandér pro původní LED |
 | SN74HCT125N (DIP-14) | 2 | GM electronic, kód 426-025 | 14 Kč | budič MIDI OUT a WS2812B; HCT stačí. Pozor, 74HCT125D (kód 952-167) je SMD |
-| LP2951 nastavitelný LDO | 2 | **otevřené**: TME má LP2951ACN/NOPB (DIP-8) na 0 ks; GM electronic LP2951CM/NOPB (SO8, kód 935-006) je potřeba ověřit | – | napájení senzorů pedálů; verze od onsemi (LP2951ACN, LP2951CN) se už nevyrábí, hledat TI s příponou /NOPB. Náhradní typ zatím není ověřený, nekupovat naslepo |
+| Stabilizátor 4,0 V pro senzory pedálů: MCP1702-4002E/TO (TO-92) | 2 | Mouser (18. 11. 2026 skladem 1 205 ks); TME 0 ks | – | **zatím nekupovat**: na desce je pro něj místo (U4) a propojka JP3. Nejdřív se zkusí napájení senzorů z 5 V přes 10 Ω a 10 µF |
 | Patice DIP-28 úzká (300 mil), DIP-14 | po 2 | GM electronic | jednotky Kč | MCP23017-E/SP je úzké pouzdro; precizní patice GME 824-009 je široká a nehodí se, u kódu 823-007 šířku ověřit na prodejně |
 | Dutinkové lišty 1×40, 2,54 mm | 4 | GM electronic | – | patice pro DevKit |
 | Kolíkové lišty 1×40, 2,54 mm | 2 | GM electronic | – | |
-| Odpory 0,25 W: 150 Ω (12), 220 Ω (4), 330 Ω (2), 470 Ω (14), 1 kΩ (4), 4,7 kΩ (4), 10 kΩ (4), 12 kΩ (2), 15 kΩ (4), 22 kΩ (2), 47 kΩ (14) | – | GM electronic | – | v závorce minimum pro jednu desku |
-| Keramické kondenzátory: 100 nF (30), 470 nF (4), 10 µF (4) | – | GM electronic | – | |
-| Odpory pro LP2951 (dělič výstupního napětí): 100 kΩ (2), 220 kΩ (2), trimr 100 kΩ (1) | – | GM electronic | – | přesné hodnoty až podle měření senzorů |
+| Odpory 0,25 W: 10 Ω (2), 150 Ω (15), 330 Ω (4), 470 Ω (15), 1 kΩ (4), 4,7 kΩ (4), 10 kΩ (6), 15 kΩ (4), 22 kΩ (2), 47 kΩ (15) | – | GM electronic | – | podle schématu v0.1 s rezervou; na desce je 12× 150 Ω, 3× 330 Ω, 14× 470 Ω, 2× 1 kΩ, 2× 4,7 kΩ, 5× 10 kΩ, 2× 15 kΩ, 1× 22 kΩ, 12× 47 kΩ, 1× 10 Ω |
+| Keramické kondenzátory: 100 nF (30), 470 nF (4), 10 µF (4) | – | GM electronic | – | na desce je 16× 100 nF, 2× 470 nF, 4× 10 µF |
 | Nepájivé pole (830 bodů) | 2 | Drátek, kód 1458404272 | 37 Kč | DevKit z Drátku má řady asi 25 mm od sebe a na jednom poli nechá jen jednu volnou řadu na každé straně, proto dvě pole vedle sebe |
 | Propojky dupont M–M a M–F, sada 40 ks, 20 cm | po 1 | Drátek | 35 Kč a 33 Kč | zkouška na drátech |
 | Panelový prodlužovací kabel USB-C (zásuvka s přírubou → vidlice), 20 až 30 cm | 1 | LaskaKit, Alza, AliExpress | – | na zadní panel |
@@ -116,5 +115,7 @@ Varianta „TME + RPishop“ nevychází: Waveshare ESP32-S3-DevKit-1-N16R8 je u
 - [Drátek: terminálový shield pro ESP32-S3 (rozteč řad 25 mm)](https://dratek.cz/arduino-platforma/232705-terminal-shield-s-napajecim-zdrojem-pro-esp32-s3-vyvojovy-modul.html)
 - [Waveshare wiki: 2.42inch OLED Module](https://www.waveshare.com/wiki/2.42inch_OLED_Module)
 - [RPishop: Waveshare ESP32-S3-DevKit-N16R8-M s piny](https://rpishop.cz/645319/waveshare-vyvojovy-modul-esp32-s3-devkit-n16r8-m-s-piny/)
+- [Mouser: MCP1702-4002E/TO](https://www.mouser.com/ProductDetail/Microchip-Technology-Atmel/MCP1702-4002E-TO?qs=icxrp76fIjDbAiZhxBWE0g%3D%3D)
+- [Microchip: MCP1702, datasheet](https://ww1.microchip.com/downloads/en/DeviceDoc/22008E.pdf)
 - [HledejSoučástky.cz: AQY212](http://www.hledejsoucastky.cz/LastSearches/Show?lastsearch=aqy212)
 - [Octopart: TLP222A(F), stav Obsolete](https://octopart.com/part/toshiba/TLP222A(F))
