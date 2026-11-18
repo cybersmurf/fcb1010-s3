@@ -130,7 +130,7 @@ Spoje jsou navíc zajištěné tavným lepidlem (jde dolů po kapce isopropylalk
   | 2 | objímka |
   | 3 | hrot druhého jacku (odvozeno, neměřeno) |
   | 4 | objímka |
-- **Změřeno majitelem:** žádný pin X17 nemá na hlavní desce spojení se zemí, všechny čtyři vedou jen ke kontaktům relé K1 a K2. Společná objímka jacků tedy v originále uzemněná není a výstupy jsou plovoucí. (Stabilizátor 7805 je nejspíš v celoplastovém pouzdře; zemní bod pro měření je jeho prostřední vývod.)
+- **Změřeno majitelem:** žádný pin X17 nemá na hlavní desce spojení se zemí, všechny čtyři vedou jen ke kontaktům relé K1 a K2. Společná objímka jacků tedy v originále uzemněná není a výstupy jsou plovoucí. Jacky jsou plastové, takže objímka nemá spojení ani s kostrou. (Stabilizátor 7805 je nejspíš v celoplastovém pouzdře; zemní bod pro měření je jeho prostřední vývod.)
 - Dopad na návrh: dva výstupy mají společný vratný vodič. PhotoMOS spíná hrot každého jacku proti společné objímce; objímka se na nové desce nespojuje se zemí, takže dvojice výstupů zůstane plovoucí vůči přístroji.
 
 ## Přední desky spínačů
