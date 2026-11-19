@@ -111,7 +111,7 @@ Spoje jsou navíc zajištěné tavným lepidlem (jde dolů po kapce isopropylalk
     | Pin | Signál | Jistota |
     |---|---|---|
     | 1 (červený) | +5 V | čtení z fotky spojů |
-    | 2 | MIDI IN, výstup H11L1 | čtení z fotky spojů, nízká jistota |
+    | 2 | MIDI IN, výstup H11L1 | čtení z fotky spojů; majitel po paměti (19. 11. 2026) uvádí totéž, že výstup optočlenu vede na pin 2. Pípnutím zatím nepotvrzeno |
     | 3 | MIDI OUT | odvozeno jako zbývající vodič |
     | 4 | GND | změřeno |
   - Na nové desce **nebudou další odpory 220 Ω** pro MIDI OUT, jen budič na 5 V (74HCT125).
