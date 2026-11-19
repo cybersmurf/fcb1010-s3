@@ -1,0 +1,410 @@
+{
+ "C1": {
+  "footprint": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+  "value": "100n"
+ },
+ "C10": {
+  "footprint": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+  "value": "100n"
+ },
+ "C11": {
+  "footprint": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+  "value": "100n"
+ },
+ "C12": {
+  "footprint": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+  "value": "100n"
+ },
+ "C13": {
+  "footprint": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+  "value": "100n"
+ },
+ "C14": {
+  "footprint": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+  "value": "100n"
+ },
+ "C15": {
+  "footprint": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+  "value": "100n"
+ },
+ "C16": {
+  "footprint": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+  "value": "100n"
+ },
+ "C17": {
+  "footprint": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+  "value": "100n"
+ },
+ "C18": {
+  "footprint": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+  "value": "100n"
+ },
+ "C19": {
+  "footprint": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+  "value": "100n"
+ },
+ "C2": {
+  "footprint": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+  "value": "100n"
+ },
+ "C20": {
+  "footprint": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+  "value": "100n"
+ },
+ "C21": {
+  "footprint": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+  "value": "100n"
+ },
+ "C22": {
+  "footprint": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+  "value": "100n"
+ },
+ "C3": {
+  "footprint": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+  "value": "10u"
+ },
+ "C4": {
+  "footprint": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+  "value": "10u"
+ },
+ "C5": {
+  "footprint": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+  "value": "10u"
+ },
+ "C6": {
+  "footprint": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+  "value": "10u"
+ },
+ "C7": {
+  "footprint": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+  "value": "470n"
+ },
+ "C8": {
+  "footprint": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+  "value": "100n"
+ },
+ "C9": {
+  "footprint": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+  "value": "470n"
+ },
+ "H1": {
+  "footprint": "fcb1010:Uhelnik",
+  "value": "úhelník 1"
+ },
+ "H2": {
+  "footprint": "fcb1010:Uhelnik",
+  "value": "úhelník 2"
+ },
+ "H3": {
+  "footprint": "fcb1010:Uhelnik",
+  "value": "úhelník 3"
+ },
+ "J1": {
+  "footprint": "Connector_PinHeader_2.00mm:PinHeader_1x14_P2.00mm_Vertical",
+  "value": "spodní přední deska"
+ },
+ "J11": {
+  "footprint": "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical",
+  "value": "jacky X17"
+ },
+ "J12": {
+  "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
+  "value": "BOOT/RESET na panel"
+ },
+ "J13": {
+  "footprint": "Connector_PinHeader_2.00mm:PinHeader_1x02_P2.00mm_Vertical",
+  "value": "LED pedálu A (X13)"
+ },
+ "J14": {
+  "footprint": "Connector_PinHeader_2.00mm:PinHeader_1x02_P2.00mm_Vertical",
+  "value": "LED pedálu B (X14)"
+ },
+ "J2": {
+  "footprint": "Connector_PinHeader_2.00mm:PinHeader_1x14_P2.00mm_Vertical",
+  "value": "horní přední deska"
+ },
+ "J3": {
+  "footprint": "Connector_PinHeader_2.00mm:PinHeader_1x03_P2.00mm_Vertical",
+  "value": "pedál A"
+ },
+ "J4": {
+  "footprint": "Connector_PinHeader_2.00mm:PinHeader_1x03_P2.00mm_Vertical",
+  "value": "pedál B"
+ },
+ "J5": {
+  "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",
+  "value": "OLED I2C"
+ },
+ "J6": {
+  "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
+  "value": "WS2812B"
+ },
+ "J7": {
+  "footprint": "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical",
+  "value": "MIDI destička X18"
+ },
+ "J8": {
+  "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",
+  "value": "AUX vstupy"
+ },
+ "J9": {
+  "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x07_P2.54mm_Vertical",
+  "value": "volné"
+ },
+ "JP1": {
+  "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
+  "value": "SW_COM: A=GND, B=3V3"
+ },
+ "JP2": {
+  "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
+  "value": "SW_PULL: A=3V3, B=GND"
+ },
+ "JP3": {
+  "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+  "value": "bez U4: spojit"
+ },
+ "JP4": {
+  "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+  "value": "kostra - GND"
+ },
+ "K1": {
+  "footprint": "Package_DIP:DIP-4_W7.62mm",
+  "value": "AQY212EH"
+ },
+ "K2": {
+  "footprint": "Package_DIP:DIP-4_W7.62mm",
+  "value": "AQY212EH"
+ },
+ "R1": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "150"
+ },
+ "R10": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "150"
+ },
+ "R11": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "150"
+ },
+ "R12": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "150"
+ },
+ "R13": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "10k"
+ },
+ "R14": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "22k"
+ },
+ "R15": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "10k"
+ },
+ "R16": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "330"
+ },
+ "R17": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "330"
+ },
+ "R18": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "4k7"
+ },
+ "R19": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "4k7"
+ },
+ "R2": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "150"
+ },
+ "R20": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "10k"
+ },
+ "R21": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "330"
+ },
+ "R22": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "470"
+ },
+ "R23": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "470"
+ },
+ "R24": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "10R"
+ },
+ "R25": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "10k"
+ },
+ "R26": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "15k"
+ },
+ "R27": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "1k"
+ },
+ "R28": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "10k"
+ },
+ "R29": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "15k"
+ },
+ "R3": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "150"
+ },
+ "R30": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "1k"
+ },
+ "R31": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "470"
+ },
+ "R32": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "47k"
+ },
+ "R33": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "470"
+ },
+ "R34": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "47k"
+ },
+ "R35": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "470"
+ },
+ "R36": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "47k"
+ },
+ "R37": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "470"
+ },
+ "R38": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "47k"
+ },
+ "R39": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "470"
+ },
+ "R4": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "150"
+ },
+ "R40": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "47k"
+ },
+ "R41": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "470"
+ },
+ "R42": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "47k"
+ },
+ "R43": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "470"
+ },
+ "R44": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "47k"
+ },
+ "R45": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "470"
+ },
+ "R46": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "47k"
+ },
+ "R47": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "470"
+ },
+ "R48": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "47k"
+ },
+ "R49": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "470"
+ },
+ "R5": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "150"
+ },
+ "R50": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "47k"
+ },
+ "R51": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "470"
+ },
+ "R52": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "47k"
+ },
+ "R53": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "470"
+ },
+ "R54": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "47k"
+ },
+ "R6": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "150"
+ },
+ "R7": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "150"
+ },
+ "R8": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "150"
+ },
+ "R9": {
+  "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal",
+  "value": "150"
+ },
+ "U1": {
+  "footprint": "fcb1010:ESP32-S3-DevKit_2x22_RM25.4mm",
+  "value": "ESP32-S3 DevKit N16R8 (piny ověřit podle kusu)"
+ },
+ "U2": {
+  "footprint": "Package_DIP:DIP-28_W7.62mm_Socket",
+  "value": "MCP23017-E/SP"
+ },
+ "U3": {
+  "footprint": "Package_DIP:DIP-14_W7.62mm_Socket",
+  "value": "SN74HCT125N"
+ },
+ "U4": {
+  "footprint": "Package_TO_SOT_THT:TO-92_Inline",
+  "value": "MCP1702-4002E/TO"
+ }
+}

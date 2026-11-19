@@ -1,0 +1,7 @@
+# CodeRabbit: automatické revize vypnuté.
+# Ruční revize jde vyžádat komentářem "@coderabbitai review" v pull requestu.
+reviews:
+  auto_review:
+    enabled: false
+  review_status: false
+  high_level_summary: false

@@ -5,7 +5,7 @@ Vyplnit při otevření přístroje. Pořadí je podle toho, co nejvíc blokuje 
 ## 0. Bezpečnost
 
 - Před otevřením vytáhnout síťový kabel. Uvnitř je síťové napětí u zásuvky, vypínače, pojistky a na primáru transformátoru.
-- Části 1 až 6 se dělají **bez napájení**. Pod napětím je jen část 7, a tam se měří jen na nízkonapěťové straně (5 V).
+- Části 1 až 6 se dělají **bez napájení**. Pod napětím je jen část 7, a tam se měří jen na nízkonapěťové straně (5 V) a až po zakrytí síťových částí podle postupu v té části.
 
 ## 1. Fotky
 
@@ -95,6 +95,7 @@ Jak poznat: LED při správné polaritě slabě svítí (červený hrot na anodu
 | Otázka | Pedál A | Pedál B |
 |---|---|---|
 | Počet vodičů a barvy v pořadí od pinu 1 | | |
+| Počet pozic v pouzdře konektoru (i neosazených) | | |
 | Rozteč konektoru (mm) | | |
 | Součástky na destičce senzoru (stačí fotka) | | |
 
@@ -102,10 +103,11 @@ Jak poznat: LED při správné polaritě slabě svítí (červený hrot na anodu
 
 | Otázka | Odpověď |
 |---|---|
-| Destička MIDI: kolik vodičů vede do hlavní desky, rozteč | |
+| Destička MIDI: kolik vodičů vede do hlavní desky, počet pozic konektoru, rozteč | |
 | Destička MIDI: jsou na ní odpory 220 Ω? Kolik? | |
 | Destička MIDI: je na ní odpor mezi výstupem optočlenu a napájením (pull-up)? | |
-| Destička jacků: kolik vodičů, je objímka jacku spojená s kostrou? (prozvonit) | |
+| Destička jacků: kolik vodičů, počet pozic konektoru, rozteč | |
+| Destička jacků: je objímka jacku spojená s kostrou? (prozvonit) | |
 | Displej: je napevno na hlavní desce? | |
 | Hlavní deska: rozměry (mm) | |
 | Montážní body: souřadnice od levého dolního rohu desky (mm), průměr otvoru | |
@@ -125,7 +127,13 @@ Jak poznat: LED při správné polaritě slabě svítí (červený hrot na anodu
 
 ## 7. Měření pod napětím (jen strana 5 V)
 
-Přístroj zapnutý, černý hrot na zem (kovový chladič stabilizátoru nebo GND na konektoru pedálu). Na síťovou část nesahat.
+Postup, v tomto pořadí:
+
+1. Síťový kabel vytažený. Odkryté síťové části (zadní strana zásuvky, vypínač, držák pojistky, vývody primáru transformátoru) zakrýt izolační páskou nebo kusem tvrdého kartonu tak, aby se k nim nedal dostat hrot ani prst.
+2. Černý hrot připnout krokosvorkou na zem (chladič stabilizátoru nebo GND na konektoru pedálu), ať ho není potřeba držet.
+3. Přístroj položit stabilně, nic kovového uvnitř ani pod ním.
+4. Teprve pak zapojit kabel a zapnout. Měřit jednou rukou, jen červeným hrotem, jen na konektorech pedálů a na výstupu stabilizátoru.
+5. Před jakoukoli změnou zapojení nebo přendáním svorky vypnout a vytáhnout kabel.
 
 | Veličina | Pedál A | Pedál B |
 |---|---|---|
