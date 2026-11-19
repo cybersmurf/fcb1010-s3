@@ -4,7 +4,7 @@
 Postup:
     /usr/bin/python3 gen_pcb.py --dsn
     java -jar freerouting.jar -de fcb1010-s3.dsn -do fcb1010-s3.ses -mp 20
-    /usr/bin/python3 import_ses.py
+    /usr/bin/python3 import_ses.py        (natáhne spoje, rozlije zem, pustí kontrolu pravidel -> drc.rpt)
 KiCad 7 umí soubor .ses načíst jen z okna editoru, proto ho tady čteme sami.
 """
 import os
@@ -76,9 +76,37 @@ for net in network[1:]:
             board.Add(v)
             vias += 1
 
+# rozlitá zem na obou vrstvách
+for z in list(board.Zones()):
+    board.Remove(z)
+bb = board.GetBoardEdgesBoundingBox()
+gnd = board.FindNet("GND")
+for layer in (pcbnew.F_Cu, pcbnew.B_Cu):
+    z = pcbnew.ZONE(board)
+    z.SetLayer(layer)
+    z.SetNet(gnd)
+    z.SetLocalClearance(FromMM(0.3))
+    z.SetMinThickness(FromMM(0.25))
+    z.SetThermalReliefGap(FromMM(0.3))
+    z.SetThermalReliefSpokeWidth(FromMM(0.5))
+    z.SetIslandRemovalMode(pcbnew.ISLAND_REMOVAL_MODE_ALWAYS)
+    o = z.Outline()
+    o.NewOutline()
+    for x, y in ((bb.GetLeft(), bb.GetTop()), (bb.GetRight(), bb.GetTop()), (bb.GetRight(), bb.GetBottom()), (bb.GetLeft(), bb.GetBottom())):
+        o.Append(x, y)
+    board.Add(z)
+pcbnew.ZONE_FILLER(board).Fill(board.Zones())
+
 board.BuildConnectivity()
 conn = board.GetConnectivity()
 length = sum(pcbnew.ToMM(t.GetLength()) for t in board.GetTracks() if t.Type() != pcbnew.PCB_VIA_T)
 print(f"segmentů: {segs}, prokovů: {vias}, délka spojů: {length:.0f} mm")
 print("nezapojených spojení:", conn.GetUnconnectedCount(False))
 pcbnew.SaveBoard(pcb, board)
+rpt = os.path.join(HERE, "drc.rpt")
+pcbnew.WriteDRCReport(board, rpt, pcbnew.EDA_UNITS_MILLIMETRES, True)
+txt = open(rpt, encoding="utf-8").read()
+kinds = {}
+for m in re.finditer(r"^\[(\w+)\]", txt, re.M):
+    kinds[m.group(1)] = kinds.get(m.group(1), 0) + 1
+print("DRC:", kinds or "bez nálezů")

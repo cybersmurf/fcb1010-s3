@@ -18,6 +18,8 @@ LIBS = "/usr/share/kicad/footprints"
 OWN = os.path.join(HERE, "fcb1010.pretty")
 BX, BY = 40.0, 60.0            # posun desky na listu
 L, W = 229.0, 41.0
+POWER = {"GND": 0.6, "+5V": 0.6, "AVDD": 0.6, "AVDD_IN": 0.6, "+3V3": 0.4}   # širší spoje, mm
+EDGE_GAP = 0.6                 # nejmenší vzdálenost spoje od hrany desky
 
 parts = json.load(open(os.path.join(HERE, "parts.json"), encoding="utf-8"))
 expected = json.load(open(os.path.join(HERE, "expected-nets.json"), encoding="utf-8"))
@@ -62,8 +64,8 @@ write_fp("Uhelnik",
          f'  (fp_text reference "REF**" (at 0 3.2) (layer "F.SilkS") {TXT})\n'
          f'  (fp_text value "uhelnik" (at 0 -3.2) (layer "F.Fab") {TXT})\n'
          '  (fp_rect (start -4.3 -2) (end 4.3 2) (stroke (width 0.05) (type solid)) (fill none) (layer "F.CrtYd"))\n'
-         '  (pad "1" thru_hole oval (at -2.9 0) (size 2.2 3.4) (drill oval 1.3 2.1) (layers "*.Cu" "*.Mask"))\n'
-         '  (pad "1" thru_hole oval (at 2.9 0) (size 2.2 3.4) (drill oval 1.3 2.1) (layers "*.Cu" "*.Mask"))\n')
+         '  (pad "1" thru_hole oval (at -2.9 0) (size 2.0 3.4) (drill oval 1.3 2.1) (layers "*.Cu" "*.Mask"))\n'
+         '  (pad "1" thru_hole oval (at 2.9 0) (size 2.0 3.4) (drill oval 1.3 2.1) (layers "*.Cu" "*.Mask"))\n')
 
 # ------------------------------------------------------------------ rozmístění
 PL = {}   # ref -> (x, y, natočení ve stupních)
@@ -128,7 +130,7 @@ vert("PED_A_F", "GND", 101.0, 23.0, 33.16)
 vert("PED_A_F", "PED_A", 104.0, 33.16, 23.0)
 
 # napájení senzorů
-put("U4", 111.0, 18.5, 0)
+put("U4", 111.7, 18.5, 0)
 vert("+5V", "AVDD_IN", 110.8, 23.0, 33.16)
 
 # budič a MIDI
@@ -156,8 +158,8 @@ horiz("AUX2_RAW", "AUX2", 157.0, 167.16, 21.0)
 # výstupy (piny 3, 4) míří doleva ke konektoru J11, vstupy doprava
 put("K1", 212.62, 24.54, 180)
 put("K2", 224.62, 24.54, 180)
-vert("OUT1", "K1_A", 215.0, 11.5, 21.66)
-vert("OUT2", "K2_A", 227.0, 11.5, 21.66)
+vert("OUT1", "K1_A", 215.0, 8.5, 18.66)
+vert("OUT2", "K2_A", 227.0, 8.5, 18.66)
 put("J11", 201.75, 37.0, 0)
 
 # úhelníky
@@ -178,7 +180,7 @@ def cap(value, a, x, y, rot, idx=0):
     put(caps[(value, a, "GND")][idx], x, y, rot)
 
 
-cap("100n", "+3V3", 110.5, 9.0, -90)            # C1 u U2
+cap("100n", "+3V3", 111.3, 9.0, -90)            # C1 u U2
 cap("100n", "+5V", 126.5, 22.0, 0)             # C2 u U3
 cap("10u", "+3V3", 170.0, 21.0, 0)
 cap("10u", "+5V", 180.0, 21.0, 0)
@@ -245,6 +247,33 @@ for i, (x, y) in enumerate(((9.6, 2.6), (2.0, 35.5))):
     fp.SetPosition(P(x, y))
     board.Add(fp)
 
+# ------------------------------------------------------------------ popisky na potisku
+def label(text, x, y, size=0.8, rot=0):
+    t = pcbnew.PCB_TEXT(board)
+    t.SetText(text)
+    t.SetLayer(pcbnew.F_SilkS)
+    t.SetPosition(P(x, y))
+    t.SetTextSize(VECTOR2I(FromMM(size), FromMM(size)))
+    t.SetTextThickness(FromMM(size * 0.15))
+    t.SetTextAngleDegrees(rot)
+    board.Add(t)
+
+
+label("SW 1-5 DOWN (X19/X20)", 24.0, 40.2)
+label("SW 6-10 UP (X19/X20)", 57.0, 40.2)
+label("PED B", 82.0, 40.2)
+label("PED A", 93.0, 40.2)
+label("MIDI X18", 129.0, 33.6)
+label("JACK X17", 205.5, 33.6)
+label("WS2812", 78.5, 1.2)
+label("AUX", 88.5, 1.2)
+label("BOOT RST", 100.5, 1.2)
+label("OLED", 8.4, 18.6)
+label("LED A", 3.4, 19.2)
+label("LED B", 3.4, 31.2)
+label("FCB1010-S3 v0.1", 190.0, 2.0, 1.2)
+label("cybersmurf/fcb1010-s3", 190.0, 4.2, 0.8)
+
 # ------------------------------------------------------------------ kontrola překryvů
 def bbox(fp):
     xs, ys = [], []
@@ -288,5 +317,21 @@ out = os.path.join(HERE, "fcb1010-s3.kicad_pcb")
 pcbnew.SaveBoard(out, board)
 print(f"součástek: {len(fps)}, sítí: {len(netobj)}, problémů rozmístění: {problems}")
 if "--dsn" in sys.argv:
-    ok = pcbnew.ExportSpecctraDSN(board, os.path.join(HERE, "fcb1010-s3.dsn"))
+    dsn = os.path.join(HERE, "fcb1010-s3.dsn")
+    ok = pcbnew.ExportSpecctraDSN(board, dsn)
+    # Úprava zadání pro autorouter: napájecí sítě širší a hranice pro spoje 0,6 mm od okraje desky.
+    import re
+    t = open(dsn, encoding="utf-8").read()
+    x0, x1, y0, y1 = (BX + EDGE_GAP) * 1000, (BX + L - EDGE_GAP) * 1000, (BY + EDGE_GAP) * 1000, (BY + W - EDGE_GAP) * 1000
+    t, n = re.subn(r"\(boundary\s*\(path pcb 0[^)]*\)\s*\)",
+                   f"(boundary\n      (path pcb 0  {x1:.0f} -{y1:.0f}  {x0:.0f} -{y1:.0f}  {x0:.0f} -{y0:.0f}  {x1:.0f} -{y0:.0f}  {x1:.0f} -{y1:.0f})\n    )", t)
+    assert n == 1
+    m = re.search(r"\(class kicad_default \"\"(.*?)\(circuit", t, re.S)
+    names = m.group(1).split()
+    rest = [x for x in names if x not in POWER]
+    cls = lambda nm, nets, w: (f'(class {nm} ' + " ".join(nets) + f'\n      (circuit\n        (use_via Via[0-1]_800:400_um)\n      )\n'
+                               f'      (rule\n        (width {w})\n        (clearance 200.1)\n      )\n    )')
+    t, n = re.subn(r"\(class kicad_default.*?\n    \)", lambda _: "\n    ".join([cls("kicad_default", rest, 300)] + [cls(f"power{int(w * 1000)}", [x for x in names if POWER.get(x) == w], int(w * 1000)) for w in sorted(set(POWER.values()))]), t, flags=re.S)
+    assert n == 1
+    open(dsn, "w", encoding="utf-8").write(t)
     print("DSN:", ok)
