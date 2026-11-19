@@ -152,3 +152,34 @@ Počty podle `hardware/kicad/parts.json`, v závorce doporučený nákup s rezer
 Nekupovat: U4 (MCP1702-4002E/TO, zatím propojka JP3), konektory svazků J1 až J4, J13, J14 (svazky se pájí přímo, s původními kontakty), odpory 220 Ω.
 
 Počkat: konektory J7 a J11 pro svazky X18 a X17. Na desce je pouzdro JST XH (rozteč 2,5 mm), ale rozteč původních zástrček není změřená. Nejlevnější je vypájet původní lišty X17 a X18 ze staré desky, pokud rozteč sedne.
+
+### TME Quick Buy (19. 11. 2026)
+
+Formát „symbol počet“, vkládá se do Rychlého nákupu. Symboly jsou z katalogu TME dohledané vyhledávačem; vyhledávání na webu TME samotném se strojově číst nedá, takže sklad a násobky u pasivních součástek ověřeny nejsou. Symboly odporů 330 Ω až 47 kΩ a 10 Ω jsou odvozené ze značení řady Royal Ohm MF0W4FF (ověřený je 150 Ω).
+
+```
+MCP23017-E/SP 2
+AQY212EH 3
+SN74AHCT125N 2
+DS1001-01-28BT1NSF6S-JKB 1
+DS1001-01-14BT1NSF6X 1
+DS1001-01-08BT1NSF6X-JKB 1
+DS1023-1*40S21 2
+DS1021-1*40SF11-B 2
+JUMPER-B 10
+MF0W4FF100JA50 10
+MF0W4FF1500A50 20
+MF0W4FF3300A50 10
+MF0W4FF4700A50 20
+MF0W4FF1001A50 10
+MF0W4FF4701A50 10
+MF0W4FF1002A50 10
+MF0W4FF1502A50 10
+MF0W4FF2202A50 10
+MF0W4FF4702A50 20
+CM-100N-X7R 20
+CT40805B474K500F3R 10
+```
+
+- DS1001-01-08… je precizní patice DIP-8; rozříznutá napůl dá dvě patice DIP-4 pro AQY212EH.
+- Chybí 10 µF (4 ks na desce): ověřený symbol TME jsem nenašel. Doplnit ručně: keramický THT, rozteč 5 mm, X7R nebo X5R, 16 V a víc; nebo elektrolyt 10 µF/25 V.
