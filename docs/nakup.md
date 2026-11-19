@@ -119,3 +119,36 @@ Varianta „TME + RPishop“ nevychází: Waveshare ESP32-S3-DevKit-1-N16R8 je u
 - [Microchip: MCP1702, datasheet](https://ww1.microchip.com/downloads/en/DeviceDoc/22008E.pdf)
 - [HledejSoučástky.cz: AQY212](http://www.hledejsoucastky.cz/LastSearches/Show?lastsearch=aqy212)
 - [Octopart: TLP222A(F), stav Obsolete](https://octopart.com/part/toshiba/TLP222A(F))
+
+## Kompletní seznam pro nosnou desku v0.1 (19. 11. 2026)
+
+Počty podle `hardware/kicad/parts.json`, v závorce doporučený nákup s rezervou. Co už je koupené, vynechat.
+
+| Součástka | Na desce | Koupit | Poznámka |
+|---|---|---|---|
+| MCP23017-E/SP (DIP-28 úzké) | 1 | 2 | TME symbol MCP23017-E/SP, 19. 11. 2026 skladem 181 ks, 38,41 Kč s DPH |
+| AQY212EH (DIP-4) | 2 | 3 | TME symbol AQY212EH, skladem 1 462 ks |
+| SN74AHCT125N (DIP-14) | 1 | 2 | TME má skladem variantu AHCT (3 502 ks); SN74HCT125N jsem u TME nenašel. Zapojení pinů je stejné, pro budič 5 V z 3,3 V se hodí obě |
+| Patice DIP-28 úzká (7,62 mm) | 1 | 1 | |
+| Patice DIP-14 | 1 | 1 | |
+| Precizní dutinková lišta 1×40, 2,54 mm (lámací) | – | 1 | na 2 patice DIP-4 pro AQY212EH; jde je i zapájet přímo |
+| Dutinková lišta 1×40 (nebo 2× 1×22), 2,54 mm | 2× 22 | 2 | patice pro DevKit; koupit až po změření rozteče řad není nutné, lišty jsou stejné |
+| Kolíková lišta 1×40, 2,54 mm | 31 kolíků | 2 | J5, J6, J8, J9, J12, JP1 až JP4 |
+| Zkratovací propojka 2,54 mm | 4 | 5 | |
+| Odpor 150 Ω | 12 | 15 | všechny odpory 0,25 W (0207), metalizované 1 %, rozteč 10,16 mm |
+| Odpor 330 Ω | 3 | 5 | |
+| Odpor 470 Ω | 14 | 20 | |
+| Odpor 1 kΩ | 2 | 5 | |
+| Odpor 4,7 kΩ | 2 | 5 | |
+| Odpor 10 kΩ | 5 | 10 | |
+| Odpor 15 kΩ | 2 | 5 | |
+| Odpor 22 kΩ | 1 | 5 | |
+| Odpor 47 kΩ | 12 | 15 | |
+| Odpor 10 Ω | 1 | 5 | |
+| Kondenzátor 100 nF keramický, X7R, 50 V, rozteč 5 mm | 16 | 20 | TME např. symbol CM-100N-X7R (sklad neověřen) |
+| Kondenzátor 470 nF keramický, X7R, rozteč 5 mm | 2 | 5 | |
+| Kondenzátor 10 µF, rozteč 5 mm | 4 | 5 | keramický X7R 16 V a víc, nebo elektrolyt 10 µF/25 V s vývody roztaženými na 5 mm |
+
+Nekupovat: U4 (MCP1702-4002E/TO, zatím propojka JP3), konektory svazků J1 až J4, J13, J14 (svazky se pájí přímo, s původními kontakty), odpory 220 Ω.
+
+Počkat: konektory J7 a J11 pro svazky X18 a X17. Na desce je pouzdro JST XH (rozteč 2,5 mm), ale rozteč původních zástrček není změřená. Nejlevnější je vypájet původní lišty X17 a X18 ze staré desky, pokud rozteč sedne.
