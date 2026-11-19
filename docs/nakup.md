@@ -183,3 +183,5 @@ CT40805B474K500F3R 10
 
 - DS1001-01-08… je precizní patice DIP-8; rozříznutá napůl dá dvě patice DIP-4 pro AQY212EH.
 - Chybí 10 µF (4 ks na desce): ověřený symbol TME jsem nenašel. Doplnit ručně: keramický THT, rozteč 5 mm, X7R nebo X5R, 16 V a víc; nebo elektrolyt 10 µF/25 V.
+
+**Oprava po zkoušce v košíku TME (19. 11. 2026 večer):** odpory MF0W4FF mají u TME většinou nulový sklad nebo odběr po 5 000 ks, CM-100N-X7R je „těžko dostupný“ a SN74AHCT125N má sklad 0 s dodací lhůtou 6 týdnů. Z TME se proto bere jen MCP23017-E/SP, AQY212EH, patice, lišty a propojky. Budič (SN74HCT125N, GME kód 426-025), odpory a kondenzátory se koupí v GM electronic.
