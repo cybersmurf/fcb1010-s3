@@ -189,3 +189,18 @@ CT40805B474K500F3R 10
 **Druhá oprava (19. 11. 2026):** symboly DS1001-…, DS1023-1*40S21 a DS1021-1*40SF11-B Rychlý nákup TME nenašel. Platné a skladem jsou jen MCP23017-E/SP (181 ks), AQY212EH (1 041 ks) a JUMPER-B. Z TME se objednávají jen tyto tři položky; patice (DIP-28 úzká, DIP-14, DIP-8 na rozříznutí), dutinkové a kolíkové lišty, budič, odpory a kondenzátory se koupí v GM electronic. Seznam Quick Buy výše neplatí.
 
 **Konektory X17 a X18 (24. 11. 2026):** rozteč je 2,0 mm. Nic se nekupuje, původní lišty s límcem se vypájejí ze staré desky do pozic J11 a J7.
+
+## Objednávka desky u JLCPCB (24. 11. 2026)
+
+Objednáno 24. 11. 2026 ve 22:55 přes aplikaci JLCONE. Stav po odeslání: kontrola podkladů (File Review).
+
+| Položka | Hodnota |
+|---|---|
+| Podklady | `hardware/fcb1010-s3-gerber-v0.3.zip` |
+| Provedení | 5 ks, 229 × 41 mm, 2 vrstvy, 1,6 mm, fialová maska, HASL s olovem, výroba 3 dny |
+| Desky | 8,60 USD |
+| Doprava EuroPacket (DDP, 5 až 9 pracovních dnů) | 6,50 USD |
+| Clo a daně | 2,91 USD |
+| **Celkem** | **18,01 USD** |
+
+Slevové kupony z webu se na tuhle desku uplatnit nedaly (akce za 2 USD platí jen do 100 mm). Levnější doprava je jen v aplikaci JLCONE.
