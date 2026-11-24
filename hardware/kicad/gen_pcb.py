@@ -88,12 +88,12 @@ def horiz(a, b, x_a, x_b, y):
     put(ref, x_a, y, 0 if x_b > x_a else 180)
 
 
-# svazky předních desek, pin 1 vlevo
-put("J1", 11.3, 38.5, 90)
-put("J2", 44.0, 38.5, 90)
+# svazky předních desek; pin 1 (červený vodič) je na konci dál od displeje, stejně jako na původní desce (IMG_9456)
+put("J1", 37.3, 38.5, -90)
+put("J2", 70.0, 38.5, -90)
 # pedály
-put("J4", 80.0, 38.5, 90)
-put("J3", 91.0, 38.5, 90)
+put("J4", 84.0, 38.5, -90)
+put("J3", 95.0, 38.5, -90)
 # LED pedálů a displej
 put("J13", 3.0, 21.0, 0)
 put("J14", 3.0, 28.0, 0)

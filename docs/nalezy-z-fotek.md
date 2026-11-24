@@ -180,3 +180,25 @@ Spoje jsou navíc zajištěné tavným lepidlem (jde dolů po kapce isopropylalk
 - [universal-solder: 1.54 inch OLED 128x64 I2C (white) SSD1309](https://www.universal-solder.ca/product/1-54-inch-oled-128x64-i2c-white-ssd1309/): deska 42,4 × 38 mm, plocha obrazu asi 35 × 17,5 mm, adresa 0x3C/0x3D.
 - [GM electronic: OLED displej 1,54" 128x64, I2C, bílý, kód 775-214](https://www.gme.cz/v/1508852/oled-displej-154128x64-i2c-biely): 259 Kč, 18. 11. 2026 není skladem.
 - [Drátek: SPI OLED 1,54" 128x64 bílý](https://dratek.cz/ukonceno/3203-spi-oled-lcd-1-54-displej-128x64-bily-3-3-5v.html): prodej ukončen, verze SPI.
+
+## Fotky spojů předních desek (24. 11. 2026, IMG_9450 až IMG_9469)
+
+Čteno ze zvětšených výřezů strany spojů. Desky jsou jednostranné, cesty od konektoru jdou v pořadí pájecích bodů, takže se dají sledovat.
+
+**Hlavní deska, pohled ze strany součástek, konec u displeje vlevo (IMG_9455, IMG_9456):**
+
+- Pořadí konektorů na hraně zleva: 14P, 14P, X22 (3P), X21 (3P), krystal, X18 (4P), …, X17 (4P) u usměrňovače.
+- U obou 14pinových i obou 3pinových konektorů je červený vodič (pin 1) **vpravo**, tedy na konci dál od displeje.
+- Levý 14pinový konektor (blíž k displeji) vede zkrouceným svazkem ke vzdálenější přední desce, pravý k desce hned pod hlavní deskou. Hlavní deska je pod displejem, bližší deska je tedy horní řada (6–10, UP) a vzdálenější spodní řada (1–5, DOWN).
+- Středy konektorů od hrany u displeje, odhad z IMG_9455 (±3 mm, fotka má perspektivu): 14P asi 29 a 65 mm, X22 asi 92 mm, X21 asi 103 mm, X18 asi 138 mm, X17 asi 210 mm.
+
+**Spodní přední deska (IMG_9451, výřezy):**
+
+- 14 pájecích bodů, červený vodič (pin 1) na pravém kraji řady.
+- Spínač nejblíž konektoru nemá LED (nad ním na hraně desky chybí dvojice bodů), je to tedy DOWN. Vedou k němu jen dvě cesty z opačného kraje řady: pin 13 na diodu a přes ni na spínač, pin 14 přímo na spínač. Pin 14 je spojený s rozlitou mědí u spínačů, je to společný vodič.
+- Další cesta v pořadí (pin 12) vede zespodu na diodu sousedního spínače (spínač 5).
+- Nejvyšší cesta (pin 1) běží podél horní hrany dál k dalším LED. LED nad spínačem 5 má jeden vývod na druhé cestě (pin 2) a druhý na třetí (pin 3).
+- **Souhlasí s předpokládaným zapojením** z cizího kusu: 1 = anody LED 1–3, 2 = anody LED 4–5, 3 = katoda LED 5, 12 = spínač 5, 13 = DOWN, 14 = společný. Piny 4 až 11 jsem po celé délce desky nesledoval; jsou to katody LED 4–1 a spínače 1–4 a jejich pořadí se dá opravit ve firmwaru.
+- Dioda je v sérii mezi vodičem spínače a spínačem. Její orientace z fotky poznat nejde (propojky JP1 a JP2).
+
+**Horní přední deska:** pájecí body konektoru jsou na fotkách zakryté svazkem. Zapojení (13 = společný, 14 = nezapojeno) zůstává převzaté a neověřené.
