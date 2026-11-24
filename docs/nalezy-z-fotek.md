@@ -231,3 +231,7 @@ Spoje jsou navíc zajištěné tavným lepidlem (jde dolů po kapce isopropylalk
 - Označení: spodní deska S1 až S5 a S6 (DOWN, bez LED), LED LD3 až LD7, konektor X8. Horní deska S7 až S11 (spínače 6 až 10), S12 (UP, bez LED), LED LD8 až LD12, konektor X9 mezi S11 a S12.
 - Ze strany spojů (výřezy IMG_9478, IMG_9487) vede vodič spínače z konektoru na plošku diody u hrany, tedy na anodu; katoda je spojená s horní dvojicí vývodů spínače, spodní dvojice jde na společný vodič. Čtení cest má střední jistotu.
 - Závěr: proud teče z vodiče spínače přes diodu a spínač do společného vodiče. Společný vodič tedy patří na GND a vstupy na pull-up: **JP1 v poloze A (SW_COM = GND), JP2 v poloze A (SW_PULL = 3V3)**, což je výchozí zapojení. Sepnutý spínač dá na vstupu asi 0,5 V (úbytek diody), což ESP32 čte jako nulu (hranice 0,8 V).
+
+## Rozhodnutí: stavové LED v pásu (24. 11. 2026)
+
+Jedenáct stavových LED z původní hlavní desky se nenahrazuje. Stav včetně SWITCH 1 a SWITCH 2 (spínací výstupy na zadní jacky) ukáže displej. Kdyby se později hodily dvě LED pro SWITCH 1 a 2, na desce jsou volné výstupy expandéru vyvedené na J9.
