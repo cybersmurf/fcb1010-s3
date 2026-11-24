@@ -32,7 +32,8 @@ Schéma se neupravuje ručně v editoru, jinak ho další generování přepíš
 
 - Kontrola netlistu: 310 pinů, 90 sítí, bez rozdílů proti zadání.
 - **Ověřeno z fotek (24. 11. 2026):** zapojení 14pinových svazků J1 a J2 (společný vodič, UP/DOWN, krajní spínač, napájení LED; pořadí prostředních pinů jednotlivě ne, dá se přemapovat ve firmwaru), rozložení pinů DevKitu a rozteč jeho řad 25,4 mm. Viz `docs/nalezy-z-fotek.md`.
-- **Neověřeno:** pořadí vodičů pedálů J3 a J4, rozteč lišt X17 a X18 (na desce pouzdro JST XH 2,5 mm), pořadí pinů modulu OLED (J5), orientace diod u spínačů (propojky JP1, JP2).
+- Orientace diod u spínačů: z fotek vychází společný vodič na GND a pull-up, tedy JP1 i JP2 v poloze A; při oživení ověřit.
+- **Neověřeno:** pořadí vodičů pedálů J3 a J4, rozteč lišt X17 a X18 (na desce pouzdro JST XH 2,5 mm), pořadí pinů modulu OLED (J5).
 - Propojky JP1 a JP2 dovolují obrátit polaritu čtení spínačů, kdyby diody na předních deskách byly orientované opačně.
 - U4 (MCP1702-4002E/TO, 4,0 V) je volitelný; bez něj se spojí JP3 a senzory pedálů se napájejí z 5 V přes R24 a C5.
 - Deska: součástky jsou rozmístěné bez překryvů (kontrola v `gen_pcb.py`). Spoje natáhl Freerouting 1.9.0: 1368 segmentů, 59 prokovů, 7,1 m spojů. Signály 0,3 mm, GND, +5 V a napájení senzorů 0,6 mm, +3V3 0,4 mm (s 0,6 mm se nedalo natáhnout). Izolační mezera 0,2 mm, spoje nejméně 0,6 mm od hrany desky. Na obou vrstvách je rozlitá zem.

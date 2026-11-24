@@ -224,3 +224,10 @@ Spoje jsou navíc zajištěné tavným lepidlem (jde dolů po kapce isopropylalk
 - LED jsou červené difuzní, průměr 3 mm s límečkem, zasunuté v černé distanční trubičce vysoké asi 12 mm (označení LD6, LD7).
 - Spínače S4, S5 jsou mikrospínače 6 × 6 mm, vedle každého skleněná dioda (D4, D5, D6 u DOWN). Orientaci diod vůči konektoru z fotek spolehlivě určit nejde.
 - Adresovatelné LED 5 mm (PL9823, WS2812D-F5) do stávajících trubiček a otvorů nepasují; pro barevné LED by to znamenalo typ 3 mm nebo jiné uchycení.
+
+## Orientace diod u spínačů (24. 11. 2026, IMG_9507 až IMG_9519)
+
+- Na všech vyfocených pozicích (D1 až D6, D8 až D11) je černý proužek diody (katoda) na konci směrem ke středu desky, anoda u hrany se spínači. Potisk má na stejném konci plný obdélník. Diody jsou skleněné, podle potisku nejspíš 1N4148.
+- Označení: spodní deska S1 až S5 a S6 (DOWN, bez LED), LED LD3 až LD7, konektor X8. Horní deska S7 až S11 (spínače 6 až 10), S12 (UP, bez LED), LED LD8 až LD12, konektor X9 mezi S11 a S12.
+- Ze strany spojů (výřezy IMG_9478, IMG_9487) vede vodič spínače z konektoru na plošku diody u hrany, tedy na anodu; katoda je spojená s horní dvojicí vývodů spínače, spodní dvojice jde na společný vodič. Čtení cest má střední jistotu.
+- Závěr: proud teče z vodiče spínače přes diodu a spínač do společného vodiče. Společný vodič tedy patří na GND a vstupy na pull-up: **JP1 v poloze A (SW_COM = GND), JP2 v poloze A (SW_PULL = 3V3)**, což je výchozí zapojení. Sepnutý spínač dá na vstupu asi 0,5 V (úbytek diody), což ESP32 čte jako nulu (hranice 0,8 V).
