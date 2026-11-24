@@ -31,7 +31,8 @@ Schéma se neupravuje ručně v editoru, jinak ho další generování přepíš
 ## Stav (v0.1, 18. 11. 2026)
 
 - Kontrola netlistu: 310 pinů, 90 sítí, bez rozdílů proti zadání.
-- **Neověřeno měřením:** pořadí vodičů 14pinových svazků J1 a J2 (převzato z cizího kusu), pořadí vodičů pedálů J3 a J4, piny 2 a 3 svazku MIDI (J7), rozložení pinů DevKitu (U1, podle oficiálního ESP32-S3-DevKitC-1), pořadí pinů modulu OLED (J5).
+- **Ověřeno z fotek (24. 11. 2026):** zapojení 14pinových svazků J1 a J2 (společný vodič, UP/DOWN, krajní spínač, napájení LED; pořadí prostředních pinů jednotlivě ne, dá se přemapovat ve firmwaru), rozložení pinů DevKitu a rozteč jeho řad 25,4 mm. Viz `docs/nalezy-z-fotek.md`.
+- **Neověřeno:** pořadí vodičů pedálů J3 a J4, rozteč lišt X17 a X18 (na desce pouzdro JST XH 2,5 mm), pořadí pinů modulu OLED (J5), orientace diod u spínačů (propojky JP1, JP2).
 - Propojky JP1 a JP2 dovolují obrátit polaritu čtení spínačů, kdyby diody na předních deskách byly orientované opačně.
 - U4 (MCP1702-4002E/TO, 4,0 V) je volitelný; bez něj se spojí JP3 a senzory pedálů se napájejí z 5 V přes R24 a C5.
 - Deska: součástky jsou rozmístěné bez překryvů (kontrola v `gen_pcb.py`). Spoje natáhl Freerouting 1.9.0: 1368 segmentů, 59 prokovů, 7,1 m spojů. Signály 0,3 mm, GND, +5 V a napájení senzorů 0,6 mm, +3V3 0,4 mm (s 0,6 mm se nedalo natáhnout). Izolační mezera 0,2 mm, spoje nejméně 0,6 mm od hrany desky. Na obou vrstvách je rozlitá zem.
@@ -39,6 +40,6 @@ Schéma se neupravuje ručně v editoru, jinak ho další generování přepíš
 - Konektory svazků J1 až J4 mají pin 1 (červený vodič) na konci dál od displeje, stejně jako původní deska (fotka IMG_9456). J1 je blíž k displeji a patří ke spodní desce spínačů (1–5, DOWN), J2 k horní (6–10, UP), viz `docs/nalezy-z-fotek.md`.
 - Popisky konektorů jsou na potisku.
 - Výrobní podklady: `../fcb1010-s3-gerber-v0.1.zip` (gerbery a vrtání, 2 vrstvy, 229 × 41 mm, tloušťka 1,6 mm). Oválné otvory úhelníků jsou prokovené drážky 1,3 × 2,1 mm.
-- Polohy svazků podél hrany jsou odhad z fotek (±5 mm), rozteč řad DevKitu 25,4 mm je předpoklad pro klon, úhelníky podle otisku na papíře.
+- Polohy svazků podél hrany jsou odhad z fotek (±5 mm), úhelníky podle otisku na papíře.
 - Displej na desce není: připojuje se čtyřpinovým konektorem J5 a jeho držák se vyřeší podle skutečného modulu.
-- Před objednáním výroby musí být změřené: pořadí vodičů 14pinových svazků a rozteč řad a rozložení pinů skutečného DevKitu. Zkouška na drátech před výrobou je lepší, ale prototyp je levný, takže není podmínkou.
+- Deska je připravená k objednání prototypu. Zbylé neověřené body se dají vyřešit při osazování (pořadí vodičů při pájení, propojky, firmware).

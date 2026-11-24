@@ -201,4 +201,19 @@ Spoje jsou navíc zajištěné tavným lepidlem (jde dolů po kapce isopropylalk
 - **Souhlasí s předpokládaným zapojením** z cizího kusu: 1 = anody LED 1–3, 2 = anody LED 4–5, 3 = katoda LED 5, 12 = spínač 5, 13 = DOWN, 14 = společný. Piny 4 až 11 jsem po celé délce desky nesledoval; jsou to katody LED 4–1 a spínače 1–4 a jejich pořadí se dá opravit ve firmwaru.
 - Dioda je v sérii mezi vodičem spínače a spínačem. Její orientace z fotky poznat nejde (propojky JP1 a JP2).
 
-**Horní přední deska:** pájecí body konektoru jsou na fotkách zakryté svazkem. Zapojení (13 = společný, 14 = nezapojeno) zůstává převzaté a neověřené.
+**Horní přední deska (IMG_9478, IMG_9479, hlavní deska vyndaná, výřezy):**
+
+- 14 pájecích bodů, pin 1 (červený vodič, podle IMG_9450) na levém kraji řady, tedy na straně spínače UP.
+- Piny 1 až 6: šest cest vede nahoru k horní hraně a podél ní k LED (společná anoda a pět katod).
+- Piny 7 až 11: pět cest vede doprava ke spínačům. Cesta z pinu 11 končí na diodě nejbližšího spínače vpravo od konektoru, což je spínač 10 (sousedí s UP).
+- Pin 12: cesta vede dolů a doleva na diodu krajního spínače bez LED, tedy UP.
+- Pin 13: cesta vede dolů na cestu podél spodní hrany ke všem spínačům, společný vodič.
+- Pin 14: bez cesty, nezapojený.
+- **Souhlasí s předpokládaným zapojením.** Pořadí katod LED na pinech 2 až 6 a spínačů na pinech 7 až 10 jsem jednotlivě nesledoval.
+
+## DevKit (24. 11. 2026, IMG_9488 až IMG_9490)
+
+- Deska 2×22 pinů, modul „S3-N16R8“ (Sixspan) s anténou na desce i konektorem IPEX, dva konektory USB-C označené zespodu COM a USB, tlačítka RST a BOOT, RGB LED, stabilizátor 1117-3.3. Zespodu pájecí propojky „USB-OTG“ a „IN-OUT“ (rozpojené).
+- Popisky řad od antény: `3V3 3V3 RST 4 5 6 7 15 16 17 18 8 3 46 9 10 11 12 13 14 5V GND` a `GND TX RX 1 2 42 41 40 39 38 37 36 35 0 45 48 47 21 20 19 GND GND`. Je to přesně rozložení ESP32-S3-DevKitC-1 a souhlasí s pouzdrem U1 na nosné desce pin po pinu.
+- Rozteč řad: z fotek shora vychází 10,0 až 10,1 rozteče pinů, tedy 25,4 mm (druhá běžná hodnota 22,86 mm by byla 9 roztečí). Posuvkou neměřeno.
+- Pro USB MIDI se kabel zapojuje do konektoru USB, ne COM.
