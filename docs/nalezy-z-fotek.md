@@ -235,3 +235,7 @@ Spoje jsou navíc zajištěné tavným lepidlem (jde dolů po kapce isopropylalk
 ## Rozhodnutí: stavové LED v pásu (24. 11. 2026)
 
 Jedenáct stavových LED z původní hlavní desky se nenahrazuje. Stav včetně SWITCH 1 a SWITCH 2 (spínací výstupy na zadní jacky) ukáže displej. Kdyby se později hodily dvě LED pro SWITCH 1 a 2, na desce jsou volné výstupy expandéru vyvedené na J9.
+
+## Polohy 14pinových konektorů na hlavní desce (24. 11. 2026, IMG_9520 až IMG_9525)
+
+Metr přiložený ke straně spojů hlavní desky. Krajní plošky konektorů vycházejí na 24,5 až 50 mm a 58,7 až 84,4 mm; čtvercová ploška (pin 1) je u druhého konektoru na vzdálenějším konci. Počátek metru na fotkách není vidět; beru, že byl zaháknutý za krátkou hranu u displeje, což sedí s pinem 1 na konci dál od displeje. Na nové desce jsou J1 a J2 posunuté na tyto polohy (pin 1 na 50,3 a 84,6 mm).

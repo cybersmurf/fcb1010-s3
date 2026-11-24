@@ -89,11 +89,12 @@ def horiz(a, b, x_a, x_b, y):
 
 
 # svazky předních desek; pin 1 (červený vodič) je na konci dál od displeje, stejně jako na původní desce (IMG_9456)
-put("J1", 37.3, 38.5, -90)
-put("J2", 70.0, 38.5, -90)
+# polohy podle metru přiloženého k původní desce (IMG_9520 až IMG_9525): plošky 24,5 až 50 mm a 58,7 až 84,4 mm
+put("J1", 50.3, 38.5, -90)
+put("J2", 84.6, 38.5, -90)
 # pedály
-put("J4", 84.0, 38.5, -90)
-put("J3", 95.0, 38.5, -90)
+put("J4", 93.0, 38.5, -90)
+put("J3", 104.0, 38.5, -90)
 # LED pedálů a displej
 put("J13", 3.0, 21.0, 0)
 put("J14", 3.0, 28.0, 0)
@@ -259,10 +260,10 @@ def label(text, x, y, size=0.8, rot=0):
     board.Add(t)
 
 
-label("SW 1-5 DOWN (X19/X20)", 24.0, 40.2)
-label("SW 6-10 UP (X19/X20)", 57.0, 40.2)
-label("PED B", 82.0, 40.2)
-label("PED A", 93.0, 40.2)
+label("SW 1-5 DOWN", 37.3, 40.3)
+label("SW 6-10 UP", 71.6, 40.3)
+label("PED B", 91.0, 40.3)
+label("PED A", 102.0, 40.3)
 label("MIDI X18", 129.0, 33.6)
 label("JACK X17", 205.5, 33.6)
 label("WS2812", 78.5, 1.2)
