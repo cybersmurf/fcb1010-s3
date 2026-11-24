@@ -104,7 +104,7 @@
   "value": "spodní přední deska"
  },
  "J11": {
-  "footprint": "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical",
+  "footprint": "Connector_PinHeader_2.00mm:PinHeader_1x04_P2.00mm_Vertical",
   "value": "jacky X17"
  },
  "J12": {
@@ -140,7 +140,7 @@
   "value": "WS2812B"
  },
  "J7": {
-  "footprint": "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical",
+  "footprint": "Connector_PinHeader_2.00mm:PinHeader_1x04_P2.00mm_Vertical",
   "value": "MIDI destička X18"
  },
  "J8": {

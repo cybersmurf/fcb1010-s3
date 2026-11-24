@@ -239,3 +239,20 @@ Jedenáct stavových LED z původní hlavní desky se nenahrazuje. Stav včetně
 ## Polohy 14pinových konektorů na hlavní desce (24. 11. 2026, IMG_9520 až IMG_9525)
 
 Metr přiložený ke straně spojů hlavní desky. Krajní plošky konektorů vycházejí na 24,5 až 50 mm a 58,7 až 84,4 mm; čtvercová ploška (pin 1) je u druhého konektoru na vzdálenějším konci. Počátek metru na fotkách není vidět; beru, že byl zaháknutý za krátkou hranu u displeje, což sedí s pinem 1 na konci dál od displeje. Na nové desce jsou J1 a J2 posunuté na tyto polohy (pin 1 na 50,3 a 84,6 mm).
+
+## Oprava poloh konektorů a rozteč X17, X18 (24. 11. 2026 večer, IMG_9526 až IMG_9549)
+
+Fotky strany součástek s metrem zaháknutým za krátkou hranu u stabilizátoru (hák na hraně je vidět na IMG_9544 až IMG_9547). Odečteno z fotek s pomocnou mřížkou, měřítko podle délky pouzdra 14pinového konektoru (29,6 mm) a podle metru; dvě fotky se shodují na 1 mm.
+
+| Konektor | Pouzdro od hrany u displeje | Pin 1 (červený) |
+|---|---|---|
+| X20 (14P, blíž k displeji) | 12,5 až 42,5 mm | asi 40,3 mm |
+| X19 (14P) | 46,5 až 76,2 mm | asi 74,3 mm |
+| X22 (3P) | 83 až 91 mm | asi 89 mm |
+| X21 (3P) | 94,5 až 102,5 mm | asi 100,5 mm |
+| X18 (4P, MIDI) | střed asi 134 mm (±3 mm) | asi 137 mm |
+| X17 (4P, jacky) | střed asi 207 mm (±3 mm) | asi 210 mm |
+
+- **Předchozí údaj (plošky 24,5 až 50 mm a 58,7 až 84,4 mm) byl posunutý asi o 10 mm:** na fotkách strany spojů (IMG_9520 až IMG_9525) nebyl metr zaháknutý za hranu desky. Rozteče a délky z nich platí, počátek ne.
+- **Rozteč lišt X17 a X18 je 2,0 mm:** rozteč kolíků v límci X18 vychází 2,08 mm (měřítko podle vývodů pouzdra SOIC vedle, 1,27 mm), u X17 asi 2,0 mm. Dřívější předpoklad 2,5 mm (JST XH) neplatil.
+- Potisk u konektorů: počet pinů („14P“, „3P“, „4P“) je na konci blíž k displeji, označení (X19, X22, X18…) na konci dál od displeje, kde je u 14pinových a 3pinových i červený vodič.

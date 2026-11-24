@@ -245,7 +245,7 @@ box("fcb:MOUNT", "H", [(1, "1")], [], 7.62)
 
 HDR = "Connector_PinHeader_2.54mm:PinHeader_1x{:02d}_P2.54mm_Vertical"
 HDR2 = "Connector_PinHeader_2.00mm:PinHeader_1x{:02d}_P2.00mm_Vertical"
-XH4 = "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical"
+XH4 = HDR2.format(4)      # lišty X17 a X18 mají rozteč 2,0 mm (změřeno z fotek 24. 11. 2026)
 
 # ================================================================== zapojení
 text("FCB1010-S3: nosná deska, schéma v0.1 (18. 11. 2026)", 12, 14, 3.0, True)
