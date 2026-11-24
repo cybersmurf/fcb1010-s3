@@ -204,3 +204,30 @@ Objednáno 24. 11. 2026 ve 22:55 přes aplikaci JLCONE. Stav po odeslání: kont
 | **Celkem** | **18,01 USD** |
 
 Slevové kupony z webu se na tuhle desku uplatnit nedaly (akce za 2 USD platí jen do 100 mm). Levnější doprava je jen v aplikaci JLCONE.
+
+## Objednávka u Drátku (25. 11. 2026)
+
+Objednáno 25. 11. 2026 po půlnoci. Položky podle košíku z 0:01; OLED 1,3" byl přidán až potom (předpoklad, v košíku na snímku ještě nebyl).
+
+| Položka | Kód | Ks | Cena za kus s DPH |
+|---|---|---|---|
+| Prodlužovací kabel do panelu USB-C 50 cm, černý | 1782970997 | 2 | 97 Kč |
+| DuPont kabel F–F, 40×, 40 cm | 1641886615 | 1 | 55 Kč |
+| DuPont kabel M–M, 40×, 40 cm | 1641887322 | 1 | 59 Kč |
+| Distanční mosazný sloupek M3 × 10 + 6 mm | 1434561061 | 10 | 4,80 Kč |
+| Distanční mosazný sloupek M3 × 10 mm (průchozí) | 1711618906 | 10 | 4 Kč |
+| Distanční mosazný sloupek M3 × 25 + 6 mm | 1711609526 | 10 | 9 Kč |
+| Mosazná matice M3 | 1711629912 | 15 | 3,20 Kč |
+| Mosazný šroub křížový M3 × 6 mm | 1711627574 | 20 | 3 Kč |
+| Mosazný šroub křížový M3 × 10 mm | 1711627898 | 10 | 3,50 Kč |
+| IIC I2C OLED displej 1,3", bílý, 128 × 64 (SH1106) | 1527497643 | 1 | 167 Kč |
+
+Bez displeje 629 Kč, s displejem 796 Kč, plus doprava.
+
+- Mosazná sada distančních sloupků (200 ks, kód 1610697929, 349 Kč) nebyla skladem, proto jednotlivé kusy.
+- OLED 1,3": obraz 29,42 × 14,7 mm, modul 35,4 × 33,5 mm, řadič SH1106 (hlavní displej 2,42" má SSD1309). Slouží na oživení desky a jako záloha pro případ, že se 2,42" do přístroje nevejde.
+- Panelový kabel: rozteč šroubů příruby prodejce neuvádí, změřit na kusu před vrtáním zadního panelu.
+
+### Záměr s displejem (25. 11. 2026)
+
+Místo původního pásu s okénkem nové kouřové plexi přes celou šířku, pod ním tištěný rámeček na horním plechu (PETG), který drží displej a zakryje zvětšený výřez. K návrhu rámečku chybí míry: otvor v plechu pod pásem, rozměr pásu, hloubka od plechu k desce.
