@@ -18,7 +18,7 @@ LIBS = "/usr/share/kicad/footprints"
 OWN = os.path.join(HERE, "fcb1010.pretty")
 BX, BY = 40.0, 60.0            # posun desky na listu
 L, W = 229.0, 41.0
-POWER = {"GND": 0.6, "+5V": 0.6, "AVDD": 0.6, "AVDD_IN": 0.6, "+3V3": 0.4}   # širší spoje, mm
+POWER = {"GND": 0.6, "+5V": 0.6, "AVDD": 0.4, "AVDD_IN": 0.4, "+3V3": 0.4}   # širší spoje, mm
 EDGE_GAP = 0.6                 # nejmenší vzdálenost spoje od hrany desky
 
 parts = json.load(open(os.path.join(HERE, "parts.json"), encoding="utf-8"))
@@ -140,21 +140,23 @@ put("U3", 119.5, 17.62, 90)
 put("J7", 137.0, 38.5, -90)      # X18: střed pouzdra asi 134 mm
 vert("MIDI_IN_5V", "MIDI_RX", 120.5, 33.66, 23.5)
 vert("MIDI_RX", "GND", 123.5, 23.5, 33.66)
-vert("+3V3", "MIDI_TX", 135.0, 21.5, 31.66)
+vert("+3V3", "MIDI_TX", 133.6, 21.5, 31.66)
 
 # DevKit a věci pod ním
 put("U1", 168.67, 18.5, 0)
-put("JP1", 144.0, 11.0, 90)
-put("JP2", 154.0, 11.0, 90)
-put("JP4", 164.0, 11.0, 90)
-put("JP3", 171.0, 11.0, 90)
-put("J9", 144.0, 26.0, 90)
-horiz("+3V3", "SDA", 144.0, 154.16, 16.0)
-horiz("+3V3", "SCL", 157.0, 167.16, 16.0)
-horiz("+3V3", "MCP_RST", 170.0, 180.16, 16.0)
-horiz("LED_DATA_5V", "LED_DATA_OUT", 183.0, 193.16, 16.0)
-horiz("AUX1_RAW", "AUX1", 144.0, 154.16, 21.0)
-horiz("AUX2_RAW", "AUX2", 157.0, 167.16, 21.0)
+# Pod DevKitem nesmí být nic: JP1 a JP2 jsou nad budičem U3, JP3 u stabilizátoru senzorů, JP4 a J9
+# na konci desky u výstupů, odpory a kondenzátory ve dvou řadách mezi DevKitem a hranou se svazky.
+put("JP1", 121.5, 3.5, 90)
+put("JP2", 129.5, 3.5, 90)
+put("JP3", 129.5, 26.5, 0)          # u stabilizátoru senzorů
+put("JP4", 221.0, 9.0, 0)
+put("J9", 212.0, 30.5, 90)
+horiz("+3V3", "SDA", 141.0, 151.16, 35.0)
+horiz("+3V3", "SCL", 153.6, 163.76, 35.0)
+horiz("+3V3", "MCP_RST", 166.2, 176.36, 35.0)
+horiz("LED_DATA_5V", "LED_DATA_OUT", 178.8, 188.96, 35.0)
+horiz("AUX1_RAW", "AUX1", 149.0, 159.16, 38.6)
+horiz("AUX2_RAW", "AUX2", 161.6, 171.76, 38.6)
 
 # spínací výstupy
 # výstupy (piny 3, 4) míří doleva ke konektoru J11, vstupy doprava
@@ -184,8 +186,8 @@ def cap(value, a, x, y, rot, idx=0):
 
 cap("100n", "+3V3", 111.3, 9.0, -90)            # C1 u U2
 cap("100n", "+5V", 126.5, 22.0, 0)             # C2 u U3
-cap("10u", "+3V3", 170.0, 21.0, 0)
-cap("10u", "+5V", 180.0, 21.0, 0)
+cap("10u", "+3V3", 141.0, 38.6, 0)
+cap("10u", "+5V", 191.8, 35.0, 0)
 cap("10u", "AVDD_IN", 114.0, 23.0, -90)
 cap("10u", "AVDD", 117.0, 23.0, -90)
 cap("470n", "PED_B_F", 80.6, 23.0, -90)
@@ -273,7 +275,7 @@ label("BOOT RST", 100.5, 1.2)
 label("OLED", 8.4, 18.6)
 label("LED A", 3.4, 19.2)
 label("LED B", 3.4, 31.2)
-label("FCB1010-S3 v0.1", 190.0, 2.0, 1.2)
+label("FCB1010-S3 v0.3", 190.0, 2.0, 1.2)
 label("cybersmurf/fcb1010-s3", 190.0, 4.2, 0.8)
 
 # ------------------------------------------------------------------ kontrola překryvů
@@ -289,7 +291,7 @@ def bbox(fp):
 boxes = {r: bbox(fp) for r, fp in fps.items()}
 problems = 0
 refs = sorted(boxes)
-SKIP_UNDER = {"U1"}                     # pod DevKitem v paticích smí být nízké součástky
+SKIP_UNDER = set()                      # pod DevKitem nesmí být nic
 for i, a in enumerate(refs):
     ax0, ay0, ax1, ay1 = boxes[a]
     if ax0 < 0.3 or ay0 < 0.3 or ax1 > L - 0.3 or ay1 > W - 0.3:
