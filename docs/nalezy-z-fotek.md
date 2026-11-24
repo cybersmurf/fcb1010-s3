@@ -168,7 +168,7 @@ Spoje jsou navíc zajištěné tavným lepidlem (jde dolů po kapce isopropylalk
 
 ## Co ještě změřit
 
-1. Jestli jsou svazky zapájené i na straně předních desek a senzorů. (Rozteč 14pinových svazků je potvrzená, 2,0 mm.)
+1. Na předních deskách jsou svazky rozpojitelné (viz níže); u destiček senzorů ověřeno není. (Rozteč 14pinových svazků je potvrzená, 2,0 mm.)
    Změřit rozteč u 2pinových (X13, X14), 3pinových (X21, X22) a u lišty X18. U 3pinových vychází z fotky stejná jako u 14pinových.
 2. Průchodnost pinů předních desek podle `mereni.md`, část 3.
 3. Rozteč nožek úhelníku a průměr jeho vývodů (polohy středů úhelníků jsou z otisku na papíře, viz tabulka u hlavní desky). Červené okénko displeje posuvkou (zatím 36 × 18,5 mm z fotky) a jestli jde pás z panelu vyndat.
@@ -217,3 +217,10 @@ Spoje jsou navíc zajištěné tavným lepidlem (jde dolů po kapce isopropylalk
 - Popisky řad od antény: `3V3 3V3 RST 4 5 6 7 15 16 17 18 8 3 46 9 10 11 12 13 14 5V GND` a `GND TX RX 1 2 42 41 40 39 38 37 36 35 0 45 48 47 21 20 19 GND GND`. Je to přesně rozložení ESP32-S3-DevKitC-1 a souhlasí s pouzdrem U1 na nosné desce pin po pinu.
 - Rozteč řad: z fotek shora vychází 10,0 až 10,1 rozteče pinů, tedy 25,4 mm (druhá běžná hodnota 22,86 mm by byla 9 roztečí). Posuvkou neměřeno.
 - Pro USB MIDI se kabel zapojuje do konektoru USB, ne COM.
+
+## Přední deska ze strany součástek (24. 11. 2026, IMG_9493 až IMG_9506)
+
+- **Svazek je na přední desce rozpojitelný.** Na spodní desce („LOWER STEP PCB“) je bílá úhlová lišta s límcem, rozteč 2,0 mm, zástrčka svazku jde vytáhnout. Dřívější odhad, že je svazek zapájený i tady, neplatil. Zapájený je jen konec na hlavní desce.
+- LED jsou červené difuzní, průměr 3 mm s límečkem, zasunuté v černé distanční trubičce vysoké asi 12 mm (označení LD6, LD7).
+- Spínače S4, S5 jsou mikrospínače 6 × 6 mm, vedle každého skleněná dioda (D4, D5, D6 u DOWN). Orientaci diod vůči konektoru z fotek spolehlivě určit nejde.
+- Adresovatelné LED 5 mm (PL9823, WS2812D-F5) do stávajících trubiček a otvorů nepasují; pro barevné LED by to znamenalo typ 3 mm nebo jiné uchycení.
