@@ -192,16 +192,18 @@ CT40805B474K500F3R 10
 
 ## Objednávka desky u JLCPCB (24. 11. 2026)
 
-Objednáno 24. 11. 2026 ve 22:55 přes aplikaci JLCONE. Stav po odeslání: kontrola podkladů (File Review).
+Objednáno 24. 11. 2026 ve 22:55 přes aplikaci JLCONE. 
 
 | Položka | Hodnota |
 |---|---|
 | Podklady | `hardware/fcb1010-s3-gerber-v0.3.zip` |
 | Provedení | 5 ks, 229 × 41 mm, 2 vrstvy, 1,6 mm, fialová maska, HASL s olovem, výroba 3 dny |
-| Desky | 8,60 USD |
-| Doprava EuroPacket (DDP, 5 až 9 pracovních dnů) | 6,50 USD |
-| Clo a daně | 2,91 USD |
-| **Celkem** | **18,01 USD** |
+| Desky (po slevě z aplikace 1,09 USD, v dokladu rozpuštěno) | 7,72 USD |
+| Doprava EuroPacket (DDP, 5 až 9 pracovních dnů) | 6,71 USD |
+| Clo a daně | 3,03 USD |
+| **Zaplaceno celkem** (včetně poplatku za platbu 0,50 USD) | **17,46 USD** |
+
+Průběh: 25. 11. podklady schváleny a zaplaceno, 25. až 28. 11. výroba, **28. 11. 2026 odesláno** (EuroPacket). Při kontrole si výrobce doplnil nejmenší otvor prokovu 0,3 mm; cena se tím nezměnila.
 
 Slevové kupony z webu se na tuhle desku uplatnit nedaly (akce za 2 USD platí jen do 100 mm). Levnější doprava je jen v aplikaci JLCONE.
 
