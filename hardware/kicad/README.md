@@ -1,0 +1,47 @@
+# Schéma nosné desky (KiCad)
+
+| Soubor | Co to je |
+|---|---|
+| `fcb1010-s3.kicad_sch`, `fcb1010-s3.kicad_pro` | schéma, otevře se v KiCadu 7 a novějším |
+| `gen_sch.py` | generátor schématu; zapojení je popsané v něm a schéma se z něj vyrábí |
+| `expected-nets.json` | zamýšlené přiřazení pin → síť, vzniká při generování |
+| `check_netlist.py` | porovná netlist vyexportovaný KiCadem se zamýšleným zapojením |
+| `../schema-fcb1010-s3.pdf` | schéma v PDF |
+| `gen_pcb.py` | generátor desky: rozmístění součástek a sítě; spouští se `/usr/bin/python3 gen_pcb.py` (potřebuje modul `pcbnew` z KiCadu) |
+| `fcb1010-s3.kicad_pcb` | deska 229 × 41 mm, dvouvrstvá, součástky rozmístěné a spoje natažené autorouterem |
+| `import_ses.py` | načte výsledek autorouteru Freerouting (`.ses`) do desky |
+| `check_pcb.py` | nezávislá kontrola, že jsou v každé síti všechny pájecí body propojené |
+| `../deska-fcb1010-s3.pdf`, `../deska-horni-strana.png`, `../deska-spodni-strana.png` | deska se spoji a obrázky obou stran |
+| `../fcb1010-s3-gerber-v0.3.zip` | gerbery a vrtání pro výrobu |
+| `fcb1010.pretty/` | vlastní pouzdra: DevKit 2×22 a úhelník |
+| `parts.json` | seznam součástek (hodnota, pouzdro), vzniká při generování schématu |
+| `../deska-rozmisteni.png` | obrázek rozmístění |
+
+Postup po změně zapojení:
+
+```
+python3 gen_sch.py
+kicad-cli sch export netlist -o fcb1010-s3.net fcb1010-s3.kicad_sch
+python3 check_netlist.py fcb1010-s3.net
+kicad-cli sch export pdf -o ../schema-fcb1010-s3.pdf fcb1010-s3.kicad_sch
+```
+
+Schéma se neupravuje ručně v editoru, jinak ho další generování přepíše.
+
+## Stav (v0.1, 18. 11. 2026)
+
+- Kontrola netlistu: 310 pinů, 90 sítí, bez rozdílů proti zadání.
+- **Ověřeno z fotek (24. 11. 2026):** zapojení 14pinových svazků J1 a J2 (společný vodič, UP/DOWN, krajní spínač, napájení LED; pořadí prostředních pinů jednotlivě ne, dá se přemapovat ve firmwaru), rozložení pinů DevKitu a rozteč jeho řad 25,4 mm. Viz `docs/nalezy-z-fotek.md`.
+- Orientace diod u spínačů: z fotek vychází společný vodič na GND a pull-up, tedy JP1 i JP2 v poloze A; při oživení ověřit.
+- **Neověřeno:** pořadí vodičů pedálů J3 a J4, pořadí pinů modulu OLED (J5).
+- Propojky JP1 a JP2 dovolují obrátit polaritu čtení spínačů, kdyby diody na předních deskách byly orientované opačně.
+- U4 (MCP1702-4002E/TO, 4,0 V) je volitelný; bez něj se spojí JP3 a senzory pedálů se napájejí z 5 V přes R24 a C5.
+- Deska: součástky jsou rozmístěné bez překryvů (kontrola v `gen_pcb.py`). Spoje natáhl Freerouting 1.9.0: 1326 segmentů, 61 prokovů, 7,5 m spojů. Signály 0,3 mm, GND a +5 V 0,6 mm, +3V3 a napájení senzorů 0,4 mm (s 0,6 mm se nedalo natáhnout). Izolační mezera 0,2 mm, spoje nejméně 0,6 mm od hrany desky. Na obou vrstvách je rozlitá zem.
+- Kontroly (24. 11. 2026): KiCad i `check_pcb.py` hlásí 0 nepropojených spojení (90 sítí). Kontrola návrhových pravidel KiCadu (`drc.rpt`, pouští ji `import_ses.py`) nenašla žádný zkrat, porušení izolační mezery ani vzdálenosti od hrany. Zbývají jen upozornění: překryvy potisku, 2 zemní body připojených k rozlité zemi jedním můstkem místo dvou (jsou připojené i spojem).
+- Konektory svazků J1 až J4 mají pin 1 (červený vodič) na konci dál od displeje, stejně jako původní deska (fotka IMG_9456). J1 je blíž k displeji a patří ke spodní desce spínačů (1–5, DOWN), J2 k horní (6–10, UP), viz `docs/nalezy-z-fotek.md`.
+- Popisky konektorů jsou na potisku.
+- Výrobní podklady: `../fcb1010-s3-gerber-v0.3.zip` (gerbery a vrtání, 2 vrstvy, 229 × 41 mm, tloušťka 1,6 mm). Oválné otvory úhelníků jsou prokovené drážky 1,3 × 2,1 mm.
+- Polohy konektorů na hraně jsou podle fotek strany součástek s metrem zaháknutým za hranu desky (24. 11. 2026): pin 1 konektoru J1 na 40,3 mm, J2 74,3 mm, J4 89,0 mm, J3 100,5 mm, J7 (X18) 137,0 mm, J11 (X17) 210,3 mm od hrany u displeje; přesnost asi ±2 mm, u X17 a X18 ±3 mm. Lišty X17 a X18 mají rozteč 2,0 mm, J7 a J11 jsou proto obyčejné řady 1×4 s roztečí 2,0 mm, do kterých se dají přepájet původní lišty s límcem. Pin 1 (červený vodič) je u všech na konci dál od displeje; u X17 a X18 je to odvozené z potisku a ostatních konektorů, při pájení ověřit podle červeného vodiče.
+- **Pod DevKitem není žádná součástka (v0.3, 24. 11. 2026).** JP1 a JP2 jsou nad budičem U3, JP3 u stabilizátoru senzorů, JP4 a J9 na konci desky u výstupů, odpory R18 až R23 a kondenzátory C3, C4 ve dvou řadách mezi DevKitem a hranou se svazky. Kontrola v `gen_pcb.py` hlídá i překryv s DevKitem.
+- Displej na desce není: připojuje se čtyřpinovým konektorem J5 a jeho držák se vyřeší podle skutečného modulu.
+- Deska je připravená k objednání prototypu. Zbylé neověřené body se dají vyřešit při osazování (pořadí vodičů při pájení, propojky, firmware).
